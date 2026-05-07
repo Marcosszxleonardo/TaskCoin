@@ -1,4 +1,4 @@
-import Index from "./pages/cadastro/paiMae/Index";
+import Index from "./pages/cadastro/associarFilho/Index";
 
 function App() {
   return <Index />;

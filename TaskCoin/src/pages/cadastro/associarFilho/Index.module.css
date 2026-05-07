@@ -1,0 +1,96 @@
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 412px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imageContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.image {
+  width: 60%;
+  max-width: 289px;
+  object-fit: contain;
+}
+
+.subtitle {
+  color: #a2a2a2;
+  font-size: 22px;
+  font-weight: 600;
+  font-family: "Instrument Sans", sans-serif;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.title {
+  color: #1a73e8;
+  font-size: 22px;
+  font-weight: 600;
+  font-family: "Instrument Sans", sans-serif;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input {
+  width: 100%;
+  height: 68px;
+  border-radius: 20px;
+  border: 1px solid #a9a9a9;
+  background-color: #f8f8f8;
+  padding: 0 1.5rem;
+  color: #6e6e6e;
+  font-size: 22px;
+  font-weight: 600;
+  font-family: "Instrument Sans", sans-serif;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: #6e6e6e;
+}
+
+.button {
+  width: 100%;
+  height: 68px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "Instrument Sans", sans-serif;
+  background: linear-gradient(90deg, #0077ff 0%, #02c644 100%);
+}
