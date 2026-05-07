@@ -1,10 +1,7 @@
-import { useState } from 'react'
+import Index from "./pages/cadastro/paiMae/Index";
 
-export default function App() {
-  return (
-    <div>
-      <h1>Lets go Trabaia senhores!</h1>
-  
-    </div>
-  )
+function App() {
+  return <Index />;
 }
+
+export default App;
