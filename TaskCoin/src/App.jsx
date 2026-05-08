@@ -1,7 +1,18 @@
-import Index from "./pages/cadastro/associarFilho/Index";
+import Login from "./pages/login/Login";
 
-function App() {
-  return <Index />;
+
+export default function App() {
+  return <Login />;
 }
 
-export default App;
+
+
+/*   
+import Index from "./pages/cadastro/associarFilho/Index"; 
+
+import Index from "./pages/login/Login"; 
+return <login />;
+
+
+
+*/
