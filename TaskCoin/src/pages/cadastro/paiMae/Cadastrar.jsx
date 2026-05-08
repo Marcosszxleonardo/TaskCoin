@@ -1,7 +1,7 @@
 import { TaskCoinLogo } from "./TaskCoinLogo";
 import { ParentRegistrationForm } from "./ParentRegistrationForm";
 
-export default function Index() {
+export default function Cadastrar() { //mudei o nome do component
   const handleRegistration = (data) => {
     console.log(data);
   };
