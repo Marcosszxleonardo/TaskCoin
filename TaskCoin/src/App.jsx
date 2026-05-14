@@ -2,7 +2,7 @@ import Login from "./pages/login/Login";
 import Cadastrar from "./pages/cadastro/paiMae/Cadastrar";
 import Cadastro from "./pages/cadastro/confirmarFilho/Cadastro";
 
-import Tarefas from "./pages/telasFilho/tarefas/Tarefas";
+import Tarefas from "./pages/telasPais/tarefas/Tarefas";
 
 import {
   createBrowserRouter,
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/tarefas",
+    path: "/tarefaspai",
     element: <Tarefas />,
   },
 ]);
