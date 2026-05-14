@@ -2,6 +2,8 @@ import Login from "./pages/login/Login";
 import Cadastrar from "./pages/cadastro/paiMae/Cadastrar";
 import Cadastro from "./pages/cadastro/confirmarFilho/Cadastro";
 
+import Tarefas from "./pages/telasFilho/tarefas/Tarefas";
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -21,6 +23,11 @@ const router = createBrowserRouter([
   {
     path: "/confirmar-filho",
     element: <Cadastro />,
+  },
+
+  {
+    path: "/tarefas",
+    element: <Tarefas />,
   },
 ]);
 
