@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./Login.module.css";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [role, setRole] = useState("parent");
@@ -21,15 +22,15 @@ export default function Login() {
     const payload =
       role === "parent"
         ? {
-            role,
-            email,
-            password,
-          }
+          role,
+          email,
+          password,
+        }
         : {
-            role,
-            email: childEmail,
-            password: childPassword,
-          };
+          role,
+          email: childEmail,
+          password: childPassword,
+        };
 
     console.log(payload);
   };
@@ -54,11 +55,10 @@ export default function Login() {
         <div className={styles.toggle}>
           <button
             type="button"
-            className={`${styles.toggleBtn} ${
-              role === "parent"
-                ? styles.active
-                : ""
-            }`}
+            className={`${styles.toggleBtn} ${role === "parent"
+              ? styles.active
+              : ""
+              }`}
             onClick={() => setRole("parent")}
           >
             Pai / Mãe
@@ -66,11 +66,10 @@ export default function Login() {
 
           <button
             type="button"
-            className={`${styles.toggleBtn} ${
-              role === "child"
-                ? styles.active
-                : ""
-            }`}
+            className={`${styles.toggleBtn} ${role === "child"
+              ? styles.active
+              : ""
+              }`}
             onClick={() => setRole("child")}
           >
             Filho(a)
@@ -157,12 +156,12 @@ export default function Login() {
           </button>
         </div>
 
-        <button
-          type="button"
+        <Link
+          to="/cadastrar"
           className={styles.btnCadastrar}
         >
           Cadastrar
-        </button>
+        </Link>
       </div>
     </div>
   );

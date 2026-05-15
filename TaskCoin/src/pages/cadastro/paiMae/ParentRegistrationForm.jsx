@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styles from "./ParentRegistrationForm.module.css";
+import { Link } from "react-router-dom";
+
 
 export function ParentRegistrationForm({ onSubmit }) {
   const [form, setForm] = useState({
@@ -62,6 +64,12 @@ export function ParentRegistrationForm({ onSubmit }) {
         <button type="submit" className={styles.button}>
           Continuar
         </button>
+        <Link
+          to="/confirmar-filho"
+          className={styles.btnCadastrar}
+        >
+          Continuar
+        </Link>
       </form>
     </div>
   );
