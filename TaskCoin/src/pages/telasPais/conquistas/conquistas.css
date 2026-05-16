@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ececec;
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 412px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: #ececec;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 130px;
+}
+
+/* HEADER */
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 18px;
+}
+
+.logo {
+  color: #107cdc;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* PERFIL */
+
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 35px;
+}
+
+.avatarBackground {
+  width: 126px;
+  height: 126px;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    180deg,
+    rgba(0, 119, 255, 1) 0%,
+    rgba(2, 198, 68, 1) 100%
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarIcon {
+  font-size: 58px;
+  color: white;
+}
+
+.name {
+  margin-top: 18px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+}
+
+.accountType {
+  margin-top: 6px;
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* FILHOS */
+
+.childrenSection {
+  margin-top: 55px;
+  width: 100%;
+}
+
+.childrenHeader {
+  width: 100%;
+  height: 71px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(0, 119, 255, 1) 0%,
+    rgba(2, 198, 68, 1) 100%
+  );
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 0 20px;
+
+  color: white;
+}
+
+.childrenHeader h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.childrenList {
+  width: 100%;
+  background: #f3f3f3;
+  padding: 24px 20px;
+}
+
+.childrenList p {
+  color: #019c35;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.childrenList p:last-child {
+  margin-bottom: 0;
+}
+
+/* ESPAÇO */
+
+.logoutWrapper {
+  margin-top: 120px;
+}
+
+/* LOGOUT */
+
+.logoutButton {
+  width: 100%;
+  height: 71px;
+
+  border: none;
+
+  background: linear-gradient(
+    90deg,
+    #d10000 0%,
+    #8b0000 100%
+  );
+
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+/* NAVBAR */
+
+.bottomBar {
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+  max-width: 412px;
+  height: 113px;
+
+  background: rgba(7, 189, 119, 0.55);
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  backdrop-filter: blur(8px);
+}
+
+.navItem {
+  border: none;
+  background: transparent;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 6px;
+
+  cursor: pointer;
+
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+}
+
+.navIconBox {
+  width: 46px;
+  height: 43px;
+
+  border-radius: 10px;
+
+  background: #d9d9d9;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+}
+
+.activeBox {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 119, 255, 1) 0%,
+    rgba(2, 198, 68, 1) 100%
+  );
+
+  color: white;
+}
+
+.active {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 119, 255, 1) 0%,
+    rgba(2, 198, 68, 1) 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
