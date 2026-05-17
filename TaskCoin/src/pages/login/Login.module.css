@@ -147,6 +147,14 @@
   font-size: 22px;
   font-weight: 700;
   cursor: pointer;
+  
+  /* --- SOLUÇÃO DO PROBLEMA DE ALINHAMENTO --- */
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;     /* Centraliza verticalmente */
+  text-decoration: none;   /* Remove o sublinhado caso seja uma tag <a> */
+  box-sizing: border-box;  /* Garante que paddings/bordas não quebrem o tamanho */
+  text-align: center;
 }
 
 @media (max-width: 480px) {

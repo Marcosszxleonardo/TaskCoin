@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./ParentRegistrationForm.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export function ParentRegistrationForm({ onSubmit }) {
@@ -21,6 +21,14 @@ export function ParentRegistrationForm({ onSubmit }) {
     e.preventDefault();
     onSubmit?.(form);
   };
+
+  const navigate = useNavigate();
+
+  const HandleConfirmarFilho = () =>{
+    console.log("confirmar-filho");
+    return navigate("/confirmar-filho");
+  };
+
 
   return (
     <div className={styles.container}>
@@ -61,15 +69,15 @@ export function ParentRegistrationForm({ onSubmit }) {
           required
         />
 
-        <button type="submit" className={styles.button}>
-          Continuar
-        </button>
-        <Link
+        <button className={styles.btnContinuar} onClick={HandleConfirmarFilho}>Continuar</button>
+
+
+        {/* <Link
           to="/confirmar-filho"
           className={styles.btnCadastrar}
         >
           Continuar
-        </Link>
+        </Link> */}
       </form>
     </div>
   );

@@ -49,3 +49,28 @@
   border: none;
   cursor: pointer;
 }
+
+.btnContinuar {
+  width: 100%;
+  height: 68px;
+  margin-top: 14px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #0077ff 0%, #02c644 100%);
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+
+  /* --- SOLUÇÃO DO PROBLEMA DE ALINHAMENTO --- */
+  display: flex;
+  justify-content: center;
+  /* Centraliza horizontalmente */
+  align-items: center;
+  /* Centraliza verticalmente */
+  text-decoration: none;
+  /* Remove o sublinhado caso seja uma tag <a> */
+  box-sizing: border-box;
+  /* Garante que paddings/bordas não quebrem o tamanho */
+  text-align: center;
+}

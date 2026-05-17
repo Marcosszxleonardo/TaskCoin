@@ -1,6 +1,18 @@
 import styles from "./Cadastro.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Cadastro() {
+
+
+  const navigate = useNavigate();
+
+  const HandleConfirmar = () => {
+    console.log("tarefaspai");
+    return navigate("/tarefaspai");
+  };
+
+
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -51,6 +63,7 @@ export default function Cadastro() {
 
           <button
             className={`${styles.button} ${styles.buttonBlue}`}
+            onClick={HandleConfirmar}
           >
             <span>Confirmar</span>
 

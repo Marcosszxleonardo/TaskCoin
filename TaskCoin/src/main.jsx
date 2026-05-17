@@ -53,8 +53,7 @@ const router = createBrowserRouter([
             {
                 path: "/perfilpai",
                 element: <Perfilpais />,
-            },
-
+            }
 
         ],
     },

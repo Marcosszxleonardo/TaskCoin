@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./Login.module.css";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 
 export default function Login() {
   const [role, setRole] = useState("parent");
@@ -33,6 +33,20 @@ export default function Login() {
         };
 
     console.log(payload);
+  };
+
+
+  const navigate = useNavigate();
+
+  const HandleCadastrar = () =>{
+    console.log("Cadastrar");
+    return navigate("/cadastrar");
+  };
+
+
+  const HandleLogar = () =>{
+    console.log("tarefaspai");
+    return navigate("/tarefaspai");
   };
 
   return (
@@ -142,6 +156,7 @@ export default function Login() {
           <button
             type="submit"
             className={styles.btnEntrar}
+            onClick={HandleLogar}
           >
             Entrar
           </button>
@@ -156,12 +171,16 @@ export default function Login() {
           </button>
         </div>
 
-        <Link
+        <button className={styles.btnCadastrar} onClick={HandleCadastrar}>
+          Cadastrar 
+        </button>
+
+        {/* <Link
           to="/cadastrar"
           className={styles.btnCadastrar}
         >
           Cadastrar
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
