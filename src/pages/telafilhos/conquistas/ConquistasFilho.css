@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.screen {
+  min-height: 100vh;
+  max-width: 390px;
+  margin: 0 auto;
+  background: #ececec;
+  font-family: 'Nunito', sans-serif;
+  padding-bottom: 95px;
+}
+
+/* HEADER */
+
+.header {
+  background: #d9d9d9;
+  padding: 10px 14px 18px;
+}
+
+.headerRow {
+   display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 900;
+  color: #00a83a;
+  letter-spacing: -1px;
+}
+
+.greeting {
+  font-size: 13px;
+  font-weight: 700;
+  color: #8f8f8f;
+  font-size: 16px;
+  font-weight: 700;
+  color: #8f8f8f;
+
+  margin-left: auto;
+}
+.logo {
+  margin-right: auto;
+}
+
+.greeting {
+  margin-left: auto;
+}
+/* CARD PONTOS */
+
+.pointsCard {
+  margin: 14px;
+  background: #fff;
+  border: 2px solid #4a90ff;
+  border-radius: 18px;
+  padding: 14px 18px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.pointsTitle {
+  font-size: 18px;
+  font-weight: 900;
+  color: #1cab53;
+}
+
+.pointsRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.coin {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f5b400;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.pointsValue {
+  font-size: 24px;
+  font-weight: 900;
+  color: #f5b400;
+}
+
+/* PROGRESSO */
+
+.progressCard {
+  margin: 0 14px;
+  background: white;
+  border: 2px solid #4a90ff;
+  border-radius: 18px;
+  padding: 14px;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.progressTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progressTop h2 {
+  font-size: 13px;
+  font-weight: 800;
+  color: #222;
+}
+
+.progressTop span {
+  font-size: 12px;
+  font-weight: 900;
+  color: #555;
+}
+
+.progressBar {
+  width: 100%;
+  height: 11px;
+  background: #e1e1e1;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progressFill {
+  width: 65%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    #00a83a,
+    #4a90ff
+  );
+
+  border-radius: 999px;
+}
+
+.progressCard p {
+  margin-top: 7px;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 700;
+  color: #8f8f8f;
+}
+
+/* SECTION */
+
+.section {
+  padding: 22px 16px 0;
+}
+
+.sectionTitle {
+  font-size: 28px;
+  font-weight: 900;
+  color: #111;
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+
+/* CARD PRINCIPAL */
+
+.rewardMain {
+  background: linear-gradient(
+    110deg,
+    #00a83a,
+    #4a90ff
+  );
+
+  border-radius: 22px;
+  padding: 24px 18px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: white;
+
+  margin-bottom: 16px;
+
+  box-shadow: 0 5px 12px rgba(0,0,0,0.14);
+}
+
+.rewardMain h3 {
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.4;
+}
+
+.rewardMainRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.checkBox {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 12px;
+
+  border: 2px solid rgba(255,255,255,0.9);
+
+  background: rgba(255,255,255,0.2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.rewardMainRight span {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* RECOMPENSAS */
+
+.rewardCard {
+  background: white;
+  border-radius: 18px;
+  padding: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 14px;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+}
+
+.rewardLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.medal {
+  font-size: 36px;
+}
+
+.rewardLeft h3 {
+  font-size: 15px;
+  font-weight: 800;
+  color: #111;
+
+  line-height: 1.3;
+
+  margin-bottom: 5px;
+}
+
+.rewardPoints {
+  font-size: 13px;
+  font-weight: 900;
+  color: #f5b400;
+}
+
+.rewardRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.happy,
+.sad {
+  font-size: 26px;
+}
+
+.rewardBtn {
+  background: #4a90ff;
+  color: white;
+
+  border: none;
+  border-radius: 999px;
+
+  padding: 7px 20px;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  font-family: inherit;
+
+  cursor: pointer;
+}
+
+.insufficient {
+  color: #df3030;
+  font-size: 11px;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* NAVBAR */
+
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+  max-width: 390px;
+  height: 78px;
+
+  background: #efefef;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  border-top: 1px solid #d7d7d7;
+
+  z-index: 999;
+}
+
+.navBtn {
+  border: none;
+  background: transparent;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+
+  cursor: pointer;
+
+  padding: 8px 12px;
+
+  font-family: 'Nunito', sans-serif;
+}
+
+.navIcon {
+  font-size: 24px;
+  line-height: 1;
+
+  color: #000 !important;
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
+
+  display: block !important;
+
+  -webkit-text-fill-color: #000 !important;
+}
+
+.navText {
+   font-size: 13px;
+  font-weight: 500;
+  color: black;
+}
+
+.navBtnActive .navText {
+  color: #00a651;
+  font-weight: 900;
+}

@@ -1,0 +1,218 @@
+.screen {
+  min-height: 100vh;
+  max-width: 390px;
+  margin: 0 auto;
+  background: #ececec;
+  font-family: 'Segoe UI', sans-serif;
+  padding-bottom: 95px;
+}
+
+.header {
+  background: #dddddd;
+  padding: 8px 12px 16px;
+}
+
+.pageTitle {
+  font-size: 14px;
+  color: #9a9a9a;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  color: #0077ff;
+  margin: 0;
+}
+
+.greeting {
+  font-size: 15px;
+  font-weight: 700;
+  color: #9b9b9b;
+}
+
+.summary {
+  padding: 14px 12px;
+}
+
+.summaryTitle {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #111;
+}
+
+.cards {
+  display: flex;
+  gap: 10px;
+}
+
+.infoCard {
+  flex: 1;
+  background: #f6f6f6;
+  border-radius: 18px;
+  padding: 18px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.infoNumber {
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 800;
+  color: #1976d2;
+}
+
+.infoText {
+  font-size: 18px;
+  color: #6b6b6b;
+  font-weight: 500;
+}
+
+.tasksSection {
+  padding: 0 12px;
+}
+
+.tasksTitle {
+  font-size: 30px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 16px;
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.taskCard {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 7px rgba(0,0,0,0.12);
+}
+
+.taskLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.taskEmoji {
+  font-size: 23px;
+}
+
+.taskName {
+  font-size: 15px;
+  font-weight: 800;
+  color: #111;
+  margin: 0;
+}
+
+.taskMeta {
+  font-size: 12px;
+  color: #777;
+  margin: 2px 0 0;
+}
+
+.taskRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.points {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #f5b400;
+}
+
+.deleteBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.addButton,
+.analysisButton,
+.expiredButton {
+  width: 100%;
+  border: none;
+  border-radius: 18px;
+  padding: 18px;
+  font-size: 24px;
+  font-weight: 800;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+}
+
+.addButton {
+  background: #00a82d;
+  justify-content: center;
+}
+
+.analysisButton {
+  background: #009dff;
+}
+
+.expiredButton {
+  background: #c40000;
+}
+
+.badgeBlue,
+.badgeRed {
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 390px;
+  background: #efefef;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0 10px;
+  border-top: 1px solid #d7d7d7;
+}
+
+.navBtn {
+  border: none;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 15px;
+  color: #000;
+  gap: 4px;
+}
+
+.active {
+  color: #00a651;
+  font-weight: 800;
+}
+
+.navIcon {
+  font-size: 28px;
+}

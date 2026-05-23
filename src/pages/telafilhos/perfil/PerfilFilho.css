@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.screen {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 390px;
+
+  margin: 0 auto;
+
+  background: #ececec;
+
+  font-family: 'Nunito', sans-serif;
+
+  padding-bottom: 110px; /* espaço da navbar */
+
+  overflow-x: hidden;
+}
+
+/* HEADER */
+
+.header {
+  background: #d9d9d9;
+  padding: 12px 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 900;
+  color: #00a83a;
+  letter-spacing: -1px;
+}
+
+/* PERFIL */
+
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 18px;
+}
+
+.profileAvatar {
+  width: 82px;
+  height: 82px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, #00c853, #1e88ff);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 42px;
+  color: white;
+
+  margin-bottom: 10px;
+}
+
+.profileName {
+  font-size: 18px;
+  font-weight: 900;
+  color: #111;
+
+  margin-bottom: 2px;
+}
+
+.profileType {
+  font-size: 14px;
+  font-weight: 700;
+  color: #8f8f8f;
+}
+
+/* RESPONSÁVEL */
+
+.linkedSection {
+  margin-top: 20px;
+}
+
+.linkedHeader {
+  background: linear-gradient(90deg, #00c853, #1e88ff);
+
+  color: white;
+
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 12px;
+
+  gap: 10px;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+}
+
+.linkedIcon {
+  font-size: 18px;
+}
+
+.linkedBody {
+  background: #dfe3df;
+
+  padding: 14px 12px;
+
+  font-size: 18px;
+  font-weight: 800;
+  color: #00a83a;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  min-height: 40px;
+
+  display: flex;
+  align-items: center;
+}
+
+/* LOGOUT (AJUSTADO) */
+
+.logoutSection {
+   position: fixed;
+  bottom: 92px; /* logo acima da navbar */
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+  max-width: 390px;
+
+  padding: 0 12px;
+  z-index: 998;
+}
+
+.logoutButton {
+  width: 100%;
+
+  border: none;
+
+  background: #c40000;
+  color: white;
+
+  padding: 16px 14px;
+
+  font-size: 18px;
+  font-weight: 900;
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+  border-radius: 10px;
+}
+
+/* NAVBAR */
+
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+  max-width: 390px;
+  height: 78px;
+
+  background: #efefef;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  border-top: 1px solid #d7d7d7;
+
+  z-index: 999;
+}
+
+.navBtn {
+  border: none;
+  background: transparent;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+
+  cursor: pointer;
+
+  padding: 8px 12px;
+
+  font-family: 'Nunito', sans-serif;
+}
+
+.navIcon {
+  font-size: 24px;
+  line-height: 1;
+
+  color: #000 !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  display: block !important;
+
+  -webkit-text-fill-color: #000 !important;
+}
+
+.navText {
+  font-size: 13px;
+  font-weight: 400; /* antes era 700 */
+  color: black;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  display: block !important;
+
+  -webkit-text-fill-color: black !important;
+}
+
+.active .navText {
+  color: #00a651 !important;
+  font-weight: 900;
+}
+
+/* MOBILE */
+
+@media (max-width: 390px) {
+  .screen {
+    max-width: 100%;
+  }
+
+  .profileName {
+    font-size: 17px;
+  }
+
+  .linkedBody {
+    font-size: 16px;
+  }
+
+  .logoutButton {
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .navText {
+    font-size: 12px;
+  }
+}
