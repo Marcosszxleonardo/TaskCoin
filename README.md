@@ -1,28 +1,19 @@
-# 📝 TaskCoin
+# 📝 TaskCoin README
+---
 
-<p align="center">
-  <img src="https://img.shields.io/badge/React-19.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Vite-8.0.2-646CFF?style=for-the-badge&logo=vite&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk&logoColor=white"/>
-  <img src="https://img.shields.io/badge/SpringBoot-4.0.6-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white"/>
-</p>
+# 📌 1. Informações do Projeto
+
+**Nome do Sistema:** TaskCoin  
+
+**Tipo:** Aplicação Web Gamificada  
+
+**Finalidade:** Incentivar crianças e adolescentes a desenvolver disciplina, responsabilidade e organização através de tarefas e recompensas.
 
 ---
 
-# 📌 Informações do Projeto
+# 👥 2. Integrantes da Equipe
 
-| Informação | Detalhes |
-|---|---|
-| **Nome do Sistema** | TaskCoin |
-| **Tipo** | Aplicação Web Gamificada |
-| **Finalidade** | Incentivar crianças e adolescentes a desenvolver disciplina, responsabilidade e organização através de tarefas e recompensas |
-
----
-
-# 👥 Integrantes da Equipe
-
-| 👤 Integrante | 💼 Função |
+| Integrante | Função |
 |---|---|
 | Jefferson Dos Santos Lima Sousa | Front-End |
 | Marcos Roberto Leonardo Rodrigues | Front-End e Documentação |
@@ -31,7 +22,7 @@
 
 ---
 
-# 🧠 Sobre o Projeto
+# 🧠 3. Sobre o Projeto
 
 O **TaskCoin** é uma aplicação web desenvolvida com foco em aprendizado e utilização de tecnologias modernas para desenvolvimento web.
 
@@ -43,7 +34,7 @@ O objetivo do projeto é transformar atividades do cotidiano em desafios motivad
 
 ---
 
-# 🎯 Objetivo do Sistema
+# 🎯 4. Objetivo do Sistema
 
 O **TaskCoin** busca auxiliar famílias na organização de rotinas e no incentivo à responsabilidade, utilizando gamificação como ferramenta de motivação.
 
@@ -51,56 +42,56 @@ Além disso, o projeto também possui finalidade acadêmica, proporcionando expe
 
 ---
 
-# ✨ Funcionalidades
+# ⚡ 5. Funcionalidades
 
-✅ Cadastro de usuários (pais e filhos)  
-✅ Sistema de login  
-✅ Criação e gerenciamento de tarefas  
-✅ Marcação de tarefas concluídas  
-✅ Validação de tarefas pelos responsáveis  
-✅ Sistema de pontos (TaskCoins)  
-✅ Sistema de recompensas  
-✅ Troca de pontos por benefícios  
-✅ Acompanhamento de progresso  
-✅ Interface responsiva e intuitiva  
-
----
-
-# 🛠 Tecnologias Utilizadas
-
-## 🎨 Frontend
-
-- React 19.2.0
-- JavaScript (ES5.1)
-- HTML5
-- CSS3
-- Vite 8.0.2
+• Cadastro de usuários (pais e filhos)  
+• Sistema de login  
+• Criação e gerenciamento de tarefas  
+• Marcação de tarefas concluídas  
+• Validação de tarefas pelos responsáveis  
+• Sistema de pontos (TaskCoins)  
+• Sistema de recompensas  
+• Troca de pontos por benefícios  
+• Acompanhamento de progresso  
+• Interface responsiva e intuitiva  
 
 ---
 
-## ⚙ Backend
+# 🛠 6. Tecnologias Utilizadas
 
-- Java 21
-- Spring Boot 4.0.6
+## Frontend
 
----
-
-## 🗄 Banco de Dados
-
-- Supabase
-- PostgreSQL 15/16
+• React 19.2.0  
+• JavaScript (ES5.1)  
+• HTML5  
+• CSS3  
+• Vite 8.0.2  
 
 ---
 
-## 🔧 Ferramentas
+## Backend
 
-- Git
-- GitHub
-- Vercel
+• Java 21  
+• Spring Boot 4.0.6  
 
 ---
 
-# 🏗 Arquitetura do Sistema
+## Banco de Dados
+
+• Supabase  
+• PostgreSQL 15/16  
+
+---
+
+## Ferramentas
+
+• Git  
+• GitHub  
+• Vercel  
+
+---
+
+# 🏗 7. Arquitetura do Sistema
 
 O sistema foi dividido em três camadas principais:
 
@@ -114,7 +105,7 @@ A comunicação entre frontend e backend ocorre através de uma API REST.
 
 ---
 
-# 📁 Estrutura do Projeto
+# 📁 8. Estrutura do Projeto
 
 ```bash
 TaskCoin/
@@ -134,42 +125,40 @@ TaskCoin/
 
 ---
 
-# 🎮 Funcionamento do Sistema
+# 🎮 9. Funcionamento do Sistema
 
-### 📌 Fluxo de Uso
-
-1️⃣ O responsável cria uma tarefa  
-2️⃣ O filho visualiza a atividade  
-3️⃣ A tarefa é realizada  
-4️⃣ O filho marca como concluída  
-5️⃣ O responsável valida a tarefa  
-6️⃣ O sistema adiciona TaskCoins  
-7️⃣ Os pontos podem ser trocados por recompensas  
+1. O responsável cria uma tarefa  
+2. O filho visualiza a atividade  
+3. A tarefa é realizada  
+4. O filho marca como concluída  
+5. O responsável valida a tarefa  
+6. O sistema adiciona TaskCoins  
+7. Os pontos podem ser trocados por recompensas  
 
 ---
 
-# 👨‍👩‍👧 Público-Alvo
+# 👨‍👩‍👧 10. Público-Alvo
 
-- Pais e responsáveis
-- Crianças e adolescentes
-- Famílias que desejam melhorar organização e disciplina
-
----
-
-# 🔮 Próximos Passos
-
-🚀 Implementação de autenticação JWT  
-🚀 Melhorias na segurança do sistema  
-🚀 Sistema de estatísticas  
-🚀 Expansão do sistema de recompensas  
-🚀 Melhorias na responsividade  
-🚀 Deploy completo do backend  
+• Pais e responsáveis  
+• Crianças e adolescentes  
+• Famílias que desejam melhorar organização e disciplina  
 
 ---
 
-# ▶ Como Executar o Projeto
+# 🚀 11. Próximos Passos
 
-## 📥 1. Clonar o Repositório
+• Implementação de autenticação JWT  
+• Melhorias na segurança do sistema  
+• Sistema de estatísticas  
+• Expansão do sistema de recompensas  
+• Melhorias na responsividade  
+• Deploy completo do backend  
+
+---
+
+# ▶ 12. Como Executar o Projeto
+
+## 1. Clonar o Repositório
 
 ```bash
 git clone https://github.com/Marcossxzleonardo/TaskCoin
@@ -177,7 +166,7 @@ git clone https://github.com/Marcossxzleonardo/TaskCoin
 
 ---
 
-## 📂 2. Acessar a Pasta do Projeto
+## 2. Acessar a Pasta do Projeto
 
 ```bash
 cd TaskCoin
@@ -185,7 +174,7 @@ cd TaskCoin
 
 ---
 
-## 📦 3. Instalar as Dependências
+## 3. Instalar as Dependências
 
 ```bash
 npm install
@@ -193,7 +182,7 @@ npm install
 
 ---
 
-## ▶ 4. Executar o Frontend
+## 4. Executar o Frontend
 
 ```bash
 npm run dev
@@ -201,7 +190,7 @@ npm run dev
 
 ---
 
-## ⚙ 5. Executar o Backend
+## 5. Executar o Backend
 
 ```bash
 mvn spring-boot:run
@@ -209,22 +198,38 @@ mvn spring-boot:run
 
 ---
 
-# 📚 Finalidade Acadêmica
+# 📚 13. Finalidade Acadêmica
 
 Projeto desenvolvido para fins acadêmicos, visando prática em:
 
-✅ Desenvolvimento Frontend  
-✅ Desenvolvimento Backend  
-✅ Integração entre sistemas  
-✅ Versionamento com Git/GitHub  
-✅ Trabalho em equipe  
+• Desenvolvimento Frontend  
+• Desenvolvimento Backend  
+• Integração entre sistemas  
+• Versionamento com Git/GitHub  
+• Trabalho em equipe  
 
 ---
 
-# 💻 Desenvolvido por
+# 🌐 14. Documentações Oficiais
 
-### Equipe TaskCoin 🚀
+• React: https://react.dev  
+• Spring Boot: https://spring.io/projects/spring-boot  
+• Vite: https://vitejs.dev  
+• Supabase: https://supabase.com  
+• GitHub: https://github.com  
+
+---
+
+# 📄 15. Licença
+
+Projeto desenvolvido para fins acadêmicos e educacionais.
+
+---
+
+# 💻 16. Desenvolvido por
+
+### Equipe TaskCoin
 
 <p align="center">
-  Feito com dedicação, aprendizado e muito ☕
+  Feito com dedicação, aprendizado e muito café.
 </p>
