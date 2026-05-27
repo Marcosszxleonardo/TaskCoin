@@ -181,8 +181,15 @@ npm install
 ```
 
 ---
+## 4. Instalar as Dependências
 
-## 4. Executar o Frontend
+```bash
+npm install react-router-dom
+```
+
+---
+
+## 5. Executar o Frontend
 
 ```bash
 npm run dev
@@ -190,7 +197,7 @@ npm run dev
 
 ---
 
-## 5. Executar o Backend
+## 6. Executar o Backend
 
 ```bash
 mvn spring-boot:run
