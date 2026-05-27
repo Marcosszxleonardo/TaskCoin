@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #dcdcdc;
+}
+
+/* FUNDO */
+
+.pageBg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* CELULAR */
+
+.phoneContainer {
+  width: 100%;
+  max-width: 390px;
+  height: 844px;
+  background: #f5f5f5;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  padding: 24px 18px 110px;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* HEADER */
+
+.topoAnalise {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.topoAnalise h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.topoAnalise h1 span {
+  color: #ff2b2b;
+}
+
+.voltarBtn,
+.olhoBtn {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  font-size: 20px;
+  cursor: pointer;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.subtitulo {
+  color: #8d8d8d;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+
+/* CARDS */
+
+.cardsArea {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cardTarefa {
+  background: white;
+  border-radius: 24px;
+  padding: 18px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.infoTarefa {
+  display: flex;
+  gap: 12px;
+}
+
+.emoji {
+  width: 48px;
+  height: 48px;
+  background: #f2f2f2;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+}
+
+.infoTarefa h3 {
+  font-size: 16px;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.infoTarefa p {
+  font-size: 13px;
+  color: #8d8d8d;
+}
+
+.lixeiraBtn {
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.confirmarBtn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 999px;
+  background: #00d648;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 12px;
+
+  transition: 0.2s;
+}
+
+.confirmarBtn:hover {
+  transform: scale(1.01);
+}
+
+.confirmadoTexto {
+  display: block;
+  text-align: center;
+  color: #00c93a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* NAVBAR */
+
+.bottomNav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 82px;
+
+  background: white;
+  border-top: 1px solid #ececec;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  border: none;
+  background: none;
+
+  color: #9a9a9a;
+  cursor: pointer;
+}
+
+.navBtn.active {
+  color: #00d648;
+}
+
+.navIcon {
+  font-size: 22px;
+}
+
+.navText {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 500px) {
+
+  .pageBg {
+    padding: 0;
+  }
+
+  .phoneContainer {
+    max-width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+}

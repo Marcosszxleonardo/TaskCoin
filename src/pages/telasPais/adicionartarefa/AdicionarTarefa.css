@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+html,
+body{
+  width:100%;
+  min-height:100vh;
+  background:#ffffff;
+  overflow-x:hidden;
+}
+
+/* PAGINA */
+
+.pageBg{
+  width:100%;
+  min-height:100vh;
+  background:#ffffff;
+}
+
+/* CONTAINER */
+
+.phoneContainer{
+  width:100%;
+  min-height:100vh;
+
+  background:#ffffff;
+
+  padding:20px 16px 120px;
+}
+
+/* TOPO */
+
+.topoAdicionar{
+  display:flex;
+  align-items:center;
+
+  margin-bottom:20px;
+}
+
+.voltarBtn{
+  border:none;
+  background:none;
+
+  font-size:28px;
+  color:#111;
+
+  cursor:pointer;
+}
+
+/* TITULO */
+
+.tituloArea{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  margin-bottom:12px;
+}
+
+.tituloArea h1{
+  font-size:36px;
+  font-weight:700;
+  color:#111;
+
+  letter-spacing:-1px;
+}
+
+.addBtn{
+  width:42px;
+  height:42px;
+
+  border-radius:10px;
+  border:2px solid #111;
+
+  background:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:28px;
+
+  cursor:pointer;
+}
+
+/* SUBTITULO */
+
+.subtitulo{
+  color:#9a9a9a;
+
+  font-size:15px;
+  line-height:1.4;
+
+  margin-bottom:18px;
+
+  font-weight:500;
+}
+
+/* FORM */
+
+.formArea{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.inputField{
+  width:100%;
+  height:52px;
+
+  border-radius:16px;
+  border:1.5px solid #d7d7d7;
+
+  background:#f5f5f5;
+
+  padding:0 16px;
+
+  font-size:15px;
+
+  outline:none;
+}
+
+.inputField::placeholder{
+  color:#7c7c7c;
+}
+
+/* DATA */
+
+.dataArea{
+  position:relative;
+}
+
+.dataTexto{
+  position:absolute;
+  right:16px;
+  top:50%;
+  transform:translateY(-50%);
+
+  color:#707070;
+  font-weight:600;
+}
+
+/* SELECT */
+
+.selectArea{
+  width:100%;
+
+  border-radius:18px;
+  border:1.5px solid #d7d7d7;
+
+  background:#f5f5f5;
+
+  overflow:hidden;
+}
+
+.selectTop{
+  height:54px;
+
+  padding:0 14px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  font-size:15px;
+  color:#555;
+}
+
+.seta{
+  font-size:30px;
+  color:#333;
+}
+
+.filhosLista{
+  padding:0 14px 14px;
+}
+
+.filhosLista p{
+  margin-bottom:8px;
+
+  color:#5d5d5d;
+  font-size:16px;
+  font-weight:600;
+}
+
+/* BOTAO */
+
+.criarBtn{
+  width:100%;
+  height:54px;
+
+  border:none;
+  border-radius:16px;
+
+  background:#00b92f;
+  color:white;
+
+  font-size:18px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  margin-top:72px;
+}
+
+/* NAVBAR */
+
+.bottomNav{
+  position:fixed;
+  bottom:0;
+  left:0;
+
+  width:100%;
+  height:80px;
+
+  background:#ffffff;
+
+  border-top:1px solid #e8e8e8;
+
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+}
+
+.navBtn{
+  border:none;
+  background:none;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+
+  cursor:pointer;
+
+  color:#8c8c8c;
+}
+
+.navBtn.active{
+  color:#00b92f;
+}
+
+.navIcon{
+  font-size:20px;
+}
+
+.navText{
+  font-size:11px;
+  font-weight:600;
+}

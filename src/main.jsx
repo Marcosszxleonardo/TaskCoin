@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./global.css";
 
 import {
-    createBrowserRouter,
-    RouterProvider,
+  createBrowserRouter,
+  RouterProvider,
 } from "react-router-dom";
 
 import App from "./App.jsx";
@@ -17,78 +17,97 @@ import Cadastro from "./pages/cadastro/confirmarFilho/Cadastro";
 import Tarefas from "./pages/telasPais/tarefas/Tarefas";
 import Conquistas from "./pages/telasPais/conquistas/Conquistaspais";
 import Perfilpais from "./pages/telasPais/perfil/Perfilpais";
+import AnalisePais from "./pages/telasPais/analise/AnalisePais";
+import AdicionarConquista from "./pages/telasPais/adicionarconquista/AdicionarConquista";
+import AdicionarTarefa from "./pages/telasPais/adicionartarefa/AdicionarTarefa";
+import TarefaExpirada from "./pages/telasPais/tarefaexpirada/TarefaExpirada";
 
 /* TELAS FILHO */
-import TarefaFilho from "./pages/telafilhos/tarefas/TarefasFilho.jsx";
-import ConquistasFilho from "./pages/telafilhos/conquistas/ConquistasFilho.jsx";
-import PerfilFilho from "./pages/telafilhos/perfil/PerfilFilho.jsx"
+import TarefaFilho from "./pages/telafilhos/tarefas/TarefasFilho";
+import ConquistasFilho from "./pages/telafilhos/conquistas/ConquistasFilho";
+import PerfilFilho from "./pages/telafilhos/perfil/PerfilFilho";
+
 import ErrorPage from "./ErroPage.jsx";
 
 const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+
+    children: [
+      {
         path: "/",
-        element: <App />,
-        errorElement: <ErrorPage />,
+        element: <Login />,
+      },
 
-        children: [
-            {
-                path: "/",
-                element: <Login />,
-            },
+      {
+        path: "/cadastrar",
+        element: <Cadastrar />,
+      },
 
-            {
-                path: "/cadastrar",
-                element: <Cadastrar />,
-            },
+      {
+        path: "/confirmar-filho",
+        element: <Cadastro />,
+      },
 
-            {
-                path: "/confirmar-filho",
-                element: <Cadastro />,
-            },
+      /* TELAS PAI */
 
-            /* TELAS PAI */
+      {
+        path: "/tarefaspai",
+        element: <Tarefas />,
+      },
 
-            {
-                path: "/tarefaspai",
-                element: <Tarefas />,
-            },
+      {
+        path: "/conquistaspai",
+        element: <Conquistas />,
+      },
 
-            {
-                path: "/conquistaspai",
-                element: <Conquistas />,
-            },
+      {
+        path: "/perfilpai",
+        element: <Perfilpais />,
+      },
 
-            {
-                path: "/perfilpai",
-                element: <Perfilpais />,
-            },
+      {
+        path: "/analisepai",
+        element: <AnalisePais />,
+      },
 
-            /* TELAS FILHO */
+      {
+        path: "/adicionarconquista",
+        element: <AdicionarConquista />,
+      },
+      {
+        path: "/adicionartarefa",
+        element: <AdicionarTarefa />,
+      },
+      {
+    path: "/tarefaexpirada",
+    element: <TarefaExpirada />,
+},
 
-            {
-                path: "/tarefasfilho",
-                element: <TarefaFilho />,
-            },
+      /* TELAS FILHO */
 
-            {
-                path: "/conquistasfilho",
-                element: <ConquistasFilho />,
-            },
+      {
+        path: "/tarefasfilho",
+        element: <TarefaFilho />,
+      },
 
-            
-            {
-                path: "/perfilfilho",
-                element: <PerfilFilho />,
-            },
+      {
+        path: "/conquistasfilho",
+        element: <ConquistasFilho />,
+      },
 
-
-
-        ],
-    },
+      {
+        path: "/perfilfilho",
+        element: <PerfilFilho />,
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
-        <RouterProvider router={router} />
-    </React.StrictMode>
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
