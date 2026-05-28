@@ -1,53 +1,66 @@
 import { useState } from "react";
 import styles from "./Login.module.css";
-import { Link , useNavigate} from "react-router-dom";
+import api from "../services/api";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [role, setRole] = useState("parent");
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] =
-    useState("");
-
-
-  const [childEmail, setChildEmail] =
-    useState("");
-
-  const [childPassword, setChildPassword] =
-    useState("");
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    const payload =
-      role === "parent"
-        ? {
-          role,
-          email,
-          password,
-        }
-        : {
-          role,
-          email: childEmail,
-          password: childPassword,
-        };
-
-    console.log(payload);
-  };
-
+  const [senha, setSenha] = useState("");
 
   const navigate = useNavigate();
 
-  const HandleCadastrar = () =>{
+  const HandleCadastrar = () => {
     console.log("Cadastrar");
     return navigate("/cadastrar");
   };
 
 
-  const HandleLogar = () =>{
+  const HandleLogar = () => {
     console.log("tarefaspai");
     return navigate("/tarefaspai");
   };
+
+  const handleLoginChild = async (e) => {
+    e.preventDefault();
+    localStorage.removeItem('token');
+
+    const dados = {
+      email: email,
+      senha: senha
+    }
+
+    try {
+      const response = await api.post('/auth/filhos', dados);
+      const token = response.data.token;
+      localStorage.setItem('token', token);
+      console.log("Login filho bem-sucedido", response.data);
+      navigate("/tarefasfilho");
+    } catch (error) {
+      console.error("Erro ao logar", error);
+    }
+  }
+
+  const handleLoginParent = async (e) => {
+    e.preventDefault();
+    localStorage.removeItem('token');
+
+    const dados = {
+      email: email,
+      senha: senha
+    }
+
+    try {
+      const response = await api.post('/auth/responsaveis', dados);
+      const token = response.data.token;
+      localStorage.setItem('token', token);
+      console.log("Login filho bem-sucedido", response.data);
+      navigate("/tarefasfilho");
+    } catch (error) {
+      console.error("Erro ao logar", error);
+    }
+  }
 
   return (
     <div className={styles.page}>
@@ -91,75 +104,55 @@ export default function Login() {
         </div>
 
         <form
+          key={role}
           className={styles.form}
-          onSubmit={handleLogin}
         >
           <div
-            key={role}
             className={styles.formContent}
           >
-            {role === "parent" ? (
-              <>
-                <input
-                  className={styles.input}
-                  type="email"
-                  placeholder="E-mail"
-                  value={email}
-                  onChange={(e) =>
-                    setEmail(e.target.value)
-                  }
-                  required
-                />
+            <>
+              <input
+                className={styles.input}
+                type="email"
+                placeholder="E-mail"
+                value={email}
+                onChange={(e) =>
+                  setEmail(e.target.value)
+                }
+                required
+              />
 
-                <input
-                  className={styles.input}
-                  type="password"
-                  placeholder="Senha"
-                  value={password}
-                  onChange={(e) =>
-                    setPassword(e.target.value)
-                  }
-                  required
-                />
-              </>
-            ) : (
-              <>
-                <input
-                  className={styles.input}
-                  type="email"
-                  placeholder="E-mail"
-                  value={childEmail}
-                  onChange={(e) =>
-                    setChildEmail(
-                      e.target.value
-                    )
-                  }
-                  required
-                />
-
-                <input
-                  className={styles.input}
-                  type="password"
-                  placeholder="Senha"
-                  value={childPassword}
-                  onChange={(e) =>
-                    setChildPassword(
-                      e.target.value
-                    )
-                  }
-                  required
-                />
-              </>
-            )}
+              <input
+                className={styles.input}
+                type="password"
+                placeholder="Senha"
+                value={senha}
+                onChange={(e) =>
+                  setSenha(e.target.value)
+                }
+                required
+              />
+            </>
           </div>
 
-          <button
-            type="submit"
-            className={styles.btnEntrar}
-            onClick={HandleLogar}
-          >
-            Entrar
-          </button>
+          {role === "parent" ? (
+            <button
+              type="submit"
+              className={styles.btnEntrar}
+              onClick={handleLoginParent}
+            >
+              Entrar
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className={styles.btnEntrar}
+              onClick={handleLoginChild}
+            >
+              Entrar
+            </button>
+          )}
+
         </form>
 
         <div className={styles.accountRow}>
@@ -172,7 +165,7 @@ export default function Login() {
         </div>
 
         <button className={styles.btnCadastrar} onClick={HandleCadastrar}>
-          Cadastrar 
+          Cadastrar
         </button>
 
         {/* <Link
