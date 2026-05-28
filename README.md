@@ -178,6 +178,7 @@ cd TaskCoin
 
 ```bash
 npm install
+npm install react-router-dom
 ```
 
 ---
