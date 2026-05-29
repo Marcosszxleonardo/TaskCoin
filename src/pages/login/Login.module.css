@@ -68,25 +68,13 @@
 .form {
   width: 100%;
   margin-top: 24px;
+  animation:none;
 }
 
 .formContent {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  animation: fade 0.25s ease;
-}
-
-@keyframes fade {
-  from {
-    opacity: 0;
-    transform: translateX(12px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 .input {
@@ -118,7 +106,7 @@
     #00c853
   );
   color: white;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   cursor: pointer;
 }

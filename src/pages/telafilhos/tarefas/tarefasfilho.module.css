@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  animation: fadeIn 1s ease;
-}
-
 .screen {
   min-height: 100vh;
   max-width: 390px;
@@ -132,11 +125,11 @@
 }
 
 .progressFill {
-  width: 65%;
   background: linear-gradient(90deg, #00a83a, #4a90ff);
   animation: background-change 1s linear infinite;
   height: 100%;
   border-radius: 999px;
+  transition: width 1s ease-out;
 }
 
 .levelCard p {
@@ -194,6 +187,7 @@
 }
 
 .taskEmoji {
+  animation: moveRight 1.5s ease-in-out infinite;
   font-size: 30px;
 }
 
@@ -233,20 +227,21 @@
   width: 100%;
   border: none;
   border-radius: 999px;
-
   background: #4a90ff;
   color: white;
-
   padding: 12px;
-
   margin-top: 16px;
-
   font-size: 16px;
   font-weight: 800;
-
   cursor: pointer;
-
   font-family: inherit;
+  transition: 0.3s;
+}
+
+.completeButton:hover {
+  transition: 0.3s;
+  background: #1353ba;
+  color: white;
 }
 
 .completed {
@@ -265,11 +260,12 @@
 
 .analysis {
   margin-top: 18px;
-
+  padding: 12px;
   text-align: center;
-
+  border: 1px solid #009dff;
+  border-radius: 999px;
+  background: transparent;
   color: #4a90ff;
-
   font-size: 16px;
   font-weight: 800;
 }
@@ -346,7 +342,6 @@
   font-size: 15px;
 }
 
-/* Estilização do botão de seta */
 .arrow button {
   background: none;
   border: none;
@@ -383,32 +378,21 @@
   margin-bottom: 15px;
 }
 
-/* 1. Estado inicial da div de detalhes (Fechada) */
+
 .taskDetails {
   max-height: 0;
-  /* Altura zero */
   overflow: hidden;
-  /* Esconde o que está dentro */
   opacity: 0;
-  /* Invisível */
   padding-top: 0;
-  /* Remove padding para não ocupar espaço */
-  border-top: 1px dashed transparent;
-
-  /* A mágica da animação de expansão */
+  border-top: 1px solid transparent;
   transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease;
 }
 
-/* 2. Quando o Card estiver com a classe .expanded (Aberta) */
 .taskCard.expanded .taskDetails {
   max-height: 300px;
-  /* Um valor maior que o conteúdo real */
   opacity: 1;
-  /* Torna visível */
   padding-top: 15px;
-  /* Devolve o espaço superior */
-  border-top: 1px dashed #e1e1e1;
-  /* Mostra a linha separadora */
+  border-top: 1px solid #e1e1e1;
 }
 
 /* Importante: garanta que o Header ocupe 100% da largura superior */
@@ -453,5 +437,19 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes moveRight {
+  0% {
+    transform: translateX(-2px);
+  } 
+
+  50% {
+    transform: translateX(2px);
+  }
+
+  100% {
+    transform: translateX(-2px);
   }
 }

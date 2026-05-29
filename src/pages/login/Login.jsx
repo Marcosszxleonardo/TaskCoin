@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../../global.css";
 import styles from "./Login.module.css";
 import api from "../services/api";
 import { Link, useNavigate } from "react-router-dom";
@@ -141,7 +142,7 @@ export default function Login() {
               className={styles.btnEntrar}
               onClick={handleLoginParent}
             >
-              Entrar
+              Entrar como Pai/Mãe
             </button>
           ) : (
             <button
@@ -149,7 +150,7 @@ export default function Login() {
               className={styles.btnEntrar}
               onClick={handleLoginChild}
             >
-              Entrar
+              Entrar como Filho(a)
             </button>
           )}
 

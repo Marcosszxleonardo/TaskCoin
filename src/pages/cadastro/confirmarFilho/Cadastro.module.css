@@ -1,10 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&display=swap");
 
-* {
-  box-sizing: border-box;
-  font-family: "Instrument Sans", sans-serif;
-}
-
 .container {
   min-height: 100vh;
   background-color: #ffffff;
