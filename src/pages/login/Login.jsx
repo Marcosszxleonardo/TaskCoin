@@ -33,7 +33,7 @@ export default function Login() {
 
     try {
       const response = await api.post('/auth/filhos', dados);
-      const token = response.data.token;
+      const token = response.data.tokenJWT;
       localStorage.setItem('token', token);
       console.log("Login filho bem-sucedido", response.data);
       navigate("/tarefasfilho");
@@ -55,7 +55,7 @@ export default function Login() {
       const response = await api.post('/auth/responsaveis', dados);
       const token = response.data.token;
       localStorage.setItem('token', token);
-      console.log("Login filho bem-sucedido", response.data);
+      console.log("Login responsavel bem-sucedido", response.data);
       navigate("/tarefasfilho");
     } catch (error) {
       console.error("Erro ao logar", error);

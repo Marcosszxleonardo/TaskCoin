@@ -2,16 +2,29 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,600;0,700;1,700&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 * {
   box-sizing: border-box;
 }
 
-body {
+body, html {
+  height: 100%;
   margin: 0;
   font-family: "Instrument Sans", "Inter", sans-serif;
   background: white;
+  overflow-x: hidden;
+}
+
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 390px;
+  background: #efefef;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0 10px;
+  border-top: 1px solid #d7d7d7;
+  z-index: 999;
+
+  will-change: transform;
 }

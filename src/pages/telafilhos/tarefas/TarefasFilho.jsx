@@ -1,237 +1,129 @@
-import "./tarefasfilho.css";
+import { useState, useEffect } from "react";
+import styles from "./tarefasfilho.module.css";
+import "../../../global.css";
+import api from "../../services/api";
+import Counter from "../../components/Counter";
 
 export default function TarefaFilho() {
-  return (
-    <div className="screen">
+  const [usuario, setUsuario] = useState("");
+  const [tarefaExpandida, setTarefaExpandida] = useState(null);
 
-      <header className="header">
-        <h1 className="logo">TASKCOIN</h1>
-        <span className="greeting">Olá Marcos!</span>
+  useEffect(() => {
+    const fetchUsuario = async () => {
+      try {
+        const response = await api.get("/filhos/detalhe-filho");
+        setUsuario(response.data);
+      } catch (error) {
+        console.error("Erro em coletar usuário: ", error);
+      }
+    };
+
+    fetchUsuario();
+  }, []);
+
+
+  const toggleTarefa = (id) => {
+    setTarefaExpandida(tarefaExpandida === id ? null : id);
+  };
+
+  return (
+    <div className={styles.screen}>
+
+      <header className={styles.header}>
+        <h1 className={styles.logo}>TASKCOIN</h1>
+        <span className={styles.greeting}>Olá {usuario.nome}!</span>
       </header>
 
-      <section className="pointsCard">
+      <section className={styles.pointsCard}>
 
-        <span className="pointsLabel">
+        <span className={styles.pointsLabel}>
           Pontos:
         </span>
 
-        <div className="pointsInfo">
-          <span className="coin">🪙</span>
-          <span className="pointsNumber">130</span>
+        <div className={styles.pointsInfo}>
+          <span className={styles.coin}>🪙</span>
+          <span className={styles.pointsNumber}>
+            <Counter target={usuario.saldo} duration={1000}/>
+          </span>
         </div>
 
       </section>
 
-      <section className="levelCard">
+      <section className={styles.levelCard}>
 
-        <div className="levelTop">
-          <h2>Nv. 1 - Iniciante das Virtudes</h2>
-          <span>65%</span>
+        <div className={styles.levelTop}>
+          {usuario.nivel && (
+            <h2>Nv. {usuario.nivel.nivel} - {usuario.nivel.titulo_nivel}</h2>
+          )}
+
+          <span><Counter target={65} duration={1000}/>%</span>
         </div>
 
-        <div className="progressBar">
-          <div className="progressFill"></div>
+        <div className={styles.progressBar}>
+          <div className={styles.progressFill}></div>
         </div>
 
-        <p>3/5 Tarefas concluídas</p>
+        <p>{usuario.tarefas_concluidas}/{usuario.tarefas_concluidas + 1} Tarefas concluídas para subir de nível</p>
 
       </section>
 
-      <section className="tasksSection">
-
-        <h2 className="tasksTitle">
+      <section className={styles.tasksSection}>
+        <h2 className={styles.tasksTitle}>
           Tarefas do dia
         </h2>
 
-        {/* CARD 1 */}
+        {usuario && usuario.tarefas.map((tarefa) => (
+          <div key={tarefa.id_tarefa} className={`${styles.taskCard} ${tarefaExpandida === tarefa.id_tarefa ? styles.expanded : ''}`}>
 
-        <div className="taskCard">
-
-          <div className="taskHeader">
-
-            <div>
-
-              <span className="taskDate">
-                ⏳ 05/05/2026
-              </span>
-
-              <div className="taskContent">
-
-                <span className="taskEmoji">
-                  📚
-                </span>
-
+            <div className={styles.taskHeader}>
+              <div className={styles.taskContent}>
+                <span className={styles.taskEmoji}>📚</span>
                 <div>
-
-                  <h3 className="taskName">
-                    Estudar Matemática
-                  </h3>
-
-                  <p className="taskMeta">
-                    Semanal
-                  </p>
-
+                  <h3 className={styles.taskName}>{tarefa.nome_tarefa}</h3>
+                  <span className={styles.taskMeta}>{tarefa.expiracao_tarefa}</span>
                 </div>
-
               </div>
 
-            </div>
-
-            <div className="taskRight">
-
-              <span className="taskPoints">
-                50 🪙
-              </span>
-
-              <span className="arrow">
-                ˅
-              </span>
-
-            </div>
-
-          </div>
-
-          <button className="completeButton">
-            Marcar como concluída
-          </button>
-
-        </div>
-
-        {/* CARD 2 */}
-
-        <div className="taskCard">
-
-          <div className="taskHeader">
-
-            <div>
-
-              <span className="taskDate">
-                ⏳ 05/05/2026
-              </span>
-
-              <div className="taskContent">
-
-                <span className="taskEmoji">
-                  🧹
+              <div className={styles.taskRight}>
+                <span className={styles.taskPoints}><Counter target={tarefa.valor_tarefa} duration={1000}/> 🪙</span>
+                <span className={styles.arrow}>
+                  <button onClick={() => toggleTarefa(tarefa.id_tarefa)}>
+                    {tarefaExpandida === tarefa.id_tarefa ? '▴' : '▾'}
+                  </button>
                 </span>
-
-                <div>
-
-                  <h3 className="taskName">
-                    Limpar a casa
-                  </h3>
-
-                  <p className="taskMeta">
-                    Mensal
-                  </p>
-
-                </div>
-
               </div>
-
             </div>
 
-            <div className="taskRight">
-
-              <span className="taskPoints">
-                90 🪙
-              </span>
-
-              <span className="arrow">
-                ˅
-              </span>
-
-            </div>
-
-          </div>
-
-          <div className="analysis">
-            Em análise... ⏰
-          </div>
-
-        </div>
-
-        {/* CARD 3 */}
-
-        <div className="taskCard expanded">
-
-          <div className="taskHeader">
-
-            <div>
-
-              <span className="taskDate today">
-                ✨ Hoje...
-              </span>
-
-              <div className="taskContent">
-
-                <span className="taskEmoji">
-                  🧼
-                </span>
-
-                <div>
-
-                  <h3 className="taskName">
-                    Limpar a casa
-                  </h3>
-
-                  <p className="taskMeta">
-                    Mensal
-                  </p>
-
-                </div>
-
+            <div className={styles.taskDetails}>
+              <div className={styles.taskDescription}>
+                <p>{tarefa.descricao_tarefa}</p>
               </div>
-
             </div>
 
-            <div className="taskRight">
-
-              <span className="taskPoints">
-                10 🪙
-              </span>
-
-              <span className="arrow">
-                ˄
-              </span>
-
-            </div>
-
-          </div>
-
-          <ul className="subtasks">
-            <li>Limpar o Quintal</li>
-            <li>Limpar o Seu Quarto</li>
-            <li>Limpar o Banheiro</li>
-          </ul>
-
-          <button className="completeButton">
-            Marcar como concluída
-          </button>
-
-        </div>
-
+            {/* Seu botão de concluir ou texto de concluído (que você já tem a lógica) */}
+              {tarefa.status_tarefa === "CONCLUIDA" ? (
+                <button className={styles.completed} disabled>Concluído!</button>
+              ) : (
+                <button className={styles.completeButton}>Marcar como concluída</button>
+              )}
+          </div>))}
       </section>
 
-      {/* NAVBAR */}
-
       <nav className="bottomNav">
-
-        <button className="navBtn active">
-          <span className="navIcon">☑️</span>
-          <span className="navText">Tarefas</span>
+        <button className={`${styles.navBtn} ${styles.active}`}>
+          <span className={styles.navIcon}>☑️</span>
+          <span className={styles.navText}>Tarefas</span>
         </button>
 
-        <button className="navBtn">
-          <span className="navIcon">😊</span>
-          <span className="navText">Conquistas</span>
+        <button className={styles.navBtn}>
+          <span className={styles.navIcon}>😊</span>
+          <span className={styles.navText}>Conquistas</span>
         </button>
 
-        <button className="navBtn">
-          <span className="navIcon">👤</span>
-          <span className="navText">Perfil</span>
+        <button className={styles.navBtn}>
+          <span className={styles.navIcon}>👤</span>
+          <span className={styles.navText}>Perfil</span>
         </button>
-
       </nav>
 
     </div>

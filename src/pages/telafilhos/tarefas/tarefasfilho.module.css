@@ -4,6 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  animation: fadeIn 1s ease;
 }
 
 .screen {
@@ -19,7 +20,7 @@
 
 .header {
   background: #d9d9d9;
-  padding: 10px 14px 18px;
+  padding: 10px 14px 10px;
 
   display: flex;
   align-items: center;
@@ -52,7 +53,7 @@
   justify-content: space-between;
   align-items: center;
 
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
 .pointsLabel {
@@ -91,13 +92,16 @@
 /* PROGRESSO */
 
 .levelCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
   margin: 0 14px;
   background: white;
   border: 2px solid #4a90ff;
   border-radius: 18px;
   padding: 14px;
-
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
 .levelTop {
@@ -107,7 +111,7 @@
 }
 
 .levelTop h2 {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
   color: #222;
 }
@@ -120,7 +124,7 @@
 
 .progressBar {
   width: 100%;
-  height: 11px;
+  height: 18px;
   background: #e1e1e1;
   border-radius: 999px;
   overflow: hidden;
@@ -129,14 +133,9 @@
 
 .progressFill {
   width: 65%;
+  background: linear-gradient(90deg, #00a83a, #4a90ff);
+  animation: background-change 1s linear infinite;
   height: 100%;
-
-  background: linear-gradient(
-    90deg,
-    #00a83a,
-    #4a90ff
-  );
-
   border-radius: 999px;
 }
 
@@ -164,23 +163,18 @@
 /* TASK CARD */
 
 .taskCard {
+  transition: all 0.5s ease;
   background: white;
   border-radius: 18px;
   padding: 16px;
-
   margin-bottom: 14px;
-
-  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
 }
 
 .expanded {
   padding-bottom: 18px;
-}
-
-.taskHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
 }
 
 .taskDate {
@@ -197,8 +191,6 @@
   display: flex;
   align-items: center;
   gap: 12px;
-
-  margin-top: 12px;
 }
 
 .taskEmoji {
@@ -249,11 +241,25 @@
 
   margin-top: 16px;
 
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 800;
 
   cursor: pointer;
 
+  font-family: inherit;
+}
+
+.completed {
+  width: 100%;
+  border: 1px solid #00a83a;
+  border-radius: 999px;
+  background: transparent;
+  color: #00a83a;
+  font-weight: 800;
+  padding: 12px;
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 800;
   font-family: inherit;
 }
 
@@ -285,24 +291,17 @@
 /* NAVBAR */
 
 .bottomNav {
+  animation: opacity 1s ease !important;
   position: fixed;
   bottom: 0;
-
-  left: 50%;
-  transform: translateX(-50%);
-
   width: 100%;
   max-width: 390px;
   height: 78px;
-
   background: #efefef;
-
   display: flex;
   justify-content: space-around;
   align-items: center;
-
   border-top: 1px solid #d7d7d7;
-
   z-index: 999;
 }
 
@@ -314,13 +313,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   gap: 4px;
-
   cursor: pointer;
-
   padding: 8px 12px;
-
   font-family: 'Nunito', sans-serif;
 }
 
@@ -328,31 +323,135 @@
   font-size: 24px;
   line-height: 1;
 
-  color: #000 !important;
-
-  opacity: 1 !important;
-
-  visibility: visible !important;
-
-  display: block !important;
-
-  -webkit-text-fill-color: #000 !important;
+  color: #000;
+  opacity: 1;
+  visibility: visible;
+  display: block;
+  -webkit-text-fill-color: #000;
 }
 
 .navText {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   color: black;
-
-  opacity: 1 !important;
-  visibility: visible !important;
-
-  display: block !important;
-
-  -webkit-text-fill-color: black !important;
+  opacity: 0.6;
 }
 
 .active .navText {
-  color: #00a651 !important;
+  opacity: 1;
+  background: linear-gradient(90deg, #00a83a, #4a90ff);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
   font-weight: 900;
+  font-size: 15px;
+}
+
+/* Estilização do botão de seta */
+.arrow button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #4a90ff;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.arrow button:hover {
+  transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.taskDescription p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+/* 1. Estado inicial da div de detalhes (Fechada) */
+.taskDetails {
+  max-height: 0;
+  /* Altura zero */
+  overflow: hidden;
+  /* Esconde o que está dentro */
+  opacity: 0;
+  /* Invisível */
+  padding-top: 0;
+  /* Remove padding para não ocupar espaço */
+  border-top: 1px dashed transparent;
+
+  /* A mágica da animação de expansão */
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease;
+}
+
+/* 2. Quando o Card estiver com a classe .expanded (Aberta) */
+.taskCard.expanded .taskDetails {
+  max-height: 300px;
+  /* Um valor maior que o conteúdo real */
+  opacity: 1;
+  /* Torna visível */
+  padding-top: 15px;
+  /* Devolve o espaço superior */
+  border-top: 1px dashed #e1e1e1;
+  /* Mostra a linha separadora */
+}
+
+/* Importante: garanta que o Header ocupe 100% da largura superior */
+.taskHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* KEYFRAMES */
+@keyframes background-change {
+  0% {
+    background: linear-gradient(90deg,
+        #00a83a,
+        #4a90ff);
+  }
+
+  50% {
+    background: linear-gradient(90deg,
+        #4a90ff,
+        #00a83a);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
