@@ -1,156 +1,168 @@
-import "./ConquistasFilho.css";
+import styles from "./ConquistasFilho.module.css";
+import api from "../../services/api"
+import "../../../global.css"
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Counter from "../../components/Counter";
 
 export default function ConquistasFilho() {
-  return (
-    <div className="screen">
+  const navigate = useNavigate();
+  const [usuario, setUsuario] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-      <header className="header">
-        <div className="headerRow">
-          <h1 className="logo">TASKCOIN</h1>
-          <span className="greeting">Olá Marcos!</span>
+  useEffect(() => {
+    const fetchUsuario = async () => {
+      try {
+        const response = await api.get("/filhos/detalhe-filho");
+        setUsuario(response.data);
+      } catch (error) {
+        console.error("Erro em coletar usuário: ", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchUsuario();
+  }, []);
+
+  const tarefasConcluidas = usuario?.tarefas_concluidas || 0;
+  const tarefasRequeridas = usuario?.nivel?.tarefas_requeridas || 0;
+
+  const prioridadeStatus = {
+    "NAO_ADQUIRIDA": 1,
+    "ADQUIRIDA": 2
+  }
+
+  const porcentagemProgresso = Math.round((tarefasConcluidas / (tarefasRequeridas + 1)) * 100);
+
+  if (loading) {
+    return (
+      <div className="loadingScreen">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.screen}>
+
+      <header className={styles.header}>
+        <div className={styles.headerRow}>
+          <h1 className={styles.logo}>TASKCOIN</h1>
+          <span className={styles.greeting}>Olá, {usuario.nome}!</span>
         </div>
       </header>
 
-      <section className="pointsCard">
+      <section className={styles.pointsCard}>
 
-        <span className="pointsTitle">
+        <span className={styles.pointsTitle}>
           Pontos:
         </span>
 
-        <div className="pointsRight">
-          <div className="coin">P</div>
-          <span className="pointsValue">130</span>
+        <div className={styles.pointsRight}>
+          <div className={styles.coin}>P</div>
+          <span className={styles.pointsValue}>
+            <Counter target={usuario.saldo} duration={1000}></Counter>
+          </span>
         </div>
 
       </section>
 
-      <section className="progressCard">
+      <section className={styles.progressCard}>
 
-        <div className="progressTop">
-          <h2>Nv. 1 - Iniciante das Virtudes</h2>
-          <span>65%</span>
+        <div className={styles.progressTop}>
+          {usuario.nivel && (
+            <h2>Nv. {usuario.nivel.nivel} - {usuario.nivel.titulo_nivel}</h2>
+          )}
+          <span>
+            <Counter target={porcentagemProgresso} duration={1000}></Counter>%
+          </span>
         </div>
 
-        <div className="progressBar">
-          <div className="progressFill"></div>
+        <div className={styles.progressBar}>
+          <div className={styles.progressFill} style={{ width: `${porcentagemProgresso}%` }}></div>
         </div>
 
-        <p>3/5 Tarefas concluídas</p>
+        <p>{tarefasConcluidas}/{tarefasRequeridas + 1} Tarefas concluídas para subir de nível</p>
 
       </section>
 
-      <section className="section">
+      <section className={styles.section}>
 
-        <h2 className="sectionTitle">
+        <h2 className={styles.sectionTitle}>
           Adquira sua conquista
         </h2>
 
-        <div className="rewardMain">
-
-          <div>
-            <h3>
-              Ida em família ao
-              Mc'Donalds
-            </h3>
-          </div>
-
-          <div className="rewardMainRight">
-            <div className="checkBox">✓</div>
-            <span>Adquirido</span>
-          </div>
-
-        </div>
-
-        <div className="rewardCard">
-
-          <div className="rewardLeft">
-
-            <div className="medal">
-              🏅
-            </div>
-
-            <div>
-              <h3>
-                Passeio no Parque Ibirapuera
-              </h3>
-
-              <div className="rewardPoints">
-                300 🪙
+        {usuario && usuario.recompensas.slice().sort((a, b) => {
+          return prioridadeStatus[a.status_recompensa] - prioridadeStatus[b.status_recompensa];
+        }).map((recompensa) => (
+          recompensa.status_recompensa == "NAO_ADQUIRIDA" ? (
+            <div key={recompensa.id_recompensa} className={styles.rewardCard}>
+              <div className={styles.rewardLeft}>
+                <div className={styles.medal}>
+                  🌟
+                </div>
+                <div>
+                  <h3>
+                    {recompensa.nome_recompensa}
+                  </h3>
+                  <div className={styles.rewardPoints}>
+                    <Counter target={recompensa.valor_recompensa} duration={500}></Counter> 🪙
+                  </div>
+                </div>
               </div>
-            </div>
 
-          </div>
+              {usuario.saldo >= recompensa.valor_recompensa ? (
+                <div className={styles.rewardRight}>
+                  <span className={styles.happy}>
+                    😊
+                  </span>
+                  <button className={styles.rewardBtn}>
+                    Resgatar
+                  </button>
+                </div>) : (
+                <div className={styles.rewardRight}>
+                  <span className={styles.sad}>
+                    ☹️
+                  </span>
+                  <span className={styles.insufficient}>
+                    Saldo insuficiente
+                  </span>
+                </div>)}
 
-          <div className="rewardRight">
-
-            <span className="happy">
-              😊
-            </span>
-
-            <button className="rewardBtn">
-              Resgatar
-            </button>
-
-          </div>
-
-        </div>
-
-        <div className="rewardCard">
-
-          <div className="rewardLeft">
-
-            <div className="medal">
-              🏅
-            </div>
-
-            <div>
-              <h3>
-                Assistir filme em família
-              </h3>
-
-              <div className="rewardPoints">
-                1000 🪙
+            </div>) : (
+            <div key={recompensa.id_recompensa} className={styles.rewardMain}>
+              <div>
+                <h3>
+                  {recompensa.nome_recompensa}
+                </h3>
               </div>
-            </div>
 
-          </div>
+              <div className={styles.rewardMainRight}>
+                <div className={styles.checkBox}>✓</div>
+                <span>Adquirido</span>
+              </div>
 
-          <div className="rewardRight">
-
-            <span className="sad">
-              ☹️
-            </span>
-
-            <span className="insufficient">
-              Pontos insuficiente
-            </span>
-
-          </div>
-
-        </div>
-
+            </div>)))}
       </section>
 
       {/* NAVBAR */}
       <nav className="bottomNav">
-
-        <button className="navBtn">
+        <button className="navBtn" onClick={() => { navigate("/tarefasfilho") }}>
           <span className="navIcon">☑️</span>
           <span className="navText">Tarefas</span>
         </button>
 
-        <button className="navBtn navBtnActive">
+        <button className="navBtn active">
           <span className="navIcon">😊</span>
           <span className="navText">Conquistas</span>
         </button>
 
-        <button className="navBtn">
+        <button className="navBtn" onClick={() => { navigate("/perfilfilho") }}>
           <span className="navIcon">👤</span>
           <span className="navText">Perfil</span>
         </button>
-
       </nav>
-
     </div>
   );
 }

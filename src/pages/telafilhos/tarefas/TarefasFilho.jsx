@@ -1,12 +1,22 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./tarefasfilho.module.css";
 import "../../../global.css";
 import api from "../../services/api";
 import Counter from "../../components/Counter";
+import { Navigate } from "react-router";
 
 export default function TarefaFilho() {
   const [usuario, setUsuario] = useState("");
   const [tarefaExpandida, setTarefaExpandida] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  const formatarData = (dataString) => {
+    const data = new Date(dataString);
+
+    return data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+  };
 
   const prioridadeStatus = {
     "A_FAZER": 1,
@@ -22,6 +32,8 @@ export default function TarefaFilho() {
         setUsuario(response.data);
       } catch (error) {
         console.error("Erro em coletar usuário: ", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -60,6 +72,14 @@ export default function TarefaFilho() {
     }
   }
 
+  if (loading) {
+    return (
+      <div className="loadingScreen">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.screen}>
 
@@ -94,7 +114,7 @@ export default function TarefaFilho() {
         </div>
 
         <div className={styles.progressBar}>
-          <div className={styles.progressFill} style={{width: `${porcentagemProgresso}%` }}></div>
+          <div className={styles.progressFill} style={{ width: `${porcentagemProgresso}%` }}></div>
         </div>
 
         {usuario.nivel && (
@@ -118,7 +138,7 @@ export default function TarefaFilho() {
                 <span className={styles.taskEmoji}>🎯</span>
                 <div>
                   <h3 className={styles.taskName}>{tarefa.nome_tarefa}</h3>
-                  <span className={styles.taskMeta}>{tarefa.expiracao_tarefa}</span>
+                  <span className={styles.taskMeta}>⏳ {formatarData(tarefa.expiracao_tarefa)}...</span>
                 </div>
               </div>
 
@@ -151,19 +171,19 @@ export default function TarefaFilho() {
       </section>
 
       <nav className="bottomNav">
-        <button className={`${styles.navBtn} ${styles.active}`}>
-          <span className={styles.navIcon}>☑️</span>
-          <span className={styles.navText}>Tarefas</span>
+        <button className="navBtn active">
+          <span className="navIcon">☑️</span>
+          <span className="navText">Tarefas</span>
         </button>
 
-        <button className={styles.navBtn}>
-          <span className={styles.navIcon}>😊</span>
-          <span className={styles.navText}>Conquistas</span>
+        <button className="navBtn" onClick={() => { navigate("/conquistasfilho") }}>
+          <span className="navIcon">😊</span>
+          <span className="navText">Conquistas</span>
         </button>
 
-        <button className={styles.navBtn}>
-          <span className={styles.navIcon}>👤</span>
-          <span className={styles.navText}>Perfil</span>
+        <button className="navBtn">
+          <span className="navIcon">👤</span>
+          <span className="navText">Perfil</span>
         </button>
       </nav>
 

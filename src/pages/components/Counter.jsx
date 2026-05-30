@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const Counter = ({ target, duration = 1000 }) => {
+const Counter = ({ target, duration }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -8,7 +8,6 @@ const Counter = ({ target, duration = 1000 }) => {
     const end = parseInt(target);
     if (start === end) return;
 
-    // Calcula o tempo de incremento para durar o tempo total definido
     let totalMiliseconds = duration;
     let incrementTime = totalMiliseconds / end;
 
@@ -16,8 +15,7 @@ const Counter = ({ target, duration = 1000 }) => {
       start += 1;
       setCount(start);
       if (start === end) clearInterval(timer);
-    }, incrementTime > 10 ? incrementTime : 10); // Limite de 10ms para não travar o browser
-
+    }, incrementTime > 10 ? incrementTime : 10);
     return () => clearInterval(timer);
   }, [target, duration]);
 
