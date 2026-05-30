@@ -10,8 +10,7 @@ import {
 import App from "./App.jsx";
 
 import Login from "./pages/login/Login";
-import Cadastrar from "./pages/cadastro/paiMae/Cadastrar";
-import Cadastro from "./pages/cadastro/confirmarFilho/Cadastro";
+import CadastroController from "./pages/cadastro/CadastroController.jsx";
 
 /* TELAS PAI */
 import Tarefas from "./pages/telasPais/tarefas/Tarefas";
@@ -42,13 +41,8 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/cadastrar",
-        element: <Cadastrar />,
-      },
-
-      {
-        path: "/confirmar-filho",
-        element: <Cadastro />,
+        path: "/cadastro",
+        element: <CadastroController />,
       },
 
       /* TELAS PAI */

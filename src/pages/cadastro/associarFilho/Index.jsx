@@ -1,11 +1,11 @@
 import styles from "./Index.module.css";
 import { useState } from "react";
 
-export default function Index() {
+export default function Index({ onSubmit }) {
   const [form, setForm] = useState({
-    nome: "",
-    email: "",
-    senha: "",
+    nome_filho: "",
+    email_filho: "",
+    senha_filho: "",
   });
 
   const handleChange = (e) => {
@@ -17,6 +17,12 @@ export default function Index() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (form.email_filho && form.nome_filho && form.senha_filho) {
+      onSubmit(form)
+    } else {
+      alert("Preencha as informações corretamente")
+    }
 
     console.log(form);
   };
@@ -70,29 +76,32 @@ export default function Index() {
         <form onSubmit={handleSubmit} className={styles.form}>
           <input
             type="text"
-            name="nome"
+            name="nome_filho"
             placeholder="Nome completo"
-            value={form.nome}
+            value={form.nome_filho}
             onChange={handleChange}
             className={styles.input}
+            autoComplete="off"
           />
 
           <input
             type="email"
-            name="email"
+            name="email_filho"
             placeholder="E-mail"
-            value={form.email}
+            value={form.email_filho}
             onChange={handleChange}
             className={styles.input}
+            autoComplete="off"
           />
 
           <input
             type="password"
-            name="senha"
+            name="senha_filho"
             placeholder="Senha"
-            value={form.senha}
+            value={form.senha_filho}
             onChange={handleChange}
             className={styles.input}
+            autoComplete="off"
           />
 
           <button type="submit" className={styles.button}>

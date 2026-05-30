@@ -1,5 +1,6 @@
 import styles from "./ConquistasFilho.module.css";
 import api from "../../services/api"
+import LoadingScreen from "../../components/LoadingScreen"
 import "../../../global.css"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -59,11 +60,7 @@ export default function ConquistasFilho() {
   const porcentagemProgresso = Math.round((tarefasConcluidas / (tarefasRequeridas + 1)) * 100);
 
   if (loading) {
-    return (
-      <div className="loadingScreen">
-        <div className="spinner"></div>
-      </div>
-    );
+    return <LoadingScreen/>
   }
 
   return (

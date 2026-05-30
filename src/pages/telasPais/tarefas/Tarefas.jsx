@@ -1,5 +1,9 @@
 import styles from './Tarefas.module.css';
-import { useState } from 'react';
+import "../../../global.css"
+import api from "../../services/api"
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
+import LoadingScreen from '../../components/LoadingScreen';
 
 const CoinIcon = () => (
   <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
@@ -41,119 +45,106 @@ const TrashIcon = () => (
   </svg>
 );
 
-const tasks = [
-  {
-    id: 1,
-    title: 'Estudar Matemática',
-    user: 'Marcos',
-    date: '05/05/2026',
-    points: 20,
-  },
-  {
-    id: 2,
-    title: 'Estudar pra prova da FIAP',
-    user: 'Gustavo',
-    date: '08/05/2026',
-    points: 50,
-  },
-];
-
 export default function TasksScreen() {
-  return (
-    <div className={styles.screen}>
-      <header className={styles.header}>
-        <span className={styles.pageTitle}>Tela de Tarefas - Pai</span>
+  const navigate = useNavigate();
+  const [usuario, setUsuario] = useState("");
+  const [loading, setLoading] = useState(true);
 
-        <div className={styles.headerRow}>
-          <h1 className={styles.logo}>TASKCOIN</h1>
-          <span className={styles.greeting}>Olá Jefferson!</span>
-        </div>
-      </header>
+  useEffect(() => {
+    const fetchUsuario = async () => {
+      try {
+        const response = await api.get("/responsaveis/detalhe-responsavel");
+        setUsuario(response.data);
+      } catch (error) {
+        console.error("Erro em coletar usuário: ", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-      <section className={styles.summary}>
-        <h2 className={styles.summaryTitle}>Resumo dos Filhos</h2>
+    fetchUsuario();
+  }, []);
 
-        <div className={styles.cards}>
-          <div className={styles.infoCard}>
-            <span className={styles.infoNumber}>3</span>
-            <span className={styles.infoText}>Filhos</span>
-          </div>
+  let contagemTarefas = usuario?.filhos?.reduce((acumulador, filho) => {
+    return acumulador + filho?.tarefas?.length
+  }, 0)
 
-          <div className={styles.infoCard}>
-            <span className={styles.infoNumber}>12</span>
-            <span className={styles.infoText}>Tarefas</span>
-          </div>
+  let contagemTarefasConcluidas = usuario?.filhos?.reduce((acumulador, filho) => {
+    return acumulador + filho?.tarefas_concluidas
+  }, 0)
 
-          <div className={styles.infoCard}>
-            <span className={styles.infoNumber}>6</span>
-            <span className={styles.infoText}>Concluídas</span>
-          </div>
-        </div>
-      </section>
+if (loading) {
+  return <LoadingScreen />
+}
 
-      <section className={styles.tasksSection}>
-        <h2 className={styles.tasksTitle}>Tarefas ativas</h2>
+return (
+  <div className={styles.screen}>
+    <header className={styles.header}>
+      <div className={styles.headerRow}>
+        <h1 className={styles.logo}>TASKCOIN</h1>
+        <span className={styles.greeting}>Olá, {usuario.nome}!</span>
+      </div>
+    </header>
 
-        <div className={styles.taskList}>
-          {tasks.map(task => (
-            <div key={task.id} className={styles.taskCard}>
-              <div className={styles.taskLeft}>
-                <span className={styles.taskEmoji}>📚</span>
+    <section className={styles.summary}>
+      <h2 className={styles.summaryTitle}>Resumo dos Filhos</h2>
 
-                <div>
-                  <h3 className={styles.taskName}>{task.title}</h3>
-
-                  <p className={styles.taskMeta}>
-                    {task.user} - {task.date}
-                  </p>
-                </div>
-              </div>
-
-              <div className={styles.taskRight}>
-                <div className={styles.points}>
-                  <span>{task.points}</span>
-                  <CoinIcon />
-                </div>
-
-                <button className={styles.deleteBtn}>
-                  <TrashIcon />
-                </button>
-              </div>
-            </div>
-          ))}
+      <div className={styles.cards}>
+        <div className={styles.infoCard}>
+          <span className={styles.infoNumber}>{usuario?.filhos?.length}</span>
+          <span className={styles.infoText}>Filhos</span>
         </div>
 
-        <button className={styles.addButton}>
-          + Adicionar Tarefa
-        </button>
+        <div className={styles.infoCard}>
+          <span className={styles.infoNumber}>{contagemTarefas}</span>
+          <span className={styles.infoText}>Tarefas</span>
+        </div>
 
-        <button className={styles.analysisButton}>
-          <span>☰ Tarefas em Análise</span>
-          <span className={styles.badgeBlue}>2</span>
-        </button>
+        <div className={styles.infoCard}>
+          <span className={styles.infoNumber}>{contagemTarefasConcluidas}</span>
+          <span className={styles.infoText}>Concluídas</span>
+        </div>
+      </div>
+    </section>
 
-        <button className={styles.expiredButton}>
-          <span>❗Tarefas expiradas</span>
-          <span className={styles.badgeRed}>2</span>
-        </button>
-      </section>
+    <section className={styles.tasksSection}>
+      <h2 className={styles.tasksTitle}>Tarefas ativas</h2>
 
-      <nav className={styles.bottomNav}>
-        <button className={`${styles.navBtn} ${styles.active}`}>
-          <span className={styles.navIcon}>☑️</span>
-          <span>Tarefas</span>
-        </button>
+      <div className={styles.taskList}>
+      </div>
 
-        <button className={styles.navBtn}>
-          <span className={styles.navIcon}>😊</span>
-          <span>Conquistas</span>
-        </button>
+      <button className={styles.addButton}>
+        + Adicionar Tarefa
+      </button>
 
-        <button className={styles.navBtn}>
-          <span className={styles.navIcon}>👤</span>
-          <span>Perfil</span>
-        </button>
-      </nav>
-    </div>
-  );
+      <button className={styles.analysisButton}>
+        <span>☰ Tarefas em Análise</span>
+        <span className={styles.badgeBlue}>2</span>
+      </button>
+
+      <button className={styles.expiredButton}>
+        <span>❗Tarefas expiradas</span>
+        <span className={styles.badgeRed}>2</span>
+      </button>
+    </section>
+
+    <nav className="bottomNav">
+      <button className="navBtn active">
+        <span className="navIcon">☑️</span>
+        <span className="navText">Tarefas</span>
+      </button>
+
+      <button className="navBtn" onClick={() => { navigate("/conquistaspai") }}>
+        <span className="navIcon">😊</span>
+        <span className="navText">Conquistas</span>
+      </button>
+
+      <button className="navBtn" onClick={() => { navigate("/perfilpai") }}>
+        <span className="navIcon">👤</span>
+        <span className="navText">Perfil</span>
+      </button>
+    </nav>
+
+  </div>
+);
 }

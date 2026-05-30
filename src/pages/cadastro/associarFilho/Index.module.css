@@ -31,10 +31,11 @@
 
 .subtitle {
   color: #a2a2a2;
+  margin-top: -40px;
   font-size: 22px;
   font-weight: 600;
   font-family: "Instrument Sans", sans-serif;
-  margin-bottom: 0.25rem;
+  padding-bottom: 50px;
   text-align: center;
 }
 

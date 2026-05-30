@@ -4,6 +4,7 @@ import styles from "./tarefasfilho.module.css";
 import "../../../global.css";
 import api from "../../services/api";
 import Counter from "../../components/Counter";
+import LoadingScreen from "../../components/LoadingScreen";
 import { Navigate } from "react-router";
 
 export default function TarefaFilho() {
@@ -73,11 +74,7 @@ export default function TarefaFilho() {
   }
 
   if (loading) {
-    return (
-      <div className="loadingScreen">
-        <div className="spinner"></div>
-      </div>
-    );
+    return <LoadingScreen/>
   }
 
   return (

@@ -1,5 +1,6 @@
 import styles from "./PerfilFilho.module.css";
 import api from "../../services/api"
+import LoadingScreen from "../../components/LoadingScreen"
 import "../../../global.css"
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -30,11 +31,7 @@ export default function PerfilFilho() {
   }
 
   if (loading) {
-    return (
-      <div className="loadingScreen">
-        <div className="spinner"></div>
-      </div>
-    );
+    return <LoadingScreen/>
   }
 
   return (

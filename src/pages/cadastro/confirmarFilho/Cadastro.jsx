@@ -1,17 +1,9 @@
 import styles from "./Cadastro.module.css";
 import { useNavigate } from "react-router-dom";
 
-export default function Cadastro() {
 
-
+export default function Cadastro({ onAddMore, onFinalize}) {
   const navigate = useNavigate();
-
-  const HandleConfirmar = () => {
-    console.log("tarefaspai");
-    return navigate("/tarefaspai");
-  };
-
-
 
   return (
     <div className={styles.container}>
@@ -35,6 +27,7 @@ export default function Cadastro() {
         <div className={styles.buttonsContainer}>
           <button
             className={`${styles.button} ${styles.buttonGreen}`}
+            onClick={onAddMore}
           >
             <span>Sim, adicionar mais</span>
 
@@ -63,7 +56,7 @@ export default function Cadastro() {
 
           <button
             className={`${styles.button} ${styles.buttonBlue}`}
-            onClick={HandleConfirmar}
+            onClick={onFinalize}
           >
             <span>Confirmar</span>
 

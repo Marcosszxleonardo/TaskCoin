@@ -14,7 +14,7 @@ export default function Login() {
 
   const HandleCadastrar = () => {
     console.log("Cadastrar");
-    return navigate("/cadastrar");
+    return navigate("/cadastro");
   };
 
 
@@ -39,6 +39,7 @@ export default function Login() {
       console.log("Login filho bem-sucedido", response.data);
       navigate("/tarefasfilho");
     } catch (error) {
+      alert("Filho não encontrado")
       console.error("Erro ao logar", error);
     }
   }
@@ -54,11 +55,12 @@ export default function Login() {
 
     try {
       const response = await api.post('/auth/responsaveis', dados);
-      const token = response.data.token;
+      const token = response.data.tokenJWT;
       localStorage.setItem('token', token);
       console.log("Login responsavel bem-sucedido", response.data);
-      navigate("/tarefasfilho");
+      navigate("/tarefaspai");
     } catch (error) {
+      alert("Responsável não encontrado")
       console.error("Erro ao logar", error);
     }
   }
