@@ -46,19 +46,18 @@
 .profileAvatar {
   width: 82px;
   height: 82px;
-
   border-radius: 50%;
-
   background: linear-gradient(135deg, #00c853, #1e88ff);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 42px;
   color: white;
-
   margin-bottom: 10px;
+}
+
+.profileAvatar span {
+  animation: avatarAnimation 2s ease-in-out infinite
 }
 
 .profileName {
@@ -82,44 +81,44 @@
 }
 
 .linkedHeader {
+  position: relative;
+  z-index: 200;
   background: linear-gradient(90deg, #00c853, #1e88ff);
-
   color: white;
-
   height: 42px;
-
   display: flex;
+  justify-content: center;
   align-items: center;
-
   padding: 0 12px;
-
   gap: 10px;
-
   font-size: 16px;
   font-weight: 800;
 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
 }
 
-.linkedIcon {
-  font-size: 18px;
+.linkedHeader:last-of-type {
+  background: linear-gradient(122deg, #00c853, #1e88ff);
 }
 
 .linkedBody {
-  background: #dfe3df;
-
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.249);
   padding: 14px 12px;
-
   font-size: 18px;
   font-weight: 800;
   color: #00a83a;
-
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
   min-height: 40px;
-
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+}
+
+.linkedBody span {
+  color:#979797;
+  font-size: 14px;
 }
 
 /* LOGOUT (AJUSTADO) */
@@ -139,27 +138,39 @@
 
 .logoutButton {
   width: 100%;
-
   border: none;
-
   background: #c40000;
   color: white;
-
   padding: 16px 14px;
-
   font-size: 18px;
   font-weight: 900;
-
   display: flex;
   align-items: center;
-
   cursor: pointer;
-
   font-family: inherit;
-
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
-
   border-radius: 10px;
+  transition: 0.3s;
+}
+
+.logoutButton:hover {
+  transition: 0.3s;
+  background: rgb(107, 0, 0);
+}
+
+/* KEYFRAMES */
+@keyframes avatarAnimation {
+  0% {
+    transform: scale(1)
+  } 
+
+  50% {
+    transform: scale(1.1)
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* MOBILE */

@@ -107,7 +107,7 @@ export default function TarefaFilho() {
 
         <div className={styles.levelTop}>
           {usuario.nivel && (
-            <h2>Nv. {usuario.nivel.nivel} - {usuario.nivel.titulo_nivel}</h2>
+            <h2>Nv. {usuario.nivel.nivel} - <span className={styles.levelTitle}>{usuario.nivel.titulo_nivel}</span></h2>
           )}
 
           <span><Counter target={porcentagemProgresso} duration={1000} />%</span>
@@ -181,7 +181,7 @@ export default function TarefaFilho() {
           <span className="navText">Conquistas</span>
         </button>
 
-        <button className="navBtn">
+        <button className="navBtn" onClick={() => { navigate("/perfilfilho") }}>
           <span className="navIcon">👤</span>
           <span className="navText">Perfil</span>
         </button>

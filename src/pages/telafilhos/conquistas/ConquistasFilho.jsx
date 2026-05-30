@@ -33,6 +33,29 @@ export default function ConquistasFilho() {
     "ADQUIRIDA": 2
   }
 
+  const purchaseReward = async (id) => {
+    try {
+    const recompensa = await api.put("/recompensas", {
+      "id_recompensa": id,
+      "status_recompensa": "ADQUIRIDA"
+    })
+
+    setUsuario(prevUsuario => ({
+        ...prevUsuario,
+
+        recompensas: prevUsuario.recompensas.map(recompensa =>
+          recompensa.id_recompensa === id
+            ? { ...recompensa, status_tarefa: "ADQUIRIDA" }
+            : recompensa
+        )
+      }));
+
+      console.log("Conquista Adquirida!")
+    } catch {
+      console.error("ERRO: Aquisição de conquista falhou")
+    }
+  }
+
   const porcentagemProgresso = Math.round((tarefasConcluidas / (tarefasRequeridas + 1)) * 100);
 
   if (loading) {
@@ -60,7 +83,7 @@ export default function ConquistasFilho() {
         </span>
 
         <div className={styles.pointsRight}>
-          <div className={styles.coin}>P</div>
+          <div className={styles.coin}>🪙</div>
           <span className={styles.pointsValue}>
             <Counter target={usuario.saldo} duration={1000}></Counter>
           </span>
@@ -72,7 +95,7 @@ export default function ConquistasFilho() {
 
         <div className={styles.progressTop}>
           {usuario.nivel && (
-            <h2>Nv. {usuario.nivel.nivel} - {usuario.nivel.titulo_nivel}</h2>
+            <h2>Nv. {usuario.nivel.nivel} - <span className={styles.levelTitle}>{usuario.nivel.titulo_nivel}</span></h2>
           )}
           <span>
             <Counter target={porcentagemProgresso} duration={1000}></Counter>%
@@ -117,7 +140,7 @@ export default function ConquistasFilho() {
                   <span className={styles.happy}>
                     😊
                   </span>
-                  <button className={styles.rewardBtn}>
+                  <button className={styles.rewardBtn} onClick={() => purchaseReward(recompensa.id_recompensa)}>
                     Resgatar
                   </button>
                 </div>) : (
@@ -126,7 +149,7 @@ export default function ConquistasFilho() {
                     ☹️
                   </span>
                   <span className={styles.insufficient}>
-                    Saldo insuficiente
+                    Pontos insuficiente
                   </span>
                 </div>)}
 

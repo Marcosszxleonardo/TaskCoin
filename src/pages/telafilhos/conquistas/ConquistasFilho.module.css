@@ -108,6 +108,10 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.08);
 }
 
+.progressCard p {
+  text-align: center;
+}
+
 .progressTop {
   display: flex;
   justify-content: space-between;
@@ -115,7 +119,8 @@
 }
 
 .progressTop h2 {
-  font-size: 13px;
+  font-style: italic;
+  font-size: 16px;
   font-weight: 800;
   color: #222;
 }
@@ -149,6 +154,12 @@
   font-style: italic;
   font-weight: 700;
   color: #8f8f8f;
+}
+
+.levelTitle {
+  font-size: 16px !important;
+  color: #009dff !important;
+  text-shadow: 0 1px 50px rgba(0, 119, 255, 0.527);
 }
 
 /* SECTION */
@@ -289,6 +300,12 @@
   font-weight: 800;
   font-family: inherit;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.rewardBtn:hover {
+  transition: 0.3s;
+  background: #1353ba;
 }
 
 .insufficient {

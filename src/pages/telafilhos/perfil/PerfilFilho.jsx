@@ -1,75 +1,105 @@
-import "./PerfilFilho.css";
+import styles from "./PerfilFilho.module.css";
+import api from "../../services/api"
+import "../../../global.css"
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function PerfilFilho() {
+  const navigate = useNavigate();
+  const [usuario, setUsuario] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUsuario = async () => {
+      try {
+        const response = await api.get("/filhos/detalhe-filho");
+        setUsuario(response.data);
+      } catch (error) {
+        console.error("Erro em coletar usuário: ", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchUsuario();
+  }, []);
+
+  const logout = () => {
+    localStorage.clear(); 
+    navigate("/");
+  }
+
+  if (loading) {
+    return (
+      <div className="loadingScreen">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+
   return (
-    <div className="screen">
+    <div className={styles.screen}>
 
       {/* HEADER */}
 
-      <header className="header">
-        <h1 className="logo">TASKCOIN</h1>
+      <header className={styles.header}>
+        <h1 className={styles.logo}>TASKCOIN</h1>
       </header>
 
       {/* PERFIL */}
 
-      <section className="profileSection">
+      <section className={styles.profileSection}>
 
-        <div className="profileAvatar">
-          👤
+        <div className={styles.profileAvatar}>
+          <span>👤</span>
         </div>
 
-        <h2 className="profileName">
-          Marcos
+        <h2 className={styles.profileName}>
+          {usuario.nome}
         </h2>
 
-        <span className="profileType">
+        <span className={styles.profileType}>
           Conta de Filho
         </span>
 
       </section>
 
-      {/* RESPONSÁVEL */}
+      {/* SECTIONS RESPONSÁVEL-NIVEL */}
 
-      <section className="linkedSection">
+      <section className={styles.linkedSection}>
 
-        <div className="linkedHeader">
-
-          <span className="linkedIcon">
-            👥
-          </span>
-
-          <span className="linkedTitle">
+        <div className={styles.linkedHeader}>
+          <span className={styles.linkedTitle}>
             Responsável Vinculado
           </span>
 
         </div>
 
-        <div className="linkedBody">
-          Gustavinha - Mãe
+        <div className={styles.linkedBody}>
+          {usuario?.responsavel?.nome}
+          <span>{usuario?.responsavel?.email}</span>
         </div>
 
       </section>
 
       {/* SAIR */}
 
-      <section className="logoutSection">
+      <section className={styles.logoutSection}>
 
-        <button className="logoutButton">
+        <button className={styles.logoutButton} onClick={() => logout()}>
           ↪ Sair da Conta
         </button>
 
       </section>
 
       {/* NAVBAR */}
-
       <nav className="bottomNav">
-
-        <button className="navBtn">
+        <button className="navBtn" onClick={() => { navigate("/tarefasfilho") }}>
           <span className="navIcon">☑️</span>
           <span className="navText">Tarefas</span>
         </button>
 
-        <button className="navBtn">
+        <button className="navBtn" onClick={() => { navigate("/conquistasfilho") }}>
           <span className="navIcon">😊</span>
           <span className="navText">Conquistas</span>
         </button>
@@ -78,9 +108,7 @@ export default function PerfilFilho() {
           <span className="navIcon">👤</span>
           <span className="navText">Perfil</span>
         </button>
-
       </nav>
-
     </div>
   );
 }
