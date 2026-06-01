@@ -94,6 +94,7 @@ body {
   position: relative;
   z-index: 99;
   background: linear-gradient(90deg, #0077ff, #02c644);
+  border-radius: 15px 15px 0 0;
   color: white;
   height: 42px;
   display: flex;
@@ -105,6 +106,7 @@ body {
 }
 
 .childrenList {
+  border-radius: 0 0 15px 15px;
   position: relative;
   background: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.249);
