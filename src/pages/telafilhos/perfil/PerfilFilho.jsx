@@ -97,7 +97,7 @@ export default function PerfilFilho() {
         </button>
 
         <button className="navBtn" onClick={() => { navigate("/conquistasfilho") }}>
-          <span className="navIcon">😊</span>
+          <span className="navIcon">🌟</span>
           <span className="navText">Conquistas</span>
         </button>
 

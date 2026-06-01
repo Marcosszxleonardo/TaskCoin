@@ -174,7 +174,7 @@ export default function ConquistasFilho() {
         </button>
 
         <button className="navBtn active">
-          <span className="navIcon">😊</span>
+          <span className="navIcon">🌟</span>
           <span className="navText">Conquistas</span>
         </button>
 

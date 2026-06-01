@@ -1,5 +1,10 @@
-import "./conquistas.css";
-import { useState } from "react";
+import styles from "./conquistas.module.css";
+import "../../../global.css";
+import { useNavigate } from "react-router";
+import { useState, useEffect } from "react";
+import api from "../../services/api"
+import Counter from "../../components/Counter";
+import LoadingScreen from "../../components/LoadingScreen";
 
 const TrophyIcon = () => {
   return <div className="trophyIcon">🏅</div>;
@@ -33,107 +38,119 @@ const TrashIcon = () => (
   </svg>
 );
 
-const conquistasData = [
-  {
-    id: 1,
-    titulo: "Ida em família ao Mc'Donalds",
-    pontos: 200,
-    resgates: 0,
-  },
-
-  {
-    id: 2,
-    titulo: "Passeio no Parque Ibirapuera",
-    pontos: 300,
-    resgates: 2,
-  },
-
-  {
-    id: 3,
-    titulo: "Passeio no Zoológico",
-    pontos: 300,
-    resgates: 0,
-  },
-];
-
 export default function Conquistaspais() {
-  const [conquistas, setConquistas] = useState(conquistasData);
+  const navigate = useNavigate();
+  const [usuario, setUsuario] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  function deletarConquista(id) {
-    setConquistas(conquistas.filter((item) => item.id !== id));
+  useEffect(() => {
+    const fetchUsuario = async () => {
+      try {
+        const response = await api.get("/responsaveis/detalhe-responsavel");
+        setUsuario(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Erro em coletar usuário: ", error);
+      }
+    };
+
+    fetchUsuario();
+  }, []);
+
+  if (loading) {
+    return <LoadingScreen />
+  }
+
+  const deletarConquista = async (id) => {
+    try {
+      const response = await api.delete(`/recompensas/${id}`);
+
+      setUsuario(prev => ({
+        ...prev,
+        filhos: prev.filhos.map(filho => ({
+          ...filho,
+          recompensas: filho.recompensas.filter(recompensa => recompensa.id_recompensa !== id)
+        }))
+      }));
+    } catch (error) {
+      console.error("Erro ao deletar:", error);
+    }
   }
 
   return (
-    <div className="screen">
+    <div className={styles.screen}>
       {/* HEADER */}
-      <header className="header">
-        <div className="headerTop">
-          <span className="logo">TASKCOIN</span>
-
-          <span className="greeting">Olá Jefferson!</span>
+      <header className={styles.header}>
+        <div className={styles.headerRow}>
+          <h1 className={styles.logo}>TASKCOIN</h1>
+          <span className={styles.greeting}>Olá, {usuario.nome}!</span>
         </div>
       </header>
 
       {/* CONTEUDO */}
-      <section className="section">
-        <h1 className="title">Conquistas Cadastradas</h1>
+      <section className={styles.section}>
+        <h1 className={styles.title}>Conquistas Cadastradas</h1>
 
-        <div className="cards">
-          {conquistas.map((conquista) => (
-            <div className="card" key={conquista.id}>
-              {/* ESQUERDA */}
-              <div className="left">
-                <TrophyIcon />
+        <div className={styles.cards}>
+          {usuario?.filhos?.map((filho) => (
+            filho.recompensas?.map((recompensa) => (
+              <div className={styles.card} key={recompensa.id_recompensa}>
+                <div className={styles.left}>
+                  <p>🌟</p>
 
-                <div className="info">
-                  <h2>{conquista.titulo}</h2>
+                  <div className={styles.info}>
+                    <h2>{recompensa.nome_recompensa}</h2>
 
-                  <div className="points">
-                    <CoinIcon />
-
-                    <span>{conquista.pontos}</span>
+                    <div className={styles.points}>
+                      🪙
+                      <span><Counter target={recompensa.valor_recompensa} duration={500}/></span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* DIREITA */}
-              <div className="right">
-                <button
-                  className="deleteBtn"
-                  onClick={() => deletarConquista(conquista.id)}
-                >
-                  <TrashIcon />
-                </button>
+                <div className={styles.right}>
+                  {recompensa.status_recompensa === "ADQUIRIDA" ? (
+                    <div className={styles.resgatado}>
+                      {filho.nome} ADQUIRIU!
+                    </div>
+                  ) : (
+                    <>
+                      <button
+                        className={styles.deleteBtn}
+                        onClick={() => deletarConquista(recompensa.id_recompensa)}
+                      >
+                        <TrashIcon />
+                      </button>
 
-                <span className="resgates">
-                  {conquista.resgates} Resgates
-                </span>
-              </div>
-            </div>
-          ))}
+                      <span className={styles.resgates}>
+                        {filho.nome} NÃO RESGATOU
+                      </span>
+                    </>
+                  )}
+                </div>
+              </div>))))}
         </div>
 
         {/* BOTAO */}
-        <button className="addButton">
+        < button className={styles.addButton} onClick={() => {navigate("/adicionarconquista")}}>
           + Adicionar Conquistas
         </button>
       </section>
 
-      {/* NAVBAR */}
       <nav className="bottomNav">
-        <button className="navBtn">
+        <button className="navBtn" onClick={() => { navigate("/tarefaspai") }}>
           <span className="navIcon">☑️</span>
-          <span>Tarefas</span>
+          <span className="navText">Tarefas</span>
         </button>
 
         <button className="navBtn active">
-          <span className="navIcon">😊</span>
-          <span>Conquistas</span>
+          <span className="navIcon">🌟</span>
+          <span className="navText">Conquistas</span>
         </button>
 
-        <button className="navBtn">
+        <button className="navBtn" onClick={() => { navigate("/perfilpai") }}>
           <span className="navIcon">👤</span>
-          <span>Perfil</span>
+          <span className="navText">Perfil</span>
         </button>
       </nav>
     </div>

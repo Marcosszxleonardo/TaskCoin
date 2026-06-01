@@ -161,6 +161,8 @@ export default function TarefaFilho() {
               <button className={styles.analysis}>Em análise...</button>
             ) : tarefa.status_tarefa === "EXPIRADA" ? (
               <button className={styles.expired} disabled>Expirada</button>
+            ) : tarefa.status_tarefa === "PENALIZADA" ? (
+              <button className={styles.penalized} disabled>Penalizada</button>
             ) : (
               <button className={styles.completeButton} onClick={() => completeTask(tarefa.id_tarefa)}>Marcar como concluída</button>
             )}
@@ -174,7 +176,7 @@ export default function TarefaFilho() {
         </button>
 
         <button className="navBtn" onClick={() => { navigate("/conquistasfilho") }}>
-          <span className="navIcon">😊</span>
+          <span className="navIcon">🌟</span>
           <span className="navText">Conquistas</span>
         </button>
 

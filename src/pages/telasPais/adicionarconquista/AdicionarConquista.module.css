@@ -4,51 +4,28 @@ html,
 body{
   width:100%;
   min-height:100vh;
-  background:#ffffff;
+  background:#ececec;
   overflow-x:hidden;
 }
 
 /* PAGINA */
 
 .pageBg{
-  width:100%;
-  min-height:100vh;
-  background:#ffffff;
-}
-
-/* CONTAINER */
-
-.phoneContainer{
-  width:100%;
-  min-height:100vh;
-
-  background:#ffffff;
-
-  padding:20px 16px 120px;
-}
-
-/* TOPO */
-
-.topoAdicionar{
-  display:flex;
-  align-items:center;
-
-  margin-bottom:20px;
-}
-
-.voltarBtn{
-  border:none;
-  background:none;
-
-  font-size:28px;
-  color:#111;
-
-  cursor:pointer;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 390px;
+  min-height: 100vh;
+  background:#ececec;
 }
 
 /* TITULO */
 
 .tituloArea{
+  padding-top: 30px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -57,24 +34,17 @@ body{
 }
 
 .tituloArea h1{
-  font-size:36px;
+  font-size:32px;
   font-weight:700;
   color:#111;
 
-  letter-spacing:-1px;
+  letter-spacing: -1px;
 }
 
-.addBtn{
-  width:42px;
-  height:42px;
-
-  border-radius:10px;
-  border:2px solid #111;
-
-  background:#fff;
-
+.addBtn {
+  animation: rotate 5s linear infinite;
+  margin-left: 10px;
   display:flex;
-  align-items:center;
   justify-content:center;
 
   font-size:28px;
@@ -86,36 +56,31 @@ body{
 
 .subtitulo{
   color:#9a9a9a;
-
   font-size:15px;
   line-height:1.4;
-
-  margin-bottom:18px;
-
+  margin-bottom:30px;
   font-weight:500;
 }
 
 /* FORM */
 
 .formArea{
+  width: 100%;
   display:flex;
+  align-items: center;
   flex-direction:column;
   gap:12px;
 }
 
 .inputField{
-  width:100%;
+  width: 90%;
   height:52px;
-
   border-radius:16px;
+  box-sizing: border-box;
   border:1.5px solid #d7d7d7;
-
   background:#f5f5f5;
-
   padding:0 16px;
-
-  font-size:15px;
-
+  font-size: 17px;
   outline:none;
 }
 
@@ -142,7 +107,8 @@ body{
 /* SELECT */
 
 .selectArea{
-  width:100%;
+  width: 90%;
+  transition: height 0.5s ease;
 
   border-radius:18px;
   border:1.5px solid #d7d7d7;
@@ -161,22 +127,24 @@ body{
   align-items:center;
   justify-content:space-between;
 
-  font-size:15px;
+  font-size: 17px;
   color:#555;
 }
 
 .seta{
-  font-size:30px;
+  font-size: 20px;
+  transition: transform 0.3s ease;
   color:#333;
 }
 
-.filhosLista{
+.filhosLista {
+  animation: none !important;
   padding:0 14px 14px;
 }
 
 .filhosLista p{
+  animation: none !important;
   margin-bottom:8px;
-
   color:#5d5d5d;
   font-size:16px;
   font-weight:600;
@@ -185,21 +153,16 @@ body{
 /* BOTAO */
 
 .criarBtn{
-  width:100%;
+  width: 90%;
   height:54px;
-
   border:none;
   border-radius:16px;
-
   background:#00b92f;
   color:white;
-
   font-size:18px;
   font-weight:700;
-
   cursor:pointer;
-
-  margin-top:72px;
+  margin-top:20px;
 }
 
 /* NAVBAR */
@@ -229,4 +192,14 @@ body{
 .navText{
   font-size:11px;
   font-weight:600;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

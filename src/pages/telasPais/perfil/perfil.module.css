@@ -23,9 +23,8 @@ body {
 
 /* HEADER */
 .header {
-  background: #d9d9d9;
+  background: transparent;
   padding: 12px 16px;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,6 +61,10 @@ body {
   color: white;
 }
 
+.profileAvatar p {
+  animation: avatarAnimation 2s ease-in-out infinite;
+}
+
 .profileName {
   margin-top: 12px;
   font-size: 20px;
@@ -81,33 +84,35 @@ body {
 }
 
 .childrenHeader {
+  position: relative;
+  z-index: 99;
   background: linear-gradient(90deg, #0077ff, #02c644);
-
   color: white;
-
   height: 42px;
-
   display: flex;
   align-items: center;
-
+  justify-content: center;
   padding: 0 12px;
-
   font-size: 16px;
   font-weight: 800;
 }
 
 .childrenList {
-  background: #dfe3df;
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.249);
 }
 
 .childrenList p {
+  text-align: center;
   padding: 14px 12px;
-
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 800;
   color: #019c35;
+}
 
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+.childrenList p span {
+  color: #979797;
 }
 
 .childrenList p:last-child {
@@ -116,37 +121,37 @@ body {
 
 /* LOGOUT FIXO */
 .logoutSection {
+  animation: none !important; 
   position: fixed;
-  bottom: 92px;
-
+  bottom: 92px; 
   left: 50%;
   transform: translateX(-50%);
-
   width: 100%;
   max-width: 390px;
-
   padding: 0 12px;
   z-index: 998;
 }
 
 .logoutButton {
   width: 100%;
-
   border: none;
-
   background: #c40000;
   color: white;
-
   padding: 16px 14px;
-
   font-size: 18px;
-  font-weight: 400;
-
-  border-radius: 10px;
-
+  font-weight: 900;
+  display: flex;
+  align-items: center;
   cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  transition: 0.3s;
+}
 
-  box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+.logoutButton:hover {
+  transition: 0.3s;
+  background: rgb(107, 0, 0);
 }
 
 /* NAVBAR PADRÃO */
@@ -177,4 +182,18 @@ body {
 .active .navText {
   color: #00a651;
   font-weight: 600;
+}
+
+@keyframes avatarAnimation {
+  0% {
+    transform: scale(1)
+  } 
+
+  50% {
+    transform: scale(1.1)
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

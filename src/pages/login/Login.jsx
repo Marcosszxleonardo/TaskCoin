@@ -74,10 +74,6 @@ export default function Login() {
           alt="Taskcoin"
         />
 
-        <h1 className={styles.title}>
-          TASKCOIN
-        </h1>
-
         <p className={styles.tagline}>
           Disciplina que recompensa
         </p>

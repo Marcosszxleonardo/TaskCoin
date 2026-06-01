@@ -1,116 +1,144 @@
-import './TarefaExpirada.css';
+import styles from './TarefaExpirada.module.css';
+import api from "../../services/api"
+import { useNavigate } from 'react-router';
+import { useEffect, useState } from "react";
+import LoadingScreen from '../../components/LoadingScreen';
+import Counter from '../../components/Counter';
 
-export default function TarefaExpirada() {
+const TrashIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+    <path
+      d="M3 6H5H21"
+      stroke="#444"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M8 6V4C8 3.4 8.4 3 9 3H15C15.6 3 16 3.4 16 4V6"
+      stroke="#444"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M19 6V20C19 20.5 18.5 21 18 21H6C5.5 21 5 20.5 5 20V6"
+      stroke="#444"
+      strokeWidth="2"
+    />
+  </svg>
+);
 
-  const tarefas = [
-    {
-      titulo: 'Estudar pra prova de Quimica',
-      nome: 'Gustavo',
-    },
+export default function TarefaExpiradas() {
+  const navigate = useNavigate();
+  const [usuario, setUsuario] = useState("");
+  const [loading, setLoading] = useState(true);
 
-    {
-      titulo: 'Estudar Português',
-      nome: 'Marcos',
-    },
-  ];
+  useEffect(() => {
+    const fetchUsuario = async () => {
+      try {
+        const response = await api.get("/responsaveis/detalhe-responsavel");
+        setUsuario(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Erro em coletar usuário: ", error);
+        setLoading(true);
+      }
+    };
 
-  return (
-    <div className="pageBg">
+    fetchUsuario();
+  }, []);
 
-      <div className="phoneContainer">
+  const penalizarTarefa = async (id) => {
+    try {
+      await api.put("/tarefas", {
+        id_tarefa: id,
+        status_tarefa: "PENALIZADA"
+      });
 
-        {/* HEADER */}
-        <div className="topoExpirada">
+      setUsuario(prev => ({
+        ...prev,
+        filhos: prev.filhos.map(filho => ({
+          ...filho,
+          tarefas: filho.tarefas.filter(task => task.id_tarefa !== id)
+        }))
+      }));
+    } catch (error) {
+      alert("Erro ao confirmar penalização da tarefa")
+      console.error("ERRO AO PENALIZAR TAREFA: " + error)
+    }
+  }
 
-          <button className="voltarBtn">
-            ↩
-          </button>
+if (loading) {
+  return <LoadingScreen />
+}
 
-          <h1>
-            Tarefas <span>expiradas</span>
-          </h1>
+return (
+  <div className={styles.pageBg}>
 
-          <button className="emojiBtn">
-            ☹
-          </button>
+    {/* HEADER */}
+    <div className={styles.topoAnalise}>
+      <h1>
+        Tarefas <span>Expiradas</span>
+      </h1>
+    </div>
 
-        </div>
+    <p className={styles.subtitulo}>
+      Confirme se irá penalizar ou não o seu filho pelas tarefas expiradas
+    </p>
 
-        <p className="subtitulo">
-          Confirme e decida se irá penalizar seus filhos pelas tarefas expiradas
-        </p>
+    {/* CARDS */}
+    <div className={styles.cardsArea}>
+      {usuario?.filhos?.map((filho) => (
+        filho.tarefas.filter((task) => task.status_tarefa === "EXPIRADA").map((task) => (
+          <div className={styles.cardTarefa} key={task.id_tarefa}>
 
-        {/* CARDS */}
-        <div className="cardsArea">
+            <div className={styles.cardTop}>
 
-          {tarefas.map((tarefa, index) => (
+              <div className={styles.infoTarefa}>
 
-            <div className="cardTarefa" key={index}>
+                <span className={styles.emoji}>
+                  🎯
+                </span>
 
-              <div className="cardTop">
-
-                <div className="infoTarefa">
-
-                  <span className="emoji">
-                    📚
-                  </span>
-
-                  <div>
-
-                    <h3>
-                      {tarefa.titulo}
-                    </h3>
-
-                    <p>
-                      {tarefa.nome}
-                    </p>
-
-                  </div>
-
+                <div>
+                  <h3>{task.nome_tarefa}</h3>
+                  <p>{filho.nome}</p>
                 </div>
-
-                <button className="lixeiraBtn">
-                  🗑
-                </button>
 
               </div>
 
-              <button className="penalizarBtn">
-                Penalizar
-              </button>
-
-              <span className="expiradoTexto">
-                {tarefa.nome} não concluiu a Tarefa
-              </span>
-
             </div>
 
-          ))}
+            <button className={styles.confirmarBtn} onClick={() => penalizarTarefa(task.id_tarefa, task.valor_tarefa, filho.id, filho.saldo_pontos)}>
+              Penalizar
+            </button>
 
-        </div>
+            <span className={styles.confirmadoTexto}>
+              {filho.nome} não concluiu essa tarefa
+            </span>
 
-        {/* NAVBAR */}
-        <nav className="bottomNav">
-
-          <button className="navBtn active">
-            <span className="navIcon">📋</span>
-            <span className="navText">Tarefas</span>
-          </button>
-
-          <button className="navBtn">
-            <span className="navIcon">😊</span>
-            <span className="navText">Conquistas</span>
-          </button>
-
-          <button className="navBtn">
-            <span className="navIcon">👤</span>
-            <span className="navText">Perfil</span>
-          </button>
-
-        </nav>
-
-      </div>
-
+          </div>
+        ))))}
+      <br /><br /><br /><br />
     </div>
-  );
+
+    {/* NAVBAR */}
+    <nav className="bottomNav">
+      <button className="navBtn active" onClick={() => { navigate("/tarefaspai") }}>
+        <span className="navIcon">☑️</span>
+        <span className="navText">Tarefas</span>
+      </button>
+
+      <button className="navBtn" onClick={() => { navigate("/conquistaspai") }}>
+        <span className="navIcon">🌟</span>
+        <span className="navText">Conquistas</span>
+      </button>
+
+      <button className="navBtn" onClick={() => { navigate("/perfilpai") }}>
+        <span className="navIcon">👤</span>
+        <span className="navText">Perfil</span>
+      </button>
+    </nav>
+
+  </div>
+);
 }

@@ -1,0 +1,252 @@
+.screen {
+  min-height: 100vh;
+  max-width: 390px;
+  margin: 0 auto;
+  background: #ececec;
+  font-family: 'Segoe UI', sans-serif;
+  padding-bottom: 95px;
+}
+
+.header {
+  background: transparent;
+  padding: 8px 12px 16px;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  color: #0077ff;
+  margin: 0;
+}
+
+.greeting {
+  font-size: 15px;
+  font-weight: 700;
+  color: #9b9b9b;
+}
+
+/* --- ESTRUTURA GERAL --- */
+.header {
+  padding: 24px 20px 10px;
+  background: transparent;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 900;
+  color: #0077ff;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.greeting {
+  font-size: 14px;
+  font-weight: 700;
+  color: #a1a1a1;
+}
+
+/* --- ESTRUTURA GERAL --- */
+.screen {
+  min-height: 100vh;
+  max-width: 390px;
+  margin: 0 auto;
+  background: #f4f4f4; /* Cinza claro de fundo para destacar os cards brancos */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-bottom: 100px;
+}
+
+.header {
+  padding: 24px 20px 10px;
+  background: transparent;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 900;
+  color: #0077ff;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.greeting {
+  font-size: 14px;
+  font-weight: 700;
+  color: #a1a1a1;
+}
+
+/* --- SEÇÃO DE CONTEÚDO --- */
+.section {
+  padding: 0 15px;
+}
+
+.title {
+  font-size: 23px;
+  font-weight: 800;
+  color: #333;
+  margin: 15px 0 20px;
+}
+
+/* --- LISTA DE CARDS --- */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Espaçamento entre um card e outro */
+}
+
+.card {
+  background: linear-gradient(-120deg, rgb(255, 250, 221), white);
+  border-radius: 20px; /* Bordas bem arredondadas conforme o Figma */
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 35px;
+}
+
+.left p {
+  animation: moveTop 2s ease-in-out infinite;
+}
+
+.info h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+}
+
+.points {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 800;
+  color: #ffb800;
+  font-size: 15px;
+}
+
+.coin {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+/* --- LADO DIREITO DO CARD --- */
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100%;
+  gap: 12px;
+}
+
+.deleteBtn {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.deleteBtn:hover {
+  transform: scale(1.2);
+}
+
+.resgates {
+  font-size: 10px;
+  font-weight: 800;
+  color: #b0b0b0;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.resgatado {
+  font-size: 12px;
+  font-weight: 800;
+  color: #0077ff;
+  animation: color 2s linear infinite;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* --- BOTÃO DE AÇÃO --- */
+.addButton {
+  width: 100%;
+  border: none;
+  border-radius: 18px;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+  background: linear-gradient(to right, #00a82d, #008f26);
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.addButton:hover {
+  font-size: 22px;
+  transition: 0.3s;
+}
+
+@keyframes moveTop {
+  0% {
+    transform: translateY(-2px);
+  }
+
+  50% {
+    transform: translateY(2px);
+  }
+
+  100% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes color {
+  0% {
+    color: #0077ff;
+  }
+
+  50% {
+    color: #00a82d;
+  }
+
+  100% {
+    color: #0077ff;
+  }
+}

@@ -4,6 +4,7 @@ import api from "../../services/api"
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import LoadingScreen from '../../components/LoadingScreen';
+import Counter from '../../components/Counter';
 
 const CoinIcon = () => (
   <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
@@ -55,11 +56,11 @@ export default function TasksScreen() {
       try {
         const response = await api.get("/responsaveis/detalhe-responsavel");
         setUsuario(response.data);
+        setLoading(false);
       } catch (error) {
         console.error("Erro em coletar usuário: ", error);
-      } finally {
-        setLoading(false);
-      }
+         setLoading(true);
+      } 
     };
 
     fetchUsuario();
@@ -73,78 +74,145 @@ export default function TasksScreen() {
     return acumulador + filho?.tarefas_concluidas
   }, 0)
 
-if (loading) {
-  return <LoadingScreen />
-}
+  const formatarData = (dataString) => {
+    const data = new Date(dataString);
 
-return (
-  <div className={styles.screen}>
-    <header className={styles.header}>
-      <div className={styles.headerRow}>
-        <h1 className={styles.logo}>TASKCOIN</h1>
-        <span className={styles.greeting}>Olá, {usuario.nome}!</span>
-      </div>
-    </header>
+    return data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+  };
 
-    <section className={styles.summary}>
-      <h2 className={styles.summaryTitle}>Resumo dos Filhos</h2>
+  if (loading) {
+    return <LoadingScreen />
+  }
 
-      <div className={styles.cards}>
-        <div className={styles.infoCard}>
-          <span className={styles.infoNumber}>{usuario?.filhos?.length}</span>
-          <span className={styles.infoText}>Filhos</span>
+  const deletarTask = async (id) => {
+    try {
+      const response = await api.delete(`/tarefas/${id}`);
+
+      setUsuario(prev => ({
+        ...prev,
+        filhos: prev.filhos.map(filho => ({
+          ...filho,
+          tarefas: filho.tarefas.filter(task => task.id_tarefa !== id)
+        }))
+      }));
+    } catch (error) {
+      console.error("Erro ao deletar:", error);
+    }
+  }
+
+  return (
+    <div className={styles.screen}>
+      <header className={styles.header}>
+        <div className={styles.headerRow}>
+          <h1 className={styles.logo}>TASKCOIN</h1>
+          <span className={styles.greeting}>Olá, {usuario.nome}!</span>
+        </div>
+      </header>
+
+      <section className={styles.summary}>
+        <h2 className={styles.summaryTitle}>Resumo dos Filhos</h2>
+
+        <div className={styles.cards}>
+          <div className={styles.infoCard}>
+            <span className={styles.infoNumber}><Counter target={usuario?.filhos?.length} duration={500} /></span>
+            <span className={styles.infoText}>Filhos</span>
+          </div>
+
+          <div className={styles.infoCard}>
+            <span className={styles.infoNumber}><Counter target={contagemTarefas} duration={500} /></span>
+            <span className={styles.infoText}>Tarefas</span>
+          </div>
+
+          <div className={styles.infoCard}>
+            <span className={styles.infoNumber}><Counter target={contagemTarefasConcluidas} duration={500} /></span>
+            <span className={styles.infoText}>Concluídas</span>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.tasksSection}>
+        <h2 className={styles.tasksTitle}>Tarefas ativas</h2>
+
+        <div className={styles.taskList}>
+          {usuario?.filhos?.map((filho) => (
+            filho.tarefas?.filter((task) => task.status_tarefa === "A_FAZER")
+              .map((task) => (
+                <div key={task.id_tarefa} className={styles.taskCard}>
+                  <div className={styles.taskLeft}>
+                    <span className={styles.taskEmoji}>🎯</span>
+
+                    <div>
+                      <h3 className={styles.taskName}>{task.nome_tarefa}</h3>
+
+                      <p className={styles.taskMeta}>
+                        {filho.nome} - ⏳ {formatarData(task.expiracao_tarefa)}...
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={styles.taskRight}>
+                    <div className={styles.points}>
+                      <span><Counter target={task.valor_tarefa} duration={1000} /></span>
+                      🪙
+                    </div>
+
+                    <button className={styles.deleteBtn} onClick={() => deletarTask(task.id_tarefa)}>
+                      <TrashIcon />
+                    </button>
+                  </div>
+                </div>
+              ))
+          ))}
         </div>
 
-        <div className={styles.infoCard}>
-          <span className={styles.infoNumber}>{contagemTarefas}</span>
-          <span className={styles.infoText}>Tarefas</span>
-        </div>
+        <button className={styles.addButton} onClick={() => {navigate("/adicionartarefa")}}>
+          + Adicionar Tarefa
+        </button>
 
-        <div className={styles.infoCard}>
-          <span className={styles.infoNumber}>{contagemTarefasConcluidas}</span>
-          <span className={styles.infoText}>Concluídas</span>
-        </div>
-      </div>
-    </section>
+        <button className={styles.analysisButton} onClick={() => {navigate("/analisepai")}}>
+          <span>Tarefas em Análise</span>
+          <span className={styles.badgeBlue}>
+            <Counter target={usuario?.filhos?.reduce((acumulador, filho) => {
+              const tarefasEmAnalise = filho.tarefas?.filter(
+                (task) => task.status_tarefa === "ANALISE"
+              ) || [];
 
-    <section className={styles.tasksSection}>
-      <h2 className={styles.tasksTitle}>Tarefas ativas</h2>
+              return acumulador + tarefasEmAnalise.length
+            }, 0)} duration={500}/>
+          </span>
+        </button>
 
-      <div className={styles.taskList}>
-      </div>
+        <button className={styles.expiredButton} onClick={() => navigate("/tarefaexpirada")}>
+          <span>Tarefas expiradas</span>
+          <span className={styles.badgeRed}>
+            <Counter target={usuario?.filhos?.reduce((acumulador, filho) => {
+              const tarefasExpiradas = filho.tarefas?.filter(
+                (task) => task.status_tarefa === "EXPIRADA"
+              ) || [];
 
-      <button className={styles.addButton}>
-        + Adicionar Tarefa
-      </button>
+              return acumulador + tarefasExpiradas.length
+            }, 0)} duration={500}/>
+          </span>
+        </button>
+      </section>
 
-      <button className={styles.analysisButton}>
-        <span>☰ Tarefas em Análise</span>
-        <span className={styles.badgeBlue}>2</span>
-      </button>
+      <nav className="bottomNav">
+        <button className="navBtn active">
+          <span className="navIcon">☑️</span>
+          <span className="navText">Tarefas</span>
+        </button>
 
-      <button className={styles.expiredButton}>
-        <span>❗Tarefas expiradas</span>
-        <span className={styles.badgeRed}>2</span>
-      </button>
-    </section>
+        <button className="navBtn" onClick={() => { navigate("/conquistaspai") }}>
+          <span className="navIcon">🌟</span>
+          <span className="navText">Conquistas</span>
+        </button>
 
-    <nav className="bottomNav">
-      <button className="navBtn active">
-        <span className="navIcon">☑️</span>
-        <span className="navText">Tarefas</span>
-      </button>
+        <button className="navBtn" onClick={() => { navigate("/perfilpai") }}>
+          <span className="navIcon">👤</span>
+          <span className="navText">Perfil</span>
+        </button>
+      </nav>
 
-      <button className="navBtn" onClick={() => { navigate("/conquistaspai") }}>
-        <span className="navIcon">😊</span>
-        <span className="navText">Conquistas</span>
-      </button>
-
-      <button className="navBtn" onClick={() => { navigate("/perfilpai") }}>
-        <span className="navIcon">👤</span>
-        <span className="navText">Perfil</span>
-      </button>
-    </nav>
-
-  </div>
-);
+    </div>
+  );
 }

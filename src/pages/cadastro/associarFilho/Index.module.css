@@ -17,14 +17,14 @@
 }
 
 .imageContainer {
-  width: 100%;
+  width: 250px;
   display: flex;
   justify-content: center;
   margin-bottom: 1.5rem;
 }
 
 .image {
-  width: 60%;
+  width: 100%;
   max-width: 289px;
   object-fit: contain;
 }
