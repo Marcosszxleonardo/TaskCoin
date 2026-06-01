@@ -58,7 +58,7 @@ export default function Cadastro({ onAddMore, onFinalize}) {
             className={`${styles.button} ${styles.buttonBlue}`}
             onClick={onFinalize}
           >
-            <span>Confirmar</span>
+            <span>Não, finalizar cadastro</span>
 
             <svg
               width="24"
