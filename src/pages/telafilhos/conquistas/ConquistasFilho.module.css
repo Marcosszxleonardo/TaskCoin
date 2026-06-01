@@ -99,8 +99,12 @@
 /* PROGRESSO */
 
 .progressCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 0 14px;
-  background: white;
+  height: 155px;
+  background: linear-gradient(to bottom, #ffffff, #e2f4ff);
   border: 2px solid #4a90ff;
   border-radius: 18px;
   padding: 14px;
@@ -123,6 +127,26 @@
   font-size: 16px;
   font-weight: 800;
   color: #222;
+}
+
+.progressCard h4 {
+  justify-self: center;
+  align-self: center;
+  width: 92%;
+  margin-top: 20px;
+  border: 1px solid #006426;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background-color: #ffff;
+  border-radius: 15px;
+  animation: textSpacing 4s ease-in-out infinite;
+  font-size: 14px;
+  text-align: center;
+  font-style: italic;
+  text-shadow: 0 1px 1px rgb(255, 255, 255);
+  color:  #006426;
 }
 
 .progressTop span {
@@ -159,7 +183,6 @@
 .levelTitle {
   font-size: 16px !important;
   color: #009dff !important;
-  text-shadow: 0 1px 50px rgba(0, 119, 255, 0.527);
 }
 
 /* SECTION */
@@ -388,5 +411,19 @@
 
   100% {
     transform: translateY(-2px);
+  }
+}
+
+@keyframes textSpacing {
+  0% {
+    letter-spacing: 0.5px;
+  }
+
+  50% {
+    letter-spacing: 0;
+  }
+
+  100% {
+    letter-spacing: 0.5px;
   }
 }

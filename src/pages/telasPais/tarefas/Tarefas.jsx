@@ -59,8 +59,8 @@ export default function TasksScreen() {
         setLoading(false);
       } catch (error) {
         console.error("Erro em coletar usuário: ", error);
-         setLoading(true);
-      } 
+        setLoading(true);
+      }
     };
 
     fetchUsuario();
@@ -115,18 +115,34 @@ export default function TasksScreen() {
         <div className={styles.cards}>
           <div className={styles.infoCard}>
             <span className={styles.infoNumber}><Counter target={usuario?.filhos?.length} duration={500} /></span>
-            <span className={styles.infoText}>Filhos</span>
+            <span className={styles.infoText}>Filho(s)</span>
           </div>
 
           <div className={styles.infoCard}>
             <span className={styles.infoNumber}><Counter target={contagemTarefas} duration={500} /></span>
-            <span className={styles.infoText}>Tarefas</span>
+            <span className={styles.infoText}>Tarefa(s)</span>
           </div>
 
           <div className={styles.infoCard}>
             <span className={styles.infoNumber}><Counter target={contagemTarefasConcluidas} duration={500} /></span>
-            <span className={styles.infoText}>Concluídas</span>
+            <span className={styles.infoText}>Concluída(s)</span>
           </div>
+        </div>
+
+        <h2 className={styles.summaryTitle}>Filhos Cadastrados</h2>
+        <div className="filhosContainer">
+          {usuario?.filhos?.map((filho) => (
+            <div key={filho.id} className={styles.cardFilho}>
+              <div className={styles.infoPrincipal}>
+                <p className={styles.nomeFilho}>✦ {filho.nome}</p>
+                <p className={styles.statsConclusao}><Counter target={filho.tarefas_concluidas} duration={1000}/> tarefas concluídas</p>
+              </div>
+
+              <div className={styles.saldoCard}>
+                <Counter target={filho.saldo} duration={1000}/> 🪙
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -165,11 +181,11 @@ export default function TasksScreen() {
           ))}
         </div>
 
-        <button className={styles.addButton} onClick={() => {navigate("/adicionartarefa")}}>
+        <button className={styles.addButton} onClick={() => { navigate("/adicionartarefa") }}>
           + Adicionar Tarefa
         </button>
 
-        <button className={styles.analysisButton} onClick={() => {navigate("/analisepai")}}>
+        <button className={styles.analysisButton} onClick={() => { navigate("/analisepai") }}>
           <span>Tarefas em Análise</span>
           <span className={styles.badgeBlue}>
             <Counter target={usuario?.filhos?.reduce((acumulador, filho) => {
@@ -178,7 +194,7 @@ export default function TasksScreen() {
               ) || [];
 
               return acumulador + tarefasEmAnalise.length
-            }, 0)} duration={500}/>
+            }, 0)} duration={500} />
           </span>
         </button>
 
@@ -191,7 +207,7 @@ export default function TasksScreen() {
               ) || [];
 
               return acumulador + tarefasExpiradas.length
-            }, 0)} duration={500}/>
+            }, 0)} duration={500} />
           </span>
         </button>
       </section>

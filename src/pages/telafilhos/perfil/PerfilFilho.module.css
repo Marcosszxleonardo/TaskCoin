@@ -57,7 +57,14 @@
 }
 
 .profileAvatar span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   animation: avatarAnimation 2s ease-in-out infinite
+}
+
+.profileAvatar span img {
+  height: 40px;
 }
 
 .profileName {

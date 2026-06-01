@@ -2,7 +2,7 @@
   min-height: 100vh;
   max-width: 390px;
   margin: 0 auto;
-  background: #ececec;
+  background: transparent;
   font-family: 'Segoe UI', sans-serif;
   padding-bottom: 95px;
 }
@@ -56,16 +56,6 @@
   font-size: 14px;
   font-weight: 700;
   color: #a1a1a1;
-}
-
-/* --- ESTRUTURA GERAL --- */
-.screen {
-  min-height: 100vh;
-  max-width: 390px;
-  margin: 0 auto;
-  background: #f4f4f4; /* Cinza claro de fundo para destacar os cards brancos */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding-bottom: 100px;
 }
 
 .header {

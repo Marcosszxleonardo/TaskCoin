@@ -8,7 +8,6 @@ export function TaskCoinLogo() {
         alt="TaskCoin logo"
         className={styles.logo}
       />
-      <p className={styles.tagline}>Disciplina que recompensa</p>
     </div>
   );
 }

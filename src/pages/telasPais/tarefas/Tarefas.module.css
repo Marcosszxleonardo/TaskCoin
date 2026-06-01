@@ -43,6 +43,66 @@
   color: #111;
 }
 
+.summaryTitle:last-of-type {
+  margin-top: 20px;
+}
+
+/* CARDS DOS FILHOS */
+.filhosContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 10px;
+}
+
+.cardFilho {
+  margin-top: 10px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #0077ff; /* Verde para indicar progresso/sucesso */
+  border-top: 1px solid #0077ff; 
+  border-right: 1px solid #0077ff; 
+  border-bottom: 1px solid #0077ff; 
+}
+
+.infoPrincipal {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nomeFilho {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.statsConclusao {
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #666;
+  margin: 0;
+}
+
+.saldoCard {
+  color: #fbc02d;
+  padding: 8px 12px;
+  font-size: 18px;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+/* CARDS DE ESTATÍSTICAS */
 .cards {
   display: flex;
   gap: 10px;
@@ -68,6 +128,7 @@
 }
 
 .infoNumber {
+  animation: moveTop 2s ease-in-out infinite;
   transition: 0.3s;
   font-size: 40px;
   line-height: 1;
@@ -219,5 +280,19 @@
 
   100% {
     transform: translateX(-2px);
+  }
+}
+
+@keyframes moveTop {
+  0% {
+    transform: translateY(-4px)
+  }
+
+  50% {
+    transform: translateY(0px)
+  }
+
+  100% {
+    transform: translateY(-4px);
   }
 }

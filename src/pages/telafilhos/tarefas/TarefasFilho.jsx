@@ -117,6 +117,10 @@ export default function TarefaFilho() {
         {usuario.nivel && (
           <p>{usuario.tarefas_concluidas}/{usuario.nivel.tarefas_requeridas + 1} Tarefas concluídas para subir de nível</p>
         )}
+
+        {usuario.nivel && (
+          <h4>"{usuario.nivel.descricao_nivel}"</h4>
+        )}
       </section>
 
       <section className={styles.tasksSection}>

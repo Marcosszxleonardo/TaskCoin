@@ -1,6 +1,7 @@
 import styles from "./PerfilFilho.module.css";
 import api from "../../services/api"
 import LoadingScreen from "../../components/LoadingScreen"
+import avatar from "../../../assets/avatar.svg"
 import "../../../global.css"
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -48,7 +49,7 @@ export default function PerfilFilho() {
       <section className={styles.profileSection}>
 
         <div className={styles.profileAvatar}>
-          <span>👤</span>
+          <span><img src={avatar}/></span>
         </div>
 
         <h2 className={styles.profileName}>

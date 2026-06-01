@@ -105,6 +105,9 @@ export default function ConquistasFilho() {
 
         <p>{tarefasConcluidas}/{tarefasRequeridas + 1} Tarefas concluídas para subir de nível</p>
 
+        {usuario.nivel && (
+          <h4>"{usuario.nivel.descricao_nivel}"</h4>
+        )}
       </section>
 
       <section className={styles.section}>

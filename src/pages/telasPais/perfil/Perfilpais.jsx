@@ -1,6 +1,7 @@
 import styles from "./perfil.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import avatarPai from "../../../assets/avatarPai.svg"
 import api from "../../services/api";
 import LoadingScreen from "../../components/LoadingScreen";
 import Counter from "../../components/Counter";
@@ -42,7 +43,7 @@ export default function PerfilPais() {
 
       {/* PERFIL */}
       <section className={styles.profileSection}>
-        <div className={styles.profileAvatar}><p>👤</p></div>
+        <div className={styles.profileAvatar}><p><img src={avatarPai}/></p></div>
 
         <h2 className={styles.profileName}>{usuario.nome}</h2>
 
