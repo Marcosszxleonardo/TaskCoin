@@ -7,11 +7,12 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
+  gap: 10px;
 }
 
 .headerTitle {
   color: #1a73e8;
-  font-size: 1.375rem;
+  font-size: 1.3rem;
   font-weight: 600;
 }
 
@@ -22,14 +23,15 @@
 }
 
 .input {
-  width: 100%;
-  height: 68px;
+  align-self: center;
+  width: 95%;
+  height: 60px;
   border-radius: 20px;
   border: 1px solid #a9a9a9;
   background-color: #f8f8f8;
   padding: 0 1.25rem;
   color: #6e6e6e;
-  font-size: 1.375rem;
+  font-size: 1.3rem;
   font-weight: 600;
   outline: none;
   transition: border-color 0.2s;
@@ -54,8 +56,9 @@
 }
 
 .btnContinuar {
-  width: 100%;
-  height: 68px;
+  width: 95%;
+  align-self: center;
+  height: 60px;
   margin-top: 14px;
   border: none;
   border-radius: 16px;

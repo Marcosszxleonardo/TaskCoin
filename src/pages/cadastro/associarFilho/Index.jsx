@@ -38,10 +38,6 @@ export default function Index({ onSubmit }) {
           />
         </div>
 
-        <p className={styles.subtitle}>
-          Associe seu filho!
-        </p>
-
         <div className={styles.titleRow}>
           <svg
             width="36"
