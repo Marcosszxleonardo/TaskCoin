@@ -95,7 +95,7 @@ export default function Login() {
                 }`}
               onClick={() => setRole("parent")}
             >
-              Pai / Mãe
+              Responsável
             </button>
 
             <button
@@ -148,7 +148,7 @@ export default function Login() {
                 className={styles.btnEntrar}
                 onClick={handleLoginParent}
               >
-                Entrar como Pai/Mãe
+                Entrar como Responsável
               </button>
             ) : (
               <button

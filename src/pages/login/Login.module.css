@@ -122,7 +122,7 @@
     #00c853
   );
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -179,7 +179,7 @@
   }
 
   .btnEntrar {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .btnCadastrar {
@@ -224,7 +224,7 @@
   }
 
   .btnEntrar {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .btnCadastrar {
