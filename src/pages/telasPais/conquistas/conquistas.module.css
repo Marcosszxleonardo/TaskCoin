@@ -7,31 +7,6 @@
   padding-bottom: 95px;
 }
 
-.header {
-  background: transparent;
-  padding: 8px 12px 16px;
-}
-
-.headerRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 4px;
-}
-
-.logo {
-  font-size: 30px;
-  font-weight: 900;
-  color: #0077ff;
-  margin: 0;
-}
-
-.greeting {
-  font-size: 15px;
-  font-weight: 700;
-  color: #9b9b9b;
-}
-
 /* --- ESTRUTURA GERAL --- */
 .header {
   padding: 24px 20px 10px;
@@ -52,12 +27,6 @@
   letter-spacing: -1px;
 }
 
-.greeting {
-  font-size: 14px;
-  font-weight: 700;
-  color: #a1a1a1;
-}
-
 .header {
   padding: 24px 20px 10px;
   background: transparent;
@@ -69,18 +38,10 @@
   align-items: center;
 }
 
-.logo {
-  font-size: 26px;
-  font-weight: 900;
-  color: #0077ff;
-  margin: 0;
-  letter-spacing: -1px;
-}
-
 .greeting {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
-  color: #a1a1a1;
+  color: #0077ff;
 }
 
 /* --- SEÇÃO DE CONTEÚDO --- */
