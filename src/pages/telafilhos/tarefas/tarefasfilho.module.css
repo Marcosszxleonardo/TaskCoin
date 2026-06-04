@@ -4,7 +4,7 @@
   min-height: 100vh;
   max-width: 390px;
   margin: 0 auto;
-  background: #ececec;
+  background: transparent;
   font-family: 'Nunito', sans-serif;
   padding-bottom: 95px;
 }
@@ -215,6 +215,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  max-width: 70%;
 }
 
 .taskEmoji {

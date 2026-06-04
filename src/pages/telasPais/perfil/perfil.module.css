@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
 
 body {
-  background: #ececec;
   font-family: "Nunito", sans-serif;
 }
 
@@ -13,7 +12,7 @@ body {
   min-height: 100vh;
   margin: 0 auto;
 
-  background: #ececec;
+  background: transparent;
 
   display: flex;
   flex-direction: column;

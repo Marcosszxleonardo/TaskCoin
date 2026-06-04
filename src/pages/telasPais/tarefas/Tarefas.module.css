@@ -2,7 +2,7 @@
   min-height: 100vh;
   max-width: 390px;
   margin: 0 auto;
-  background: #ececec;
+  background: transparent;
   font-family: 'Segoe UI', sans-serif;
   padding-bottom: 95px;
 }
@@ -29,7 +29,7 @@
 .greeting {
   font-size: 15px;
   font-weight: 700;
-  color: #9b9b9b;
+  color: #0077ff;
 }
 
 .summary {
@@ -111,7 +111,7 @@
 .infoCard {
   border: 2px solid #4a90ff;
   flex: 1;
-  background: #f6f6f6;
+  background: linear-gradient(to bottom, #ffffff, #e2f4ff);
   border-radius: 18px;
   padding: 18px 10px;
   display: flex;
@@ -171,6 +171,7 @@
 }
 
 .taskLeft {
+  max-width: 65%;
   display: flex;
   align-items: center;
   gap: 10px;

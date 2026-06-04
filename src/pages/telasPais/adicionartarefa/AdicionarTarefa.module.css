@@ -4,7 +4,6 @@ html,
 body{
   width:100%;
   min-height:100vh;
-  background: #ececec;
   overflow-x:hidden;
 }
 
@@ -19,7 +18,7 @@ body{
   width: 100%;
   max-width: 390px;
   min-height: 100vh;
-  background:#ececec;
+  background: transparent;
 }
 
 /* TITULO */
@@ -43,14 +42,14 @@ body{
 
 .addBtn {
   animation: rotate 5s linear infinite;
-  margin-left: 30px;
+  margin-left: 20px;
   width: 40px;
   height: 40px;
 
   border-radius:10px;
   border:2px solid #111;
 
-  background:#fff;
+  background: transparent;
 
   display:flex;
   justify-content:center;
@@ -73,6 +72,7 @@ body{
 /* FORM */
 
 .formArea{
+  animation: fadeIn 1s ease;
   width: 100%;
   display:flex;
   align-items: center;
@@ -161,6 +161,7 @@ body{
 /* BOTAO */
 
 .criarBtn{
+  animation: fadeIn 1s ease;
   width: 90%;
   height:54px;
   border:none;
@@ -209,5 +210,17 @@ body{
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

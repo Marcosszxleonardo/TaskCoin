@@ -23,7 +23,8 @@ export default function TarefaFilho() {
     "A_FAZER": 1,
     "ANALISE": 2,
     "CONCLUIDA": 3,
-    "EXPIRADA": 4
+    "EXPIRADA": 4,
+    "PENALIZADA": 5
   };
 
   useEffect(() => {
