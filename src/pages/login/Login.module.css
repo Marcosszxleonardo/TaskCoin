@@ -1,6 +1,12 @@
 .page {
   min-height: 100vh;
-  background: #ffffff;
+  background-color: #ffffff !important;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(34, 197, 94, 0.30) 0px, transparent 50%), 
+    radial-gradient(at 100% 0%, rgba(43, 142, 255, 0.35) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(168, 85, 247, 0.13) 0px, transparent 50%) !important; 
+  background-attachment: fixed !important;
+  animation: auroraBoreal 5s ease infinite alternate !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,9 +15,9 @@
 }
 
 .card {
+  height: 100%;
   width: 100%;
   max-width: 380px;
-  background: #ffffff;
   border-radius: 20px;
   padding: 32px 24px;
   display: flex;
@@ -19,19 +25,36 @@
   align-items: center;
 }
 
+.contentContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .logo {
-  width: 250px;
+  filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+  animation: smoothMove 4s ease-in-out infinite alternate;
+  width: 150px;
   object-fit: contain;
 }
 
 .tagline {
-  margin-top: 0px;
-  color: #999;
+  margin-top: 5px;
+  color: #0051ff;
   font-size: 16px;
   font-weight: 600;
 }
 
 .toggle {
+  border: 1px solid #0051ff;
   width: 100%;
   display: flex;
   background: #eeeeee;
@@ -129,13 +152,21 @@
   font-weight: 700;
   cursor: pointer;
   
-  /* --- SOLUÇÃO DO PROBLEMA DE ALINHAMENTO --- */
   display: flex;
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center;     /* Centraliza verticalmente */
-  text-decoration: none;   /* Remove o sublinhado caso seja uma tag <a> */
-  box-sizing: border-box;  /* Garante que paddings/bordas não quebrem o tamanho */
+  justify-content: center; 
+  align-items: center;     
+  text-decoration: none;   
+  box-sizing: border-box;  
   text-align: center;
+}
+
+.title {
+  font-style: italic;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+  margin-top: 0;
+  letter-spacing: 1px;
 }
 
 @media (max-width: 480px) {
@@ -153,5 +184,89 @@
 
   .btnCadastrar {
     font-size: 20px;
+  }
+}
+
+/* Responsividade para PCs */
+@media (min-width: 1050px) {
+  .tagline {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .card {
+    gap: 150px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    display: flex;
+    max-width: 90vw;
+    padding: 40px 32px;
+  }
+
+  .contentContainer {
+    max-width: 500px;
+  }
+
+  .logoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .logo {
+    width: 350px
+  }
+
+  .title {
+    font-size: 64px;
+  }
+
+  .btnEntrar {
+    font-size: 24px;
+  }
+
+  .btnCadastrar {
+    font-size: 22px;
+  }
+}
+
+@keyframes auroraBoreal {
+  0% {
+    background-position: 0% 0%;
+    background-size: 200% 200%;
+  }
+  50% {
+    background-position: 100% 50%;
+    background-size: 220% 180%; 
+  }
+  100% {
+    background-position: 0% 100%;
+    background-size: 180% 220%;
+  }
+}
+
+@keyframes smoothMove {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes titleAnimation {
+  0% {
+    letter-spacing: 0px;
+  }
+  50% {
+    letter-spacing: 1px;
+  }
+  100% {
+    letter-spacing: 0px;
   }
 }
