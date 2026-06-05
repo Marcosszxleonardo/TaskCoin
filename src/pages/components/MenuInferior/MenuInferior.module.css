@@ -1,0 +1,138 @@
+.bottomNav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 390px;
+    height: 80px;
+    background-color: #ededed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #dbdbdb;
+    z-index: 1000;
+    padding-bottom: env(safe-area-inset-bottom);
+
+}
+
+.navBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex: 1;
+    height: 100%;
+    gap: 4px;
+    transition: all 0.2s ease;
+}
+
+/* Cor padrão para as abas inativas (cinza) */
+.navIcon {
+    display: inline-block;
+    font-size: 35px;
+    color: #757575;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.navText {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #757575;
+    transition: color 0.2s ease;
+}
+
+/* --- ABA ATIVA DINÂMICA --- */
+/* Quando o botão tiver a classe .active, aplica o gradiente no ícone e no texto */
+/* --- ABA ATIVA DINÂMICA --- */
+/* Quando o botão tiver a classe .active, aplica o gradiente no ícone e no texto */
+/* --- ABA ATIVA DINÂMICA (Fundo quadrado com gradiente e ícone branco) --- */
+.bottomNav[data-page="tarefas"] .navBtn:nth-child(1) .navIcon,
+.bottomNav[data-page="conquistas"] .navBtn:nth-child(2) .navIcon,
+.bottomNav[data-page="perfil"] .navBtn:nth-child(3) .navIcon {
+    /* Cria o quadrado de fundo */
+    background: linear-gradient(35deg, rgba(0, 119, 255, 1) 0%, rgba(2, 198, 68, 1) 100%);
+    border-radius: 10px;
+    /* Deixa os cantos do quadrado arredondados e modernos */
+    color: #fff;
+
+    /* Define o tamanho do quadrado e centraliza o ícone dentro dele */
+    width: 46px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Efeito de leve crescimento */
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}
+
+/* --- TEXTOS ATIVOS (Mantendo o texto com o gradiente limpo) --- */
+.bottomNav[data-page="tarefas"] .navBtn:nth-child(1) .navText,
+.bottomNav[data-page="conquistas"] .navBtn:nth-child(2) .navText,
+.bottomNav[data-page="perfil"] .navBtn:nth-child(3) .navText {
+    color: transparent;
+    background: linear-gradient(35deg, rgba(0, 119, 255, 1) 0%, rgba(2, 198, 68, 1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+/* 1. Sobe o texto de qualquer botão no hover */
+.navBtn:hover .navText {
+    transform: translateY(-2px);
+}
+
+/* 2. Sobe o ícone inativo e muda para azul */
+.navBtn:hover .navIcon {
+    transform: translateY(-2px);
+    color: #0077ff;
+}
+
+.navBtn:hover .navText {
+    transform: translateY(-2px);
+    color: #0077ff;
+}
+
+/* 3. Sobe o quadrado ativo mantendo o efeito de escala */
+.bottomNav[data-page="tarefas"] .navBtn:nth-child(1):hover .navIcon,
+.bottomNav[data-page="conquistas"] .navBtn:nth-child(2):hover .navIcon,
+.bottomNav[data-page="perfil"] .navBtn:nth-child(3):hover .navIcon {
+    transform: scale(1.05) translateY(-2px);
+}
+
+/* ANIMAÇÕES (Mantidas do seu código original) */
+@keyframes moveRight {
+    0% {
+        transform: translateX(-2px);
+    }
+
+    50% {
+        transform: translateX(2px);
+    }
+
+    100% {
+        transform: translateX(-2px);
+    }
+}
+
+@keyframes moveTop {
+    0% {
+        transform: translateY(-4px);
+    }
+
+    50% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(-4px);
+    }
+}

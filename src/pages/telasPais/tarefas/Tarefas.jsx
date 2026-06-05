@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import LoadingScreen from '../../components/LoadingScreen';
 import Counter from '../../components/Counter';
+import MenuInferior from '../../components/MenuInferior/MenuInferior.jsx';
+
 
 const CoinIcon = () => (
   <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
@@ -135,11 +137,11 @@ export default function TasksScreen() {
             <div key={filho.id} className={styles.cardFilho}>
               <div className={styles.infoPrincipal}>
                 <p className={styles.nomeFilho}>✦ {filho.nome}</p>
-                <p className={styles.statsConclusao}><Counter target={filho.tarefas_concluidas} duration={1000}/> tarefas concluídas</p>
+                <p className={styles.statsConclusao}><Counter target={filho.tarefas_concluidas} duration={1000} /> tarefas concluídas</p>
               </div>
 
               <div className={styles.saldoCard}>
-                <Counter target={filho.saldo} duration={1000}/> 🪙
+                <Counter target={filho.saldo} duration={1000} /> 🪙
               </div>
             </div>
           ))}
@@ -212,22 +214,7 @@ export default function TasksScreen() {
         </button>
       </section>
 
-      <nav className="bottomNav">
-        <button className="navBtn active">
-          <span className="navIcon">☑️</span>
-          <span className="navText">Tarefas</span>
-        </button>
-
-        <button className="navBtn" onClick={() => { navigate("/conquistaspai") }}>
-          <span className="navIcon">🌟</span>
-          <span className="navText">Conquistas</span>
-        </button>
-
-        <button className="navBtn" onClick={() => { navigate("/perfilpai") }}>
-          <span className="navIcon">👤</span>
-          <span className="navText">Perfil</span>
-        </button>
-      </nav>
+      <MenuInferior abaAtiva="tarefas" />
 
     </div>
   );

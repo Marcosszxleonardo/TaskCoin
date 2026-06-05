@@ -270,6 +270,8 @@
   font-weight: 900;
 }
 
+
+
 @keyframes moveRight {
   0% {
     transform: translateX(-2px)

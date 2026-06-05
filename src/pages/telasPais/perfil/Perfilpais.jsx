@@ -5,6 +5,7 @@ import avatarPai from "../../../assets/avatarPai.svg"
 import api from "../../services/api";
 import LoadingScreen from "../../components/LoadingScreen";
 import Counter from "../../components/Counter";
+import MenuInferior from '../../components/MenuInferior/MenuInferior.jsx';
 
 export default function PerfilPais() {
   const navigate = useNavigate();
@@ -30,8 +31,8 @@ export default function PerfilPais() {
     navigate("/");
   }
 
-  if(loading){
-    return <LoadingScreen/>
+  if (loading) {
+    return <LoadingScreen />
   }
 
   return (
@@ -43,7 +44,7 @@ export default function PerfilPais() {
 
       {/* PERFIL */}
       <section className={styles.profileSection}>
-        <div className={styles.profileAvatar}><p><img src={avatarPai}/></p></div>
+        <div className={styles.profileAvatar}><p><img src={avatarPai} /></p></div>
 
         <h2 className={styles.profileName}>{usuario.nome}</h2>
 
@@ -58,35 +59,19 @@ export default function PerfilPais() {
 
         <div className={styles.childrenList}>
           {usuario?.filhos?.map((filho) => (
-            <p>{filho.nome} <br/> <span>Nv. {filho.nivel?.nivel} - {filho.nivel?.titulo_nivel}</span></p>
+            <p>{filho.nome} <br /> <span>Nv. {filho.nivel?.nivel} - {filho.nivel?.titulo_nivel}</span></p>
           ))}
         </div>
       </section>
 
-    {/* LOGOUT */ }
-    < div className = { styles.logoutSection } >
-      <button className={styles.logoutButton} onClick={() => logout()}>
-        ↪ Sair da Conta
-      </button>
-    </div >
-
-    {/* NAVBAR */ }
-    <nav className = "bottomNav" >
-        <button className="navBtn" onClick={() => { navigate("/tarefaspai") }}>
-          <span className="navIcon">☑️</span>
-          <span className="navText">Tarefas</span>
+      {/* LOGOUT */}
+      < div className={styles.logoutSection} >
+        <button className={styles.logoutButton} onClick={() => logout()}>
+          ↪ Sair da Conta
         </button>
+      </div >
 
-        <button className="navBtn" onClick={() => { navigate("/conquistaspai") }}>
-          <span className="navIcon">🌟</span>
-          <span className="navText">Conquistas</span>
-        </button>
-
-        <button className="navBtn active">
-          <span className="navIcon">👤</span>
-          <span className="navText">Perfil</span>
-        </button>
-      </nav >
+      <MenuInferior abaAtiva="perfil" />
     </div >
   );
 }

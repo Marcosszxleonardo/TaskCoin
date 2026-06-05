@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import api from "../../services/api"
 import Counter from "../../components/Counter";
 import LoadingScreen from "../../components/LoadingScreen";
+import MenuInferior from '../../components/MenuInferior/MenuInferior.jsx';
 
 const TrophyIcon = () => {
   return <div className="trophyIcon">🏅</div>;
@@ -103,7 +104,7 @@ export default function Conquistaspais() {
 
                     <div className={styles.points}>
                       🪙
-                      <span><Counter target={recompensa.valor_recompensa} duration={500}/></span>
+                      <span><Counter target={recompensa.valor_recompensa} duration={500} /></span>
                     </div>
                   </div>
                 </div>
@@ -132,27 +133,14 @@ export default function Conquistaspais() {
         </div>
 
         {/* BOTAO */}
-        < button className={styles.addButton} onClick={() => {navigate("/adicionarconquista")}}>
+        < button className={styles.addButton} onClick={() => { navigate("/adicionarconquista") }}>
           + Adicionar Conquistas
         </button>
       </section>
 
-      <nav className="bottomNav">
-        <button className="navBtn" onClick={() => { navigate("/tarefaspai") }}>
-          <span className="navIcon">☑️</span>
-          <span className="navText">Tarefas</span>
-        </button>
 
-        <button className="navBtn active">
-          <span className="navIcon">🌟</span>
-          <span className="navText">Conquistas</span>
-        </button>
+      <MenuInferior abaAtiva="conquistas" />
 
-        <button className="navBtn" onClick={() => { navigate("/perfilpai") }}>
-          <span className="navIcon">👤</span>
-          <span className="navText">Perfil</span>
-        </button>
-      </nav>
     </div>
   );
 }
