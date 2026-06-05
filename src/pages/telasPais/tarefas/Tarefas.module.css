@@ -40,7 +40,7 @@
   font-size: 23px;
   font-weight: 800;
   margin-bottom: 18px;
-  color: #111;
+  color: #272727;
 }
 
 .summaryTitle:last-of-type {
@@ -64,10 +64,11 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-left: 5px solid #0077ff; /* Verde para indicar progresso/sucesso */
-  border-top: 1px solid #0077ff; 
-  border-right: 1px solid #0077ff; 
-  border-bottom: 1px solid #0077ff; 
+  border-left: 5px solid #0077ff;
+  /* Verde para indicar progresso/sucesso */
+  border-top: 1px solid #0077ff;
+  border-right: 1px solid #0077ff;
+  border-bottom: 1px solid #0077ff;
 }
 
 .infoPrincipal {
@@ -79,7 +80,7 @@
 .nomeFilho {
   font-size: 1.1rem;
   font-weight: bold;
-  color: #333;
+  color: #272727;
   margin: 0;
 }
 
@@ -117,7 +118,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 .infoCard:hover {
@@ -133,12 +134,12 @@
   font-size: 40px;
   line-height: 1;
   font-weight: 800;
-  color: #1976d2;
+  color: #272727;
 }
 
 .infoText {
   font-size: 15px;
-  color: #6b6b6b;
+  color: #272727;
   font-weight: 500;
 }
 
@@ -160,14 +161,17 @@
 }
 
 .taskCard {
-  border: 1px solid #00c220;
-  background: #fff;
+  border: 1px solid #1976d2;
+  background: linear-gradient(90deg,
+      #0077ff,
+      #00c853);
   border-radius: 14px;
   padding: 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 3px 7px rgba(0,0,0,0.12);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.12);
+  color: #fff;
 }
 
 .taskLeft {
@@ -177,21 +181,22 @@
   gap: 10px;
 }
 
-.taskEmoji {
+.taskIcon {
   animation: moveRight 2s ease-in-out infinite;
-  font-size: 20px;
+  font-size: 35px;
+  color: #fff;
 }
 
 .taskName {
   font-size: 15px;
   font-weight: 800;
-  color: #111;
+  color: #fff;
   margin: 0;
 }
 
 .taskMeta {
   font-size: 12px;
-  color: #777;
+  color: #fff;
   margin: 2px 0 0;
 }
 
@@ -207,7 +212,7 @@
   gap: 4px;
   font-size: 18px;
   font-weight: 800;
-  color: #f5b400;
+  color: #fff;
 }
 
 .deleteBtn {
@@ -215,10 +220,26 @@
   border: none;
   cursor: pointer;
   transition: 0.3s;
+  color: #fff;
+
+  /* Centraliza o ícone e permite que ele mude de tamanho */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Alvo direto no SVG que está dentro do botão de deletar */
+.deleteBtn svg {
+  width: 35px;
+  /* Estava com 17px no SVG original, aumentamos para 22px */
+  height: 35px;
+  /* Mantém a proporção quadrada */
+  transition: 0.3s;
 }
 
 .deleteBtn:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
+  /* Ajustado o hover para crescer a partir do novo tamanho */
   transition: 0.3s;
 }
 
@@ -237,7 +258,7 @@
   justify-content: space-between;
   cursor: pointer;
   color: white;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
 }
 
 .addButton {
@@ -260,8 +281,9 @@
 }
 
 .expiredButton {
-  transition: 0.3s;
-  background: linear-gradient(to right, #c40000, #9d0000);
+  background-color: #fff;
+  border: 1.5px solid #c40000;
+  color: #c40000;
 }
 
 .badgeBlue,

@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router';
 import LoadingScreen from '../../components/LoadingScreen';
 import Counter from '../../components/Counter';
 import MenuInferior from '../../components/MenuInferior/MenuInferior.jsx';
+import { FiCheckSquare } from "react-icons/fi";
+import { IoTrashOutline } from "react-icons/io5";
+import { LuFileSearch2 } from "react-icons/lu";
 
 
 const CoinIcon = () => (
@@ -25,28 +28,7 @@ const CoinIcon = () => (
   </svg>
 );
 
-const TrashIcon = () => (
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
-    <path
-      d="M4 7H20"
-      stroke="#444"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-    />
-    <path
-      d="M9 7V5C9 4.4 9.4 4 10 4H14C14.6 4 15 4.4 15 5V7"
-      stroke="#444"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-    />
-    <path
-      d="M18 7L17.3 18C17.2 19.1 16.3 20 15.2 20H8.8C7.7 20 6.8 19.1 6.7 18L6 7"
-      stroke="#444"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-    />
-  </svg>
-);
+
 
 export default function TasksScreen() {
   const navigate = useNavigate();
@@ -157,7 +139,9 @@ export default function TasksScreen() {
               .map((task) => (
                 <div key={task.id_tarefa} className={styles.taskCard}>
                   <div className={styles.taskLeft}>
-                    <span className={styles.taskEmoji}>🎯</span>
+                    <span className={styles.taskIcon}>
+                      <FiCheckSquare />
+                    </span>
 
                     <div>
                       <h3 className={styles.taskName}>{task.nome_tarefa}</h3>
@@ -175,7 +159,7 @@ export default function TasksScreen() {
                     </div>
 
                     <button className={styles.deleteBtn} onClick={() => deletarTask(task.id_tarefa)}>
-                      <TrashIcon />
+                      <IoTrashOutline />
                     </button>
                   </div>
                 </div>
@@ -188,7 +172,8 @@ export default function TasksScreen() {
         </button>
 
         <button className={styles.analysisButton} onClick={() => { navigate("/analisepai") }}>
-          <span>Tarefas em Análise</span>
+          <LuFileSearch2 />
+          <span>Em Análise</span>
           <span className={styles.badgeBlue}>
             <Counter target={usuario?.filhos?.reduce((acumulador, filho) => {
               const tarefasEmAnalise = filho.tarefas?.filter(
@@ -201,7 +186,8 @@ export default function TasksScreen() {
         </button>
 
         <button className={styles.expiredButton} onClick={() => navigate("/tarefaexpirada")}>
-          <span>Tarefas expiradas</span>
+          <IoIosCloseCircleOutline/>
+          <span>Expiradas</span>
           <span className={styles.badgeRed}>
             <Counter target={usuario?.filhos?.reduce((acumulador, filho) => {
               const tarefasExpiradas = filho.tarefas?.filter(
