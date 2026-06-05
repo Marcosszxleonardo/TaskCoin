@@ -1,0 +1,74 @@
+.screen {
+  min-height: 100vh;
+  max-width: 390px;
+  margin: 0 auto;
+  background: transparent;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.errorWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.emoji {
+  font-size: 64px;
+  animation: floatAnimation 3s ease-in-out infinite;
+}
+
+.code {
+  font-size: 50px;
+  font-weight: 900;
+  color: #c40000; /* Vermelho combinando com suas tarefas expiradas */
+  margin: 0;
+  line-height: 1;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #111;
+  margin: 0;
+}
+
+.message {
+  font-size: 15px;
+  color: #666;
+  font-weight: 500;
+  margin: 0;
+  max-width: 280px;
+}
+
+.backButton {
+  width: 100%;
+  border: none;
+  border-radius: 18px;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 800;
+  background: linear-gradient(to right, #009dff, #0074bd); /* Gradiente azul do seu app */
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+  transition: 0.3s;
+}
+
+.backButton:hover {
+  transform: scale(1.02);
+  font-size: 19px;
+}
+
+@keyframes floatAnimation {
+  0% { transform: translateY(-6px); }
+  50% { transform: translateY(6px); }
+  100% { transform: translateY(-6px); }
+}

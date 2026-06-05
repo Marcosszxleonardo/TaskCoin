@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 
 import App from "./App.jsx";
-
 import Login from "./pages/login/Login";
 import CadastroController from "./pages/cadastro/CadastroController.jsx";
 
@@ -26,7 +25,7 @@ import TarefaFilho from "./pages/telafilhos/tarefas/TarefasFilho";
 import ConquistasFilho from "./pages/telafilhos/conquistas/ConquistasFilho";
 import PerfilFilho from "./pages/telafilhos/perfil/PerfilFilho";
 
-import ErrorPage from "./ErroPage.jsx";
+import ErrorPage from "./ErrorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
