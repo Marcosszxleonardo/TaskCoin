@@ -78,6 +78,9 @@
 }
 
 .nomeFilho {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   font-size: 1.1rem;
   font-weight: bold;
   color: #272727;
@@ -162,16 +165,16 @@
 
 .taskCard {
   border: 1px solid #1976d2;
-  background: linear-gradient(90deg,
-      #0077ff,
-      #00c853);
+  background: linear-gradient(150deg,
+      #fff,
+      #00ff6a46);
   border-radius: 14px;
   padding: 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.12);
-  color: #fff;
+  color: #272727;
 }
 
 .taskLeft {
@@ -183,21 +186,29 @@
 
 .taskIcon {
   animation: moveRight 2s ease-in-out infinite;
-  font-size: 35px;
-  color: #fff;
+  font-size: 30px;
+  color: #272727;
 }
 
 .taskName {
   font-size: 15px;
   font-weight: 800;
-  color: #fff;
+  color: #272727;
   margin: 0;
 }
 
 .taskMeta {
   font-size: 12px;
-  color: #fff;
+  color: #272727;
   margin: 2px 0 0;
+}
+
+.taskMeta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-style: normal;
+  font-weight: 700;
 }
 
 .taskRight {
@@ -212,7 +223,7 @@
   gap: 4px;
   font-size: 18px;
   font-weight: 800;
-  color: #fff;
+  color: #272727;
 }
 
 .deleteBtn {
@@ -220,26 +231,21 @@
   border: none;
   cursor: pointer;
   transition: 0.3s;
-  color: #fff;
+  color: #272727;
 
-  /* Centraliza o ícone e permite que ele mude de tamanho */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Alvo direto no SVG que está dentro do botão de deletar */
 .deleteBtn svg {
-  width: 35px;
-  /* Estava com 17px no SVG original, aumentamos para 22px */
-  height: 35px;
-  /* Mantém a proporção quadrada */
+  width: 25px;
+  height: 25px;
   transition: 0.3s;
 }
 
 .deleteBtn:hover {
   transform: scale(1.15);
-  /* Ajustado o hover para crescer a partir do novo tamanho */
   transition: 0.3s;
 }
 
@@ -259,13 +265,13 @@
   cursor: pointer;
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
+  transition: 0.3s;
 }
 
 .addButton {
   background: linear-gradient(to right, #00a82d, #008f26);
   justify-content: center;
   margin-top: 25px !important;
-  transition: 0.3s;
 }
 
 .addButton:hover,
@@ -276,7 +282,6 @@
 }
 
 .analysisButton {
-  transition: 0.3s;
   background: linear-gradient(to right, #009dff, #0074bd);
 }
 

@@ -21,7 +21,7 @@ export default function ErrorPage() {
       </div>
 
       {/* Botão integrado com o seu router para voltar em segurança */}
-      <button className={styles.backButton} onClick={() => navigate("/tarefas")}>
+      <button className={styles.backButton} onClick={() => navigate("/")}>
         Voltar para o Início
       </button>
     </div>

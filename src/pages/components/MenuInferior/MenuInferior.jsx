@@ -6,27 +6,27 @@ import { GoTasklist } from "react-icons/go";
 import styles from "./MenuInferior.module.css";
 import { useNavigate } from 'react-router';
 
-export default function MenuInferior({ abaAtiva }) {
+export default function MenuInferior({ abaAtiva, usuario }) {
     const navigate = useNavigate();
 
     return (
         <div>
             <nav className={styles.bottomNav} data-page={abaAtiva}>
-                <button className={styles.navBtn} onClick={() => navigate("/tarefas")}>
+                <button className={styles.navBtn} onClick={() => navigate(`/tarefas${usuario}`)}>
                     <span className={styles.navIcon}>
                         <GoTasklist />
                     </span>
                     <span className={styles.navText}>Tarefas</span>
                 </button>
 
-                <button className={styles.navBtn} onClick={() => navigate("/conquistaspai")}>
+                <button className={styles.navBtn} onClick={() => navigate(`/conquistas${usuario}`)}>
                     <span className={styles.navIcon}>
                         <LuSmile />
                     </span>
                     <span className={styles.navText}>Conquistas</span>
                 </button>
 
-                <button className={styles.navBtn} onClick={() => navigate("/perfilpai")}>
+                <button className={styles.navBtn} onClick={() => navigate(`/perfil${usuario}`)}>
                     <span className={styles.navIcon}>
                         <FiUser />
                     </span>

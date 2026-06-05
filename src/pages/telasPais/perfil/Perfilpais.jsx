@@ -2,7 +2,7 @@ import styles from "./perfil.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import avatarPai from "../../../assets/avatarPai.svg"
-import api from "../../services/api";
+import api from "../../../services/api";
 import LoadingScreen from "../../components/LoadingScreen";
 import Counter from "../../components/Counter";
 import MenuInferior from '../../components/MenuInferior/MenuInferior.jsx';
@@ -71,7 +71,7 @@ export default function PerfilPais() {
         </button>
       </div >
 
-      <MenuInferior abaAtiva="perfil" />
+      <MenuInferior abaAtiva="perfil" usuario={"pai"}/>
     </div >
   );
 }

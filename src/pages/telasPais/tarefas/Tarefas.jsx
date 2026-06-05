@@ -1,6 +1,6 @@
 import styles from './Tarefas.module.css';
 import "../../../global.css"
-import api from "../../services/api"
+import api from "../../../services/api";
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import LoadingScreen from '../../components/LoadingScreen';
@@ -8,7 +8,10 @@ import Counter from '../../components/Counter';
 import MenuInferior from '../../components/MenuInferior/MenuInferior.jsx';
 import { FiCheckSquare } from "react-icons/fi";
 import { IoTrashOutline } from "react-icons/io5";
+import { FaClock } from "react-icons/fa";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 import { LuFileSearch2 } from "react-icons/lu";
+import { IoHappy } from "react-icons/io5";
 
 
 const CoinIcon = () => (
@@ -118,7 +121,7 @@ export default function TasksScreen() {
           {usuario?.filhos?.map((filho) => (
             <div key={filho.id} className={styles.cardFilho}>
               <div className={styles.infoPrincipal}>
-                <p className={styles.nomeFilho}>✦ {filho.nome}</p>
+                <p className={styles.nomeFilho}><IoHappy /> {filho.nome}</p>
                 <p className={styles.statsConclusao}><Counter target={filho.tarefas_concluidas} duration={1000} /> tarefas concluídas</p>
               </div>
 
@@ -147,7 +150,7 @@ export default function TasksScreen() {
                       <h3 className={styles.taskName}>{task.nome_tarefa}</h3>
 
                       <p className={styles.taskMeta}>
-                        {filho.nome} - ⏳ {formatarData(task.expiracao_tarefa)}...
+                        {filho.nome}<br /><span><FaClock /> {formatarData(task.expiracao_tarefa)}...</span>
                       </p>
                     </div>
                   </div>
@@ -200,7 +203,7 @@ export default function TasksScreen() {
         </button>
       </section>
 
-      <MenuInferior abaAtiva="tarefas" />
+      <MenuInferior abaAtiva="tarefas" usuario={"pai"}/>
 
     </div>
   );

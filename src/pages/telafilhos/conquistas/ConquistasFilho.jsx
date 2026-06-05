@@ -1,5 +1,5 @@
 import styles from "./ConquistasFilho.module.css";
-import api from "../../services/api"
+import api from "../../../services/api";
 import LoadingScreen from "../../components/LoadingScreen"
 import "../../../global.css"
 import { useState, useEffect } from "react";

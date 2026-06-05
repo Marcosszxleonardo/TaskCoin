@@ -1,8 +1,9 @@
 import styles from './AdicionarTarefa.module.css';
 import "../../../global.css"
-import api from "../../services/api"
+import api from "../../../services/api";
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import MenuInferior from '../../components/MenuInferior/MenuInferior';
 import LoadingScreen from '../../components/LoadingScreen';
 import Counter from '../../components/Counter';
 
@@ -159,23 +160,7 @@ export default function AdicionarTarefa() {
 
       <br /><br /><br /><br /><br />
 
-      {/* NAVBAR */}
-      <nav className="bottomNav">
-        <button className="navBtn active" onClick={() => { navigate("/tarefaspai") }}>
-          <span className="navIcon">☑️</span>
-          <span className="navText">Tarefas</span>
-        </button>
-
-        <button className="navBtn" onClick={() => { navigate("/conquistaspai") }}>
-          <span className="navIcon">🌟</span>
-          <span className="navText">Conquistas</span>
-        </button>
-
-        <button className="navBtn" onClick={() => { navigate("/perfilpai") }}>
-          <span className="navIcon">👤</span>
-          <span className="navText">Perfil</span>
-        </button>
-      </nav>
+      <MenuInferior abaAtiva="tarefas" usuario={"pai"}/>
     </div>
   );
 }

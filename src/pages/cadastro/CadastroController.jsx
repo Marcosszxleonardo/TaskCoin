@@ -2,7 +2,7 @@ import Index from "./associarFilho/Index";
 import Cadastro from "./confirmarFilho/Cadastro";
 import { useState } from "react";
 import CadastrarResponsavel from "./paiMae/CadastrarResponsavel";
-import api from "../services/api";
+import api from "../../services/api";
 import { useNavigate } from "react-router";
 
 export default function CadastroController() {

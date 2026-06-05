@@ -1,4 +1,5 @@
 .screen {
+  animation: slideDown 0.5s ease-in-out;
   min-height: 100vh;
   max-width: 390px;
   margin: 0 auto;
@@ -71,4 +72,16 @@
   0% { transform: translateY(-6px); }
   50% { transform: translateY(6px); }
   100% { transform: translateY(-6px); }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

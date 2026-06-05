@@ -1,5 +1,5 @@
 import styles from "./PerfilFilho.module.css";
-import api from "../../services/api"
+import api from "../../../services/api";
 import LoadingScreen from "../../components/LoadingScreen"
 import avatar from "../../../assets/avatar.svg"
 import "../../../global.css"

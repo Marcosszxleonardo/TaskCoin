@@ -127,6 +127,7 @@ body{
 }
 
 .selectTop{
+  cursor: pointer;
   height:54px;
 
   padding:0 14px;
@@ -146,6 +147,7 @@ body{
 }
 
 .filhosLista {
+  cursor: pointer;
   animation: none !important;
   padding:0 14px 14px;
 }

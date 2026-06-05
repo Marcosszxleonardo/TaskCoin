@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../../global.css";
 import styles from "./Login.module.css";
-import api from "../services/api";
+import api from "../../services/api";
 import { Link, useNavigate } from "react-router-dom";
 import TaskCoinIcon from "../../assets/taskcoinIcon-removebg.png";
 

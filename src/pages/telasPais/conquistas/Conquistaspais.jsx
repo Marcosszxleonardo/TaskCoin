@@ -2,7 +2,7 @@ import styles from "./conquistas.module.css";
 import "../../../global.css";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
-import api from "../../services/api"
+import api from "../../../services/api";
 import Counter from "../../components/Counter";
 import LoadingScreen from "../../components/LoadingScreen";
 import MenuInferior from '../../components/MenuInferior/MenuInferior.jsx';
@@ -139,7 +139,7 @@ export default function Conquistaspais() {
       </section>
 
 
-      <MenuInferior abaAtiva="conquistas" />
+      <MenuInferior abaAtiva="conquistas" usuario={"pai"}/>
 
     </div>
   );

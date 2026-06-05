@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./tarefasfilho.module.css";
 import "../../../global.css";
-import api from "../../services/api";
+import api from "../../../services/api";
 import Counter from "../../components/Counter";
 import LoadingScreen from "../../components/LoadingScreen";
 import { Navigate } from "react-router";
