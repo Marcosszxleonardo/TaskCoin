@@ -1,6 +1,7 @@
 import { TaskCoinLogo } from "./TaskCoinLogo";
 import styles from "./ParentRegistrationForm.module.css";
 import { useState } from "react";
+import TaskcoinIcon from "../../../assets/taskcoinIcon-removebg.png"
 
 export default function CadastrarResponsavel({ onSubmit }) {
   const [form, setForm] = useState({
@@ -28,35 +29,33 @@ export default function CadastrarResponsavel({ onSubmit }) {
 
   return (
     <div
-      style={{
-        minHeight: "100vh",
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "#fff",
-      }}
+      className={styles.page}
     >
       <div
         style={{
+          height: "100vh",
           width: "100%",
-          maxWidth: "412px",
-          padding: "40px 20px",
+          padding: "0",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          justifyContent: "center"
         }}
       >
-        <TaskCoinLogo />
         <div className={styles.container}>
           <div className={styles.header}>
+            <img src={TaskcoinIcon} className={styles.taskcoinIcon} alt="Logo do TaskCoin" />
+            <h1 className={styles.taskcoinTitle}>TASKCOIN</h1>
+            <p className={styles.tagline}>
+              Disciplina que recompensa
+            </p>
+          </div>
+          <div className={styles.formContainer}><div className={styles.headerTitle}>
             <svg
               width="36"
               height="36"
               viewBox="0 0 36 36"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className={styles.icon}
             >
               <g clipPath="url(#clip0_users)">
                 <path
@@ -74,48 +73,50 @@ export default function CadastrarResponsavel({ onSubmit }) {
                 </clipPath>
               </defs>
             </svg>
-            <span className={styles.headerTitle}>
+
+            <span className={styles.headerText}>
               Cadastro do Responsável
             </span>
           </div>
+            <form onSubmit={handleSubmit} className={styles.form}>
+              <input
+                type="text"
+                name="nome_pai"
+                placeholder="Nome completo"
+                value={form.nome_pai}
+                onChange={handleChange}
+                className={styles.input}
+                autoComplete="off"
+                required
+              />
 
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <input
-              type="text"
-              name="nome_pai"
-              placeholder="Nome completo"
-              value={form.nome_pai}
-              onChange={handleChange}
-              className={styles.input}
-              autoComplete="off"
-              required
-            />
+              <input
+                type="email"
+                name="email_pai"
+                placeholder="E-mail"
+                value={form.email_pai}
+                onChange={handleChange}
+                className={styles.input}
+                autoComplete="off"
+                required
+              />
 
-            <input
-              type="email"
-              name="email_pai"
-              placeholder="E-mail"
-              value={form.email_pai}
-              onChange={handleChange}
-              className={styles.input}
-              autoComplete="off"
-              required
-            />
+              <input
+                type="password"
+                name="senha_pai"
+                placeholder="Senha"
+                value={form.senha_pai}
+                onChange={handleChange}
+                className={styles.input}
+                autoComplete="off"
+                required
+              />
 
-            <input
-              type="password"
-              name="senha_pai"
-              placeholder="Senha"
-              value={form.senha_pai}
-              onChange={handleChange}
-              className={styles.input}
-              autoComplete="off"
-              required
-            />
+              <button className={styles.btnContinuar} type="submit">Continuar</button>
 
-            <button className={styles.btnContinuar} type="submit">Continuar</button>
+            </form>
+          </div>
 
-          </form>
         </div>
       </div>
     </div>

@@ -111,7 +111,7 @@
 }
 
 .btnEntrar {
-  animation: fadeIn 1s ease;
+  animation: fadeIn 0.5s ease;
   width: 100%;
   height: 60px;
   margin-top: 18px;
@@ -126,6 +126,12 @@
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.btnEntrar:hover {
+  transform: scale(1.03);
+  transition: 0.3s;
 }
 
 .accountRow {
@@ -159,6 +165,12 @@
   text-decoration: none;   
   box-sizing: border-box;  
   text-align: center;
+  transition: 0.3s;
+}
+
+.btnCadastrar:hover {
+  transform: scale(1.03);
+  transition: 0.3s;
 }
 
 .title {
