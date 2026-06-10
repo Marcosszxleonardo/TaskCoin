@@ -96,114 +96,117 @@ export default function TasksScreen() {
         </div>
       </header>
 
-      <section className={styles.summary}>
-        <h2 className={styles.summaryTitle}>Resumo dos Filhos</h2>
+      <div className={styles.alinhamentoSections}>
+        <section className={styles.summary}>
+          <h2 className={styles.summaryTitle}>Panorama Geral</h2>
 
-        <div className={styles.cards}>
-          <div className={styles.infoCard}>
-            <span className={styles.infoNumber}><Counter target={usuario?.filhos?.length} duration={500} /></span>
-            <span className={styles.infoText}>Filho(s)</span>
-          </div>
-
-          <div className={styles.infoCard}>
-            <span className={styles.infoNumber}><Counter target={contagemTarefas} duration={500} /></span>
-            <span className={styles.infoText}>Tarefa(s)</span>
-          </div>
-
-          <div className={styles.infoCard}>
-            <span className={styles.infoNumber}><Counter target={contagemTarefasConcluidas} duration={500} /></span>
-            <span className={styles.infoText}>Concluída(s)</span>
-          </div>
-        </div>
-
-        <h2 className={styles.summaryTitle}>Filhos Cadastrados</h2>
-        <div className="filhosContainer">
-          {usuario?.filhos?.map((filho) => (
-            <div key={filho.id} className={styles.cardFilho}>
-              <div className={styles.infoPrincipal}>
-                <p className={styles.nomeFilho}><IoHappy /> {filho.nome}</p>
-                <p className={styles.statsConclusao}><Counter target={filho.tarefas_concluidas} duration={1000} /> tarefas concluídas</p>
-              </div>
-
-              <div className={styles.saldoCard}>
-                <Counter target={filho.saldo} duration={1000} /> 🪙
-              </div>
+          <div className={styles.cards}>
+            <div className={styles.infoCard}>
+              <span className={styles.infoNumber}><Counter target={usuario?.filhos?.length} duration={500} /></span>
+              <span className={styles.infoText}>Filho(s)</span>
             </div>
-          ))}
-        </div>
-      </section>
 
-      <section className={styles.tasksSection}>
-        <h2 className={styles.tasksTitle}>Tarefas ativas</h2>
+            <div className={styles.infoCard}>
+              <span className={styles.infoNumber}><Counter target={contagemTarefas} duration={500} /></span>
+              <span className={styles.infoText}>Tarefa(s)</span>
+            </div>
 
-        <div className={styles.taskList}>
-          {usuario?.filhos?.map((filho) => (
-            filho.tarefas?.filter((task) => task.status_tarefa === "A_FAZER")
-              .map((task) => (
-                <div key={task.id_tarefa} className={styles.taskCard}>
-                  <div className={styles.taskLeft}>
-                    <span className={styles.taskIcon}>
-                      <FiCheckSquare />
-                    </span>
+            <div className={styles.infoCard}>
+              <span className={styles.infoNumber}><Counter target={contagemTarefasConcluidas} duration={500} /></span>
+              <span className={styles.infoText}>Concluída(s)</span>
+            </div>
+          </div>
+        </section>
 
-                    <div>
-                      <h3 className={styles.taskName}>{task.nome_tarefa}</h3>
-
-                      <p className={styles.taskMeta}>
-                        {filho.nome}<br /><span><FaClock /> {formatarData(task.expiracao_tarefa)}...</span>
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className={styles.taskRight}>
-                    <div className={styles.points}>
-                      <span><Counter target={task.valor_tarefa} duration={1000} /></span>
-                      🪙
-                    </div>
-
-                    <button className={styles.deleteBtn} onClick={() => deletarTask(task.id_tarefa)}>
-                      <IoTrashOutline />
-                    </button>
-                  </div>
+        <section className={styles.tasksSection}>
+          <h2 className={styles.summaryTitle}>Filhos Cadastrados</h2>
+          <div>
+            {usuario?.filhos?.map((filho) => (
+              <div key={filho.id} className={styles.cardFilho}>
+                <div className={styles.infoPrincipal}>
+                  <p className={styles.nomeFilho}><IoHappy /> {filho.nome}</p>
+                  <p className={styles.statsConclusao}><Counter target={filho.tarefas_concluidas} duration={1000} /> tarefas concluídas</p>
                 </div>
-              ))
-          ))}
-        </div>
 
-        <button className={styles.addButton} onClick={() => { navigate("/adicionartarefa") }}>
-          + Adicionar Tarefa
-        </button>
+                <div className={styles.saldoCard}>
+                  <Counter target={filho.saldo} duration={1000} /> 🪙
+                </div>
+              </div>
+            ))}
+          </div>
+          <br />
+          <h2 className={styles.tasksTitle}>Tarefas ativas</h2>
 
-        <button className={styles.analysisButton} onClick={() => { navigate("/analisepai") }}>
-          <LuFileSearch2 />
-          <span>Em Análise</span>
-          <span className={styles.badgeBlue}>
-            <Counter target={usuario?.filhos?.reduce((acumulador, filho) => {
-              const tarefasEmAnalise = filho.tarefas?.filter(
-                (task) => task.status_tarefa === "ANALISE"
-              ) || [];
+          <div className={styles.taskList}>
+            {usuario?.filhos?.map((filho) => (
+              filho.tarefas?.filter((task) => task.status_tarefa === "A_FAZER")
+                .map((task) => (
+                  <div key={task.id_tarefa} className={styles.taskCard}>
+                    <div className={styles.taskLeft}>
+                      <span className={styles.taskIcon}>
+                        <FiCheckSquare />
+                      </span>
 
-              return acumulador + tarefasEmAnalise.length
-            }, 0)} duration={500} />
-          </span>
-        </button>
+                      <div>
+                        <h3 className={styles.taskName}>{task.nome_tarefa}</h3>
 
-        <button className={styles.expiredButton} onClick={() => navigate("/tarefaexpirada")}>
-          <IoIosCloseCircleOutline/>
-          <span>Expiradas</span>
-          <span className={styles.badgeRed}>
-            <Counter target={usuario?.filhos?.reduce((acumulador, filho) => {
-              const tarefasExpiradas = filho.tarefas?.filter(
-                (task) => task.status_tarefa === "EXPIRADA"
-              ) || [];
+                        <p className={styles.taskMeta}>
+                          {filho.nome}<br /><span><FaClock /> {formatarData(task.expiracao_tarefa)}...</span>
+                        </p>
+                      </div>
+                    </div>
 
-              return acumulador + tarefasExpiradas.length
-            }, 0)} duration={500} />
-          </span>
-        </button>
-      </section>
+                    <div className={styles.taskRight}>
+                      <div className={styles.points}>
+                        <span><Counter target={task.valor_tarefa} duration={1000} /></span>
+                        🪙
+                      </div>
 
-      <MenuInferior abaAtiva="tarefas" usuario={"pai"}/>
+                      <button className={styles.deleteBtn} onClick={() => deletarTask(task.id_tarefa)}>
+                        <IoTrashOutline />
+                      </button>
+                    </div>
+                  </div>
+                ))
+            ))}
+          </div>
+
+          <button className={styles.addButton} onClick={() => { navigate("/adicionartarefa") }}>
+            + Adicionar Tarefa
+          </button>
+
+          <button className={styles.analysisButton} onClick={() => { navigate("/analisepai") }}>
+            <LuFileSearch2 />
+            <span>Em Análise</span>
+            <span className={styles.badgeBlue}>
+              <Counter target={usuario?.filhos?.reduce((acumulador, filho) => {
+                const tarefasEmAnalise = filho.tarefas?.filter(
+                  (task) => task.status_tarefa === "ANALISE"
+                ) || [];
+
+                return acumulador + tarefasEmAnalise.length
+              }, 0)} duration={500} />
+            </span>
+          </button>
+
+          <button className={styles.expiredButton} onClick={() => navigate("/tarefaexpirada")}>
+            <IoIosCloseCircleOutline />
+            <span>Expiradas</span>
+            <span className={styles.badgeRed}>
+              <Counter target={usuario?.filhos?.reduce((acumulador, filho) => {
+                const tarefasExpiradas = filho.tarefas?.filter(
+                  (task) => task.status_tarefa === "EXPIRADA"
+                ) || [];
+
+                return acumulador + tarefasExpiradas.length
+              }, 0)} duration={500} />
+            </span>
+          </button>
+        </section>
+      </div>
+
+
+      <MenuInferior abaAtiva="tarefas" usuario={"pai"} />
 
     </div>
   );

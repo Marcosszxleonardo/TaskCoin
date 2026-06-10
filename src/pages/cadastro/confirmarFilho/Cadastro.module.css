@@ -2,7 +2,12 @@
 
 .container {
   min-height: 100vh;
-  background-color: #ffffff;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(117, 255, 168, 0.3) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(43, 142, 255, 0.35) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(85, 212, 247, 0.17) 0px, transparent 50%);
+  background-attachment: fixed;
+  animation: auroraBoreal 5s ease infinite alternate, fadeIn 1s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,4 +92,48 @@
     #0077ff 0%,
     #004a9e 100%
   );
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes auroraBoreal {
+  0% {
+    background-position: 0% 0%;
+    background-size: 200% 200%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+    background-size: 220% 180%;
+  }
+
+  100% {
+    background-position: 0% 100%;
+    background-size: 180% 220%;
+  }
+}
+
+@keyframes smoothMove {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
