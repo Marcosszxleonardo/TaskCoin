@@ -2,14 +2,14 @@
 
 html,
 body{
-  width:100%;
+  min-width: 100vw;
   min-height:100vh;
-  overflow-x:hidden;
+  overflow-x: hidden;
 }
 
 /* PAGINA */
 
-.pageBg{
+.pageBg {
   align-self: center;
   justify-self: center;
   display: flex;
@@ -19,16 +19,54 @@ body{
   max-width: 390px;
   min-height: 100vh;
   background: transparent;
+  padding-bottom: 30px;
 }
+
+/* HEADER */
+.header {
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  background: linear-gradient(to bottom, white, rgb(228, 244, 255));
+  padding: 14px;
+  border-bottom: 2px solid #0077ff;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 900;
+  color: #0077ff;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.greeting {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0077ff;
+}
+
 
 /* TITULO */
 
-.tituloArea{
-  padding-top: 30px;
+.tituloArea {
+  animation: fadeIn 1s ease;
+  padding-top: 90px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   margin-bottom:12px;
 }
 
@@ -62,7 +100,8 @@ body{
 /* SUBTITULO */
 
 .subtitulo{
-  color:#9a9a9a;
+  animation: fadeIn 1s ease;
+  color:#111;
   font-size:15px;
   line-height:1.4;
   margin-bottom:30px;
@@ -94,6 +133,10 @@ body{
 
 .inputField::placeholder{
   color:#7c7c7c;
+}
+
+.inputField:focus {
+  border-color: #0077ff;
 }
 
 /* DATA */

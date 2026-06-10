@@ -84,62 +84,68 @@ export default function Conquistaspais() {
       <header className={styles.header}>
         <div className={styles.headerRow}>
           <h1 className={styles.logo}>TASKCOIN</h1>
-          <span className={styles.greeting}>Olá, {usuario.nome}!</span>
+          <span className={styles.greeting}>Olá, <strong>{usuario.nome}!</strong></span>
         </div>
       </header>
 
       {/* CONTEUDO */}
-      <section className={styles.section}>
-        <h1 className={styles.title}>Conquistas Cadastradas</h1>
+      <div className={styles.sectionWrapper}>
+        <section className={styles.section}>
+          <div className={styles.conquistasTitle}>
+            <h1 className={styles.title}>Conquistas Cadastradas</h1>
+            <p className={styles.subtitulo}>Crie conquistas para recompensar os esforços dos seus filhos!</p>
+          </div>
+          <div className={styles.achievementsContainer}>
+            <div className={styles.cards}>
+              {usuario?.filhos?.map((filho) => (
+                filho.recompensas?.map((recompensa) => (
+                  <div className={styles.card} key={recompensa.id_recompensa}>
+                    <div className={styles.left}>
+                      <p>🌟</p>
 
-        <div className={styles.cards}>
-          {usuario?.filhos?.map((filho) => (
-            filho.recompensas?.map((recompensa) => (
-              <div className={styles.card} key={recompensa.id_recompensa}>
-                <div className={styles.left}>
-                  <p>🌟</p>
+                      <div className={styles.info}>
+                        <h2>{recompensa.nome_recompensa}</h2>
 
-                  <div className={styles.info}>
-                    <h2>{recompensa.nome_recompensa}</h2>
-
-                    <div className={styles.points}>
-                      🪙
-                      <span><Counter target={recompensa.valor_recompensa} duration={500} /></span>
+                        <div className={styles.points}>
+                          🪙
+                          <span><Counter target={recompensa.valor_recompensa} duration={500} /></span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div className={styles.right}>
-                  {recompensa.status_recompensa === "ADQUIRIDA" ? (
-                    <div className={styles.resgatado}>
-                      {filho.nome} ADQUIRIU!
+                    <div className={styles.right}>
+                      {recompensa.status_recompensa === "ADQUIRIDA" ? (
+                        <div className={styles.resgatado}>
+                          {filho.nome} ADQUIRIU!
+                        </div>
+                      ) : (
+                        <>
+                          <button
+                            className={styles.deleteBtn}
+                            onClick={() => deletarConquista(recompensa.id_recompensa)}
+                          >
+                            <TrashIcon />
+                          </button>
+
+                          <span className={styles.resgates}>
+                            {filho.nome} NÃO RESGATOU
+                          </span>
+                        </>
+                      )}
                     </div>
-                  ) : (
-                    <>
-                      <button
-                        className={styles.deleteBtn}
-                        onClick={() => deletarConquista(recompensa.id_recompensa)}
-                      >
-                        <TrashIcon />
-                      </button>
+                  </div>))))}
+            </div>
 
-                      <span className={styles.resgates}>
-                        {filho.nome} NÃO RESGATOU
-                      </span>
-                    </>
-                  )}
-                </div>
-              </div>))))}
-        </div>
+            {/* BOTAO */}
+            < button className={styles.addButton} onClick={() => { navigate("/adicionarconquista") }}>
+              + Adicionar Conquistas
+            </button>
+          </div>
 
-        {/* BOTAO */}
-        < button className={styles.addButton} onClick={() => { navigate("/adicionarconquista") }}>
-          + Adicionar Conquistas
-        </button>
-      </section>
+        </section>
+      </div>
 
-
-      <MenuInferior abaAtiva="conquistas" usuario={"pai"}/>
+      <MenuInferior abaAtiva="conquistas" usuario={"pai"} />
 
     </div>
   );

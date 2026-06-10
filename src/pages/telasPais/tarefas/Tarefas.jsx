@@ -92,7 +92,7 @@ export default function TasksScreen() {
       <header className={styles.header}>
         <div className={styles.headerRow}>
           <h1 className={styles.logo}>TASKCOIN</h1>
-          <span className={styles.greeting}>Olá, {usuario.nome}!</span>
+          <span className={styles.greeting}>Olá, <strong>{usuario.nome}!</strong></span>
         </div>
       </header>
 

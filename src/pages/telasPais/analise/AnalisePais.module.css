@@ -1,22 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* FUNDO */
-
 .pageBg {
+  align-self: center;
   justify-self: center;
-  width: 100%;
-  max-width: 400px;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  min-height: 100vh;
+  background: transparent;
+  padding-bottom: 30px;
 }
 
 /* HEADER */
+.header {
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  background: linear-gradient(to bottom, white, rgb(228, 244, 255));
+  padding: 14px;
+  border-bottom: 2px solid #0077ff;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 900;
+  color: #0077ff;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.greeting {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0077ff;
+}
 
 .topoAnalise {
-  padding-top: 30px;
+  animation: fadeIn 1s ease;
+  padding-top: 90px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,9 +72,10 @@
 }
 
 .subtitulo {
+  animation: fadeIn 1s ease;
   width: 80%;
   text-align: center;
-  color: #8d8d8d;
+  color: #111;
   font-size: 14px;
   line-height: 1.4;
   margin-bottom: 28px;
@@ -58,7 +95,7 @@
 .cardTarefa {
   width: 90%;
   border: 2px solid #009dff;
-  animation: fadeIn 0.5s ease;
+  animation: fadeIn 1s ease;
   background: white;
   border-radius: 24px;
   padding: 18px;

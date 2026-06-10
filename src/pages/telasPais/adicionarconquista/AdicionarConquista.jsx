@@ -62,9 +62,19 @@ export default function AdicionarConquista() {
     }
   }
 
+  if(loading) {
+    return <LoadingScreen/>
+  }
+
   return (
     <div className={styles.pageBg}>
       {/* TOPO */}
+      <header className={styles.header}>
+              <div className={styles.headerRow}>
+                <h1 className={styles.logo}>TASKCOIN</h1>
+                <span className={styles.greeting}>Olá, <strong>{usuario.nome}!</strong></span>
+              </div>
+            </header>
 
       {/* TITULO */}
       <div className={styles.tituloArea}>

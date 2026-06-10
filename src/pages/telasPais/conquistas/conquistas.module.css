@@ -1,16 +1,21 @@
 .screen {
+  height: 100vh;
   min-height: 100vh;
-  max-width: 390px;
+  min-width: 100vw;
   margin: 0 auto;
   background: transparent;
   font-family: 'Segoe UI', sans-serif;
-  padding-bottom: 95px;
+  margin-bottom: 50px;
 }
 
 /* --- ESTRUTURA GERAL --- */
 .header {
-  padding: 24px 20px 10px;
-  background: transparent;
+  width: 100vw;
+  position: fixed;
+  z-index: 1000;
+  background: linear-gradient(to bottom, white, rgb(228, 244, 255));
+  padding: 14px;
+  border-bottom: 2px solid #0077ff;
 }
 
 .headerRow {
@@ -27,11 +32,6 @@
   letter-spacing: -1px;
 }
 
-.header {
-  padding: 24px 20px 10px;
-  background: transparent;
-}
-
 .headerRow {
   display: flex;
   justify-content: space-between;
@@ -46,10 +46,13 @@
 
 /* --- SEÇÃO DE CONTEÚDO --- */
 .section {
-  padding: 0 15px;
+  justify-self: center;
+  max-width: 90%;
+  padding-top: 80px;
 }
 
 .title {
+  text-shadow: 2px 2px 50px rgba(255, 225, 0, 0.414), 2px 2px 1px rgba(255, 225, 0, 0.414);
   font-size: 23px;
   font-weight: 800;
   color: #333;
@@ -60,7 +63,7 @@
 .cards {
   display: flex;
   flex-direction: column;
-  gap: 12px; 
+  gap: 12px;
 }
 
 .card {
@@ -105,6 +108,14 @@
 .coin {
   font-size: 16px;
   font-weight: 900;
+}
+
+.subtitulo {
+  color: #000000;
+  font-size: 15px;
+  line-height: 1.4;
+  margin-bottom: 30px;
+  font-weight: 500;
 }
 
 /* --- LADO DIREITO DO CARD --- */
@@ -164,14 +175,14 @@
   justify-content: space-between;
   cursor: pointer;
   color: white;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
   background: linear-gradient(to right, #00a82d, #008f26);
   justify-content: center;
   transition: 0.3s;
 }
 
 .addButton:hover {
-  font-size: 22px;
+  font-size: 21px;
   transition: 0.3s;
 }
 
@@ -200,5 +211,65 @@
 
   100% {
     color: #0077ff;
+  }
+}
+
+@media (min-width: 800px) {
+  .sectionWrapper {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+  }
+
+  .section {
+    gap: 120px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .cards {
+    gap: 15px;
+  }
+
+  .card {
+    transform: scale(1.05);
+  }
+
+  .card h2 {
+    width: 70%;
+  }
+
+  .addButton {
+    margin-top: 15px;
+    transform: scaleX(1.05);
+  }
+
+  .title {
+    text-align: center;
+    font-size: 45px;
+  }
+
+  .subtitulo {
+    margin-top: -15px;
+    text-align: center;
+  }
+
+  .conquistasTitle {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
   }
 }
