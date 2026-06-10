@@ -157,7 +157,7 @@
 }
 
 .levelTitle {
-  font-size: 16px !important;
+  font-size: 15px !important;
   background: linear-gradient(35deg, rgba(0, 119, 255, 1), rgba(2, 198, 68, 1));
   -webkit-background-clip: text;
   background-clip: text;
@@ -245,7 +245,7 @@
 }
 
 .taskName {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   color: #111;
 
@@ -513,7 +513,7 @@
   }
 
   .tasksTitle {
-    padding-top: 180px;
+    padding-top: 130px;
   }
 }
 

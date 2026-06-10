@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 390px;
+  max-width: 400px;
   min-height: 100vh;
   background: transparent;
   font-family: 'Nunito', sans-serif;
@@ -124,7 +124,7 @@
 
 .progressTop h2 {
   font-style: italic;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   color: #222;
 }
@@ -183,8 +183,12 @@
 }
 
 .levelTitle {
-  font-size: 16px !important;
-  color: #009dff !important;
+  font-size: 15px !important;
+  background: linear-gradient(35deg, rgba(0, 119, 255, 1), rgba(2, 198, 68, 1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 100%;
 }
 
 /* SECTION */

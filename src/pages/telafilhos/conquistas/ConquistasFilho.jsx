@@ -96,7 +96,7 @@ export default function ConquistasFilho() {
 
             <div className={styles.progressTop}>
               {usuario.nivel && (
-                <h2>Nv. {usuario.nivel.nivel} - <span className={styles.levelTitle}>{usuario.nivel.titulo_nivel}</span></h2>
+                <h2>Nv. {usuario.nivel.nivel} - <span className={styles.levelTitle}>{usuario.nivel.titulo_nivel}ㅤ</span></h2>
               )}
               <span>
                 <Counter target={porcentagemProgresso} duration={1000}></Counter>%
@@ -114,7 +114,7 @@ export default function ConquistasFilho() {
             )}
           </section>
         </div>
-        
+
         <div className={styles.rightSide}>
           <section className={styles.section}>
 
