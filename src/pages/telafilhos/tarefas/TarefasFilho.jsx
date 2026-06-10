@@ -6,6 +6,9 @@ import api from "../../../services/api";
 import Counter from "../../components/Counter";
 import LoadingScreen from "../../components/LoadingScreen";
 import { Navigate } from "react-router";
+import { FiCheckSquare } from "react-icons/fi";
+import { FaClock } from "react-icons/fa";
+import MenuInferior from "../../components/MenuInferior/MenuInferior";
 
 export default function TarefaFilho() {
   const [usuario, setUsuario] = useState("");
@@ -75,7 +78,7 @@ export default function TarefaFilho() {
   }
 
   if (loading) {
-    return <LoadingScreen/>
+    return <LoadingScreen />
   }
 
   return (
@@ -86,111 +89,101 @@ export default function TarefaFilho() {
         <span className={styles.greeting}>Olá, {usuario.nome}!</span>
       </header>
 
-      <section className={styles.pointsCard}>
+      <div className={styles.containerWrapper}>
+        <div className={styles.leftSide}>
+          <section className={styles.pointsCard}>
 
-        <span className={styles.pointsLabel}>
-          Pontos:
-        </span>
+            <span className={styles.pointsLabel}>
+              Pontos:
+            </span>
 
-        <div className={styles.pointsInfo}>
-          <span className={styles.coin}>🪙</span>
-          <span className={styles.pointsNumber}>
-            <Counter target={usuario.saldo} duration={1000} />
-          </span>
-        </div>
-
-      </section>
-
-      <section className={styles.levelCard}>
-
-        <div className={styles.levelTop}>
-          {usuario.nivel && (
-            <h2>Nv. {usuario.nivel.nivel} - <span className={styles.levelTitle}>{usuario.nivel.titulo_nivel}</span></h2>
-          )}
-
-          <span><Counter target={porcentagemProgresso} duration={1000} />%</span>
-        </div>
-
-        <div className={styles.progressBar}>
-          <div className={styles.progressFill} style={{ width: `${porcentagemProgresso}%` }}></div>
-        </div>
-
-        {usuario.nivel && (
-          <p>{usuario.tarefas_concluidas}/{usuario.nivel.tarefas_requeridas + 1} Tarefas concluídas para subir de nível</p>
-        )}
-
-        {usuario.nivel && (
-          <h4>"{usuario.nivel.descricao_nivel}"</h4>
-        )}
-      </section>
-
-      <section className={styles.tasksSection}>
-        <h2 className={styles.tasksTitle}>
-          Tarefas do dia
-        </h2>
-
-        {usuario && usuario.tarefas.slice().sort((a, b) => {
-          return prioridadeStatus[a.status_tarefa] - prioridadeStatus[b.status_tarefa];
-        }).map((tarefa) => (
-
-          <div key={tarefa.id_tarefa} className={`${styles.taskCard} ${tarefaExpandida === tarefa.id_tarefa ? styles.expanded : ''}`}>
-
-            <div className={styles.taskHeader}>
-              <div className={styles.taskContent}>
-                <span className={styles.taskEmoji}>🎯</span>
-                <div>
-                  <h3 className={styles.taskName}>{tarefa.nome_tarefa}</h3>
-                  <span className={styles.taskMeta}>⏳ {formatarData(tarefa.expiracao_tarefa)}...</span>
-                </div>
-              </div>
-
-              <div className={styles.taskRight}>
-                <span className={styles.taskPoints}><Counter target={tarefa.valor_tarefa} duration={1000} /> 🪙</span>
-                <span className={styles.arrow}>
-                  <button onClick={() => toggleTarefa(tarefa.id_tarefa)}>
-                    {tarefaExpandida === tarefa.id_tarefa ? '▴' : '▾'}
-                  </button>
-                </span>
-              </div>
+            <div className={styles.pointsInfo}>
+              <span className={styles.coin}>🪙</span>
+              <span className={styles.pointsNumber}>
+                <Counter target={usuario.saldo} duration={1000} />
+              </span>
             </div>
 
-            <div className={styles.taskDetails}>
-              <div className={styles.taskDescription}>
-                <p>{tarefa.descricao_tarefa}</p>
-              </div>
+          </section>
+
+          <section className={styles.levelCard}>
+
+            <div className={styles.levelTop}>
+              {usuario.nivel && (
+                <h2>Nv. {usuario.nivel.nivel} - <span className={styles.levelTitle}>{usuario.nivel.titulo_nivel}ㅤ</span></h2>
+              )}
+
+              <span><Counter target={porcentagemProgresso} duration={1000} />%</span>
             </div>
 
-            {tarefa.status_tarefa === "CONCLUIDA" ? (
-              <button className={styles.completed} disabled>Concluído!</button>
-            ) : tarefa.status_tarefa === "ANALISE" ? (
-              <button className={styles.analysis}>Em análise...</button>
-            ) : tarefa.status_tarefa === "EXPIRADA" ? (
-              <button className={styles.expired} disabled>Expirada</button>
-            ) : tarefa.status_tarefa === "PENALIZADA" ? (
-              <button className={styles.penalized} disabled>Penalizada</button>
-            ) : (
-              <button className={styles.completeButton} onClick={() => completeTask(tarefa.id_tarefa)}>Marcar como concluída</button>
+            <div className={styles.progressBar}>
+              <div className={styles.progressFill} style={{ width: `${porcentagemProgresso}%` }}></div>
+            </div>
+
+            {usuario.nivel && (
+              <p>{usuario.tarefas_concluidas}/{usuario.nivel.tarefas_requeridas + 1} Tarefas concluídas para subir de nível</p>
             )}
-          </div>))}
-      </section>
 
-      <nav className="bottomNav">
-        <button className="navBtn active">
-          <span className="navIcon">☑️</span>
-          <span className="navText">Tarefas</span>
-        </button>
+            {usuario.nivel && (
+              <h4>"{usuario.nivel.descricao_nivel}"</h4>
+            )}
+          </section>
+        </div>
 
-        <button className="navBtn" onClick={() => { navigate("/conquistasfilho") }}>
-          <span className="navIcon">🌟</span>
-          <span className="navText">Conquistas</span>
-        </button>
+        <div className={styles.rightSide}>
+          <section className={styles.tasksSection}>
+            <h2 className={styles.tasksTitle}>
+              Tarefas do dia
+            </h2>
 
-        <button className="navBtn" onClick={() => { navigate("/perfilfilho") }}>
-          <span className="navIcon">👤</span>
-          <span className="navText">Perfil</span>
-        </button>
-      </nav>
+            {usuario && usuario.tarefas.slice().sort((a, b) => {
+              return prioridadeStatus[a.status_tarefa] - prioridadeStatus[b.status_tarefa];
+            }).map((tarefa) => (
 
+              <div key={tarefa.id_tarefa} className={`${styles.taskCard} ${tarefaExpandida === tarefa.id_tarefa ? styles.expanded : ''}`}>
+
+                <div className={styles.taskHeader}>
+                  <div className={styles.taskContent}>
+                    <span className={styles.taskEmoji}><FiCheckSquare /></span>
+                    <div>
+                      <h3 className={styles.taskName}>{tarefa.nome_tarefa}</h3>
+                      <span className={styles.taskMeta}><FaClock /> <strong>{formatarData(tarefa.expiracao_tarefa)}...</strong></span>
+                    </div>
+                  </div>
+
+                  <div className={styles.taskRight}>
+                    <span className={styles.taskPoints}><Counter target={tarefa.valor_tarefa} duration={1000} /> 🪙</span>
+                    <span className={styles.arrow}>
+                      <button onClick={() => toggleTarefa(tarefa.id_tarefa)}>
+                        {tarefaExpandida === tarefa.id_tarefa ? '▴' : '▾'}
+                      </button>
+                    </span>
+                  </div>
+                </div>
+
+                <div className={styles.taskDetails}>
+                  <div className={styles.taskDescription}>
+                    <p>{tarefa.descricao_tarefa}</p>
+                  </div>
+                </div>
+
+                {tarefa.status_tarefa === "CONCLUIDA" ? (
+                  <button className={styles.completed} disabled>Concluído!</button>
+                ) : tarefa.status_tarefa === "ANALISE" ? (
+                  <button className={styles.analysis}>Em análise...</button>
+                ) : tarefa.status_tarefa === "EXPIRADA" ? (
+                  <button className={styles.expired} disabled>Expirada</button>
+                ) : tarefa.status_tarefa === "PENALIZADA" ? (
+                  <button className={styles.penalized} disabled>Penalizada</button>
+                ) : (
+                  <button className={styles.completeButton} onClick={() => completeTask(tarefa.id_tarefa)}>Marcar como concluída</button>
+                )}
+              </div>))}
+          </section>
+        </div>
+      </div>
+
+      <MenuInferior abaAtiva="tarefas" usuario={"filho"} />
     </div>
   );
 }

@@ -1,33 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
 
 .screen {
-  min-height: 100vh;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   max-width: 390px;
-  margin: 0 auto;
+  min-height: 100vh;
   background: transparent;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   padding-bottom: 95px;
 }
 
 /* HEADER */
-
 .header {
-  padding: 10px 14px 10px;
-
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+
+  width: 100vw;
+  position: fixed;
+  z-index: 1000;
+  background: linear-gradient(to bottom, white, rgb(245, 255, 247));
+  padding: 14px 20px;
+  border-bottom: 2px solid #00a83a;
 }
 
 .logo {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 900;
   color: #00a83a;
-  letter-spacing: -1px;
+  margin: 0;
 }
 
 .greeting {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: #00a83a;
 }
@@ -35,15 +44,19 @@
 /* CARD PONTOS */
 
 .pointsCard {
-  margin: 14px;
+  margin-top: 90px;
+  margin-bottom: 14px;
   background: #fff;
   border: 2px solid #4a90ff;
   border-radius: 18px;
   padding: 14px 18px;
+  width: 94%;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  justify-self: center;
 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
@@ -61,6 +74,7 @@
 }
 
 .coin {
+  margin-top: -2px;
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -71,7 +85,7 @@
   align-items: center;
   justify-content: center;
 
-  font-size: 13px;
+  font-size: 30px;
   font-weight: 900;
 }
 
@@ -99,7 +113,9 @@
 .levelCard h4 {
   justify-self: center;
   align-self: center;
-  width: 95%;
+  width: 80%;
+  padding-left: 10px;
+  padding-right: 10px;
   margin-top: 20px;
   border: 1px solid #006426;
   display: flex;
@@ -113,7 +129,7 @@
   text-align: center;
   font-style: italic;
   text-shadow: 0 1px 1px rgb(255, 255, 255);
-  color:  #006426;
+  color: #006426;
 }
 
 .levelCard p {
@@ -121,6 +137,7 @@
 }
 
 .levelTop {
+  cursor: default;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -140,8 +157,12 @@
 }
 
 .levelTitle {
-  font-size: 15.5px !important;
-  color: #009dff !important;
+  font-size: 16px !important;
+  background: linear-gradient(35deg, rgba(0, 119, 255, 1), rgba(2, 198, 68, 1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 100%;
 }
 
 .progressBar {
@@ -232,6 +253,9 @@
 }
 
 .taskMeta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   font-size: 13px;
   font-weight: 700;
   color: #777;
@@ -455,7 +479,7 @@
 @keyframes moveRight {
   0% {
     transform: translateX(-2px);
-  } 
+  }
 
   50% {
     transform: translateX(2px);
@@ -463,5 +487,46 @@
 
   100% {
     transform: translateX(-2px);
+  }
+}
+
+/* Responsividade para Desktop */
+@media (min-width: 1100px) {
+  .containerWrapper {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 85%;
+    justify-content: center;
+  }
+
+  .leftSide {
+    max-width: 400px;
+    transform: scale(1.3);
+    position: fixed;
+    top: 10%;
+    left: 16%;
+  }
+
+  .rightSide {
+    transform: scale(1.1);
+    margin-left: 60%;
+  }
+
+  .tasksTitle {
+    padding-top: 180px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .containerWrapper {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 65%;
+    justify-content: center;
+  }
+
+  .rightSide {
+    transform: scale(1.1);
+    margin-left: 50%;
   }
 }

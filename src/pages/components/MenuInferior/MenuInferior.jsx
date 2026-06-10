@@ -11,7 +11,7 @@ export default function MenuInferior({ abaAtiva, usuario }) {
 
     return (
         <div>
-            <nav className={styles.bottomNav} data-page={abaAtiva}>
+            <nav className={`${styles.bottomNav} ${usuario === "pai" ? styles.bottomNavPai : styles.bottomNavFilho}`} data-page={abaAtiva}>
                 <button className={styles.navBtn} onClick={() => navigate(`/tarefas${usuario}`)}>
                     <span className={styles.navIcon}>
                         <GoTasklist />

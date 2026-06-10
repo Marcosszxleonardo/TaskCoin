@@ -5,7 +5,6 @@
     transform: translateX(-50%);
     width: 100vw;
     height: 80px;
-    background: linear-gradient(to bottom, #ffff, #d1e7ff);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -15,6 +14,16 @@
     z-index: 1000;
     padding-bottom: env(safe-area-inset-bottom);
 
+}
+
+.bottomNavPai {
+    background: linear-gradient(to bottom, #ffff, #d1e7ff);
+    border-top: 2px solid #0077ff;
+}
+
+.bottomNavFilho {
+    background: linear-gradient(to bottom, #ffff, #f0ffef);
+    border-top: 2px solid #00a83a;
 }
 
 .navBtn {

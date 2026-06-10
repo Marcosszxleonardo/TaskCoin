@@ -1,6 +1,7 @@
 import styles from "./PerfilFilho.module.css";
 import api from "../../../services/api";
 import LoadingScreen from "../../components/LoadingScreen"
+import MenuInferior from "../../components/MenuInferior/MenuInferior";
 import avatar from "../../../assets/avatar.svg"
 import "../../../global.css"
 import { useNavigate } from "react-router-dom";
@@ -27,12 +28,12 @@ export default function PerfilFilho() {
   }, []);
 
   const logout = () => {
-    localStorage.clear(); 
+    localStorage.clear();
     navigate("/");
   }
 
   if (loading) {
-    return <LoadingScreen/>
+    return <LoadingScreen />
   }
 
   return (
@@ -42,6 +43,7 @@ export default function PerfilFilho() {
 
       <header className={styles.header}>
         <h1 className={styles.logo}>TASKCOIN</h1>
+        <span className={styles.greeting}>Olá, {usuario.nome}!</span>
       </header>
 
       {/* PERFIL */}
@@ -49,7 +51,7 @@ export default function PerfilFilho() {
       <section className={styles.profileSection}>
 
         <div className={styles.profileAvatar}>
-          <span><img src={avatar}/></span>
+          <span><img src={avatar} /></span>
         </div>
 
         <h2 className={styles.profileName}>
@@ -90,23 +92,7 @@ export default function PerfilFilho() {
 
       </section>
 
-      {/* NAVBAR */}
-      <nav className="bottomNav">
-        <button className="navBtn" onClick={() => { navigate("/tarefasfilho") }}>
-          <span className="navIcon">☑️</span>
-          <span className="navText">Tarefas</span>
-        </button>
-
-        <button className="navBtn" onClick={() => { navigate("/conquistasfilho") }}>
-          <span className="navIcon">🌟</span>
-          <span className="navText">Conquistas</span>
-        </button>
-
-        <button className="navBtn active">
-          <span className="navIcon">👤</span>
-          <span className="navText">Perfil</span>
-        </button>
-      </nav>
+      <MenuInferior abaAtiva="perfil" usuario={"filho"} />
     </div>
   );
 }
