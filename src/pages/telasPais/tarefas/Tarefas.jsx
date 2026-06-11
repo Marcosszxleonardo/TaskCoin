@@ -87,6 +87,10 @@ export default function TasksScreen() {
     }
   }
 
+  const porcentagemProgresso = async () => {
+    
+  }
+
   return (
     <div className={styles.screen}>
       <header className={styles.header}>
@@ -126,6 +130,11 @@ export default function TasksScreen() {
                 <div className={styles.infoPrincipal}>
                   <p className={styles.nomeFilho}><IoHappy /> {filho.nome}</p>
                   <p className={styles.statsConclusao}><Counter target={filho.tarefas_concluidas} duration={1000} /> tarefas concluídas</p>
+                  <p className={styles.nivelFilho}>Nv. {filho.nivel?.nivel} - {filho.nivel?.titulo_nivel}</p>
+
+                  <div className={styles.progressBar}>
+                    <div className={styles.conclusionBar} style={{width: `${Math.round((filho.tarefas_concluidas / (filho.nivel?.tarefas_requeridas + 1)) * 100)}%`}}></div>
+                  </div>
                 </div>
 
                 <div className={styles.saldoCard}>

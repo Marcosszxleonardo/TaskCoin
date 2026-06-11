@@ -76,6 +76,12 @@
   border-top: 1px solid #0077ff;
   border-right: 1px solid #0077ff;
   border-bottom: 1px solid #0077ff;
+  transition: 0.3s;
+}
+
+.cardFilho:hover {
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(92, 136, 255, 0.451);
 }
 
 .infoPrincipal {
@@ -129,13 +135,13 @@
   flex-direction: column;
   align-items: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  transition: 0.3s;
 }
 
 .infoCard:hover {
-  & .infoNumber {
-    transition: 0.3s;
-    transform: scale(1.15);
-  }
+  transition: 0.3s;
+  transform: scale(1.05);
+  box-shadow: 0 3px 20px rgba(92, 136, 255, 0.451);
 }
 
 .infoNumber {
@@ -164,6 +170,30 @@
   margin-bottom: 16px;
 }
 
+.nivelFilho {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.progressBar {
+  width: 200px;
+  height: 15px;
+  border-radius: 50px;
+  background-color: #808080;
+  overflow: hidden;
+}
+
+.conclusionBar {
+  background: linear-gradient(90deg, #00a83a,#4a90ff);
+  height: 15px;
+  border-radius: 50px;
+  border-right: 2px solid white;
+  transition: width 1s ease-out;
+  animation: carregarBarra 2s ease-in-out, background-change 1s linear infinite;
+  transform-origin: left;
+}
+
 .taskList {
   display: flex;
   flex-direction: column;
@@ -182,7 +212,14 @@
   align-items: center;
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.12);
   color: #272727;
+  transition: 0.3s;
 }
+
+.taskCard:hover {
+  transition: 0.3s;
+  box-shadow: 0 3px 20px rgba(92, 136, 255, 0.451);
+}
+
 
 .taskLeft {
   max-width: 65%;
@@ -330,6 +367,30 @@
 
   100% {
     transform: translateY(-4px);
+  }
+}
+
+@keyframes carregarBarra {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes background-change {
+  0% {
+    background: linear-gradient(90deg,
+        #00a83a,
+        #4a90ff);
+  }
+
+  50% {
+    background: linear-gradient(90deg,
+        #4a90ff,
+        #00a83a);
   }
 }
 
