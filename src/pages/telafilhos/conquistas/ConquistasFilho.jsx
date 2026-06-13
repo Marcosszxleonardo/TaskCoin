@@ -4,6 +4,7 @@ import LoadingScreen from "../../components/LoadingScreen"
 import MenuInferior from "../../components/MenuInferior/MenuInferior";
 import "../../../global.css"
 import { useState, useEffect } from "react";
+import { FaGrinStars } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Counter from "../../components/Counter";
 
@@ -93,6 +94,9 @@ export default function ConquistasFilho() {
           </section>
 
           <section className={styles.progressCard}>
+            <div className={styles.trophyIcon}>
+              <FaGrinStars />
+            </div>
 
             <div className={styles.progressTop}>
               {usuario.nivel && (

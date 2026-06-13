@@ -50,7 +50,7 @@
   border: 2px solid #4a90ff;
   border-radius: 18px;
   padding: 14px 18px;
-  width: 94%;
+  width: 100%;
 
   display: flex;
   justify-content: space-between;
@@ -96,12 +96,12 @@
 }
 
 /* PROGRESSO */
-
 .levelCard {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 155px;
+  height: 255px;
+  min-width: 100%;
   margin: 0 14px;
   background: linear-gradient(to bottom, #ffffff, #e2f4ff);
   border: 2px solid #4a90ff;
@@ -110,10 +110,30 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
+.trophyIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+
+.trophyIcon svg path {
+  color: #00b03e;
+  animation: colorChange 4s infinite;
+}
+
+.trophyIcon svg {
+  background: none;
+  height: 60px;
+  width: auto;
+  animation: backgroundAnimate 2s ease infinite, movement 2s ease-in-out infinite alternate;
+}
+
 .levelCard h4 {
   justify-self: center;
   align-self: center;
   width: 80%;
+  max-width: 300px;
   padding-left: 10px;
   padding-right: 10px;
   margin-top: 20px;
@@ -176,11 +196,12 @@
 
 .progressFill {
   background: linear-gradient(90deg, #00a83a, #4a90ff);
-  animation: background-change 1s linear infinite;
+  animation: background-change 1s linear infinite, progressAppears 1s ease-in-out;
   height: 100%;
   border-radius: 999px;
   transition: width 3s ease-out;
   transition-delay: 2s;
+  transform-origin: left;
 }
 
 .levelCard p {
@@ -208,11 +229,12 @@
 
 .taskCard {
   transition: all 0.5s ease;
-  background: #ffff;
+  background-color: #ffff;
   border: 2px solid #009dff;
   border-radius: 18px;
   padding: 16px;
   margin-bottom: 14px;
+  width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
@@ -326,6 +348,18 @@
   font-weight: 800;
 }
 
+.leftSide {
+  margin-top: -10px;
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  padding: 22px 16px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .expired {
   margin-top: 18px;
   padding: 12px;
@@ -417,6 +451,10 @@
   border-top: 1px solid #e1e1e1;
 }
 
+.rightSide {
+  align-self: start;
+}
+
 /* Importante: garanta que o Header ocupe 100% da largura superior */
 .taskHeader {
   display: flex;
@@ -439,6 +477,51 @@
         #00a83a);
   }
 }
+
+@keyframes progressAppears {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes movement {
+  from {
+    transform: translateY(-10px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes colorChange {
+  0% {
+    color: #009d37;
+  }
+
+  50% {
+    color: #009dff;
+  }
+
+  100% {
+    color: #009d37;
+  }
+}
+
 
 @keyframes textSpacing {
   0% {
@@ -490,6 +573,20 @@
   }
 }
 
+@keyframes backgroundAnimate {
+  0% {
+    filter: drop-shadow(0 1px 8px #ffffff) drop-shadow(0 0 20px #0067a77e) drop-shadow(0 0 50px rgba(0, 255, 98, 0.380));
+  }
+
+  50% {
+    filter: drop-shadow(0 1px 8px #ffffff) drop-shadow(0 0 20px #00b03e7e) drop-shadow(0 0 50px rgba(0, 195, 255, 0.380));
+  }
+
+  100% {
+    filter: drop-shadow(0 1px 8px #ffffff) drop-shadow(0 0 20px #0067a77e) drop-shadow(0 0 50px rgba(0, 255, 98, 0.380));
+  }
+}
+
 /* Responsividade para Desktop */
 @media (min-width: 1100px) {
   .containerWrapper {
@@ -500,6 +597,8 @@
   }
 
   .leftSide {
+    padding: 0;
+    min-width: 400px;
     max-width: 400px;
     transform: scale(1.3);
     position: fixed;

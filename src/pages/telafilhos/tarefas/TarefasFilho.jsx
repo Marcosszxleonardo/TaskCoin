@@ -8,6 +8,8 @@ import LoadingScreen from "../../components/LoadingScreen";
 import { Navigate } from "react-router";
 import { FiCheckSquare } from "react-icons/fi";
 import { FaClock } from "react-icons/fa";
+import { IoStarSharp } from "react-icons/io5";
+import { FaGrinStars } from "react-icons/fa";
 import MenuInferior from "../../components/MenuInferior/MenuInferior";
 
 export default function TarefaFilho() {
@@ -107,6 +109,9 @@ export default function TarefaFilho() {
           </section>
 
           <section className={styles.levelCard}>
+            <div className={styles.trophyIcon}>
+              <FaGrinStars />
+            </div>
 
             <div className={styles.levelTop}>
               {usuario.nivel && (
