@@ -43,7 +43,6 @@ export default function PerfilFilho() {
 
       <header className={styles.header}>
         <h1 className={styles.logo}>TASKCOIN</h1>
-        <span className={styles.greeting}>Olá, {usuario.nome}!</span>
       </header>
 
       {/* PERFIL */}

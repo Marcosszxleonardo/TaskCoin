@@ -60,13 +60,24 @@
 }
 
 /* --- LISTA DE CARDS --- */
-.cards {
+.achievementsContainer {
+  justify-content: flex-start;
+  align-items: center;
   display: flex;
   flex-direction: column;
+  padding-bottom: 100px;
+}
+
+.cards {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   gap: 12px;
 }
 
 .card {
+  width: 100%;
   background: linear-gradient(-120deg, rgb(255, 250, 221), white);
   border-radius: 20px;
   border: 1px solid rgb(255, 217, 0);
@@ -169,7 +180,7 @@
   padding: 15px;
   font-size: 20px;
   font-weight: 800;
-  margin-top: 10px;
+  margin-top: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -214,7 +225,7 @@
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 900px) {
   .sectionWrapper {
     position: relative;
     top: 50%;
@@ -229,20 +240,27 @@
   }
 
   .section {
+    min-height: 100vh;
+    height: auto;
     gap: 120px;
     padding: 0;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: 100%;
+
+    padding-top: 100px;
+    padding-bottom: 50px;
+    box-sizing: border-box;
   }
 
-  .cards {
-    gap: 15px;
+  .achievementsContainer {
+    padding: 0;    
   }
 
-  .card {
-    transform: scale(1.05);
+  .conquistasTitle {
+    margin-top: -40px;
+    align-self: center;
   }
 
   .card h2 {
@@ -251,7 +269,6 @@
 
   .addButton {
     margin-top: 15px;
-    transform: scaleX(1.05);
   }
 
   .title {

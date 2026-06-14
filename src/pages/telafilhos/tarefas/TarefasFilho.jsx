@@ -168,6 +168,7 @@ export default function TarefaFilho() {
 
                 <div className={styles.taskDetails}>
                   <div className={styles.taskDescription}>
+                    <p><strong>Descrição de {usuario?.responsavel?.nome}:</strong></p>
                     <p>{tarefa.descricao_tarefa}</p>
                   </div>
                 </div>

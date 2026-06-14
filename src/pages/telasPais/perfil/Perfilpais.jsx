@@ -48,7 +48,7 @@ export default function PerfilPais() {
 
         <h2 className={styles.profileName}>{usuario.nome}</h2>
 
-        <p className={styles.profileType}>Conta de Pai</p>
+        <p className={styles.profileType}>Conta de Responsável</p>
       </section>
 
       {/* FILHOS */}

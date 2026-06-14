@@ -17,9 +17,8 @@
 /* HEADER */
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-
+  justify-content: center;
   width: 100vw;
   position: fixed;
   z-index: 1000;
@@ -84,7 +83,7 @@
 .profileName {
   font-size: 18px;
   font-weight: 900;
-  color: #111;
+  color: #00a83a;
 
   margin-bottom: 2px;
 }
@@ -92,7 +91,7 @@
 .profileType {
   font-size: 14px;
   font-weight: 700;
-  color: #8f8f8f;
+  color: #111;
 }
 
 /* RESPONSÁVEL */
