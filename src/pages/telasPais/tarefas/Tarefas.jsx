@@ -13,26 +13,6 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { LuFileSearch2 } from "react-icons/lu";
 import { IoHappy } from "react-icons/io5";
 
-
-const CoinIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-    <circle cx="8" cy="8" r="7" fill="#F5B400" />
-    <text
-      x="8"
-      y="11.5"
-      textAnchor="middle"
-      fill="white"
-      fontSize="8"
-      fontWeight="bold"
-      fontFamily="sans-serif"
-    >
-      P
-    </text>
-  </svg>
-);
-
-
-
 export default function TasksScreen() {
   const navigate = useNavigate();
   const [usuario, setUsuario] = useState("");
