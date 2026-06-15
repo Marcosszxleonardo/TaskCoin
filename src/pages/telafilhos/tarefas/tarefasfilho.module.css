@@ -10,10 +10,15 @@
   justify-content: flex-start;
   min-height: 100vh;
   height: auto;
-  max-width: 390px;
+  max-width: 400px;
+  width: 100%;
   background: transparent;
   font-family: 'Segoe UI', sans-serif;
   padding-bottom: 95px;
+}
+
+.containerWrapper {
+  width: 100%;
 }
 
 /* HEADER */
@@ -54,6 +59,7 @@
   border-radius: 18px;
   padding: 14px 18px;
   width: 100%;
+  max-width: 100%;
 
   display: flex;
   justify-content: space-between;
@@ -141,8 +147,7 @@
 .levelCard h4 {
   justify-self: center;
   align-self: center;
-  width: 80%;
-  max-width: 300px;
+  max-width: 80%;
   padding-left: 10px;
   padding-right: 10px;
   margin-top: 20px;
