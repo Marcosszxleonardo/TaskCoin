@@ -71,7 +71,7 @@ export default function ConquistasFilho() {
       <header className={styles.header}>
         <div className={styles.headerRow}>
           <h1 className={styles.logo}>TASKCOIN</h1>
-          <span className={styles.greeting}>Olá, {usuario.nome}!</span>
+          <span className={styles.greeting}>Olá, <strong>{usuario.nome}</strong>!</span>
         </div>
       </header>
 
@@ -81,7 +81,7 @@ export default function ConquistasFilho() {
           <section className={styles.pointsCard}>
 
             <span className={styles.pointsTitle}>
-              Pontos:
+              Pontos Acumulados:
             </span>
 
             <div className={styles.pointsRight}>

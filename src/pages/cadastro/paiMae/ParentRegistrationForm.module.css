@@ -18,10 +18,13 @@
 }
 
 .headerTitle {
-  color: #1a73e8; 
-  font-size: 1.3rem;
+  margin-top: 25px;
+  color: #1a73e8;
+  font-size: 1.1rem;
+  width: 100%;
   font-weight: 600;
   display: flex;
+  justify-content: center;
   align-items: center;
   justify-self: center;
   gap: 10px;
@@ -31,7 +34,8 @@
 .taskcoinIcon {
   filter: drop-shadow(0 0 10px rgb(255, 255, 255));
   animation: smoothMove 4s ease-in-out infinite alternate;
-  width: 200px;
+  width: 150px;
+  object-fit: contain;
 }
 
 .container {
@@ -43,6 +47,12 @@
   flex-direction: column;
 }
 
+.formContainer {
+  width: 85vw;
+  display: flex;
+  flex-direction: column;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -50,19 +60,16 @@
 }
 
 .input {
-  align-self: center;
-  width: 95%;
+  width: 100%;
   height: 60px;
-  border-radius: 20px;
-  border: 1px solid #a9a9a9;
-  background-color: #f8f8f8;
-  padding: 0 1.25rem;
-  color: black;
-  font-size: 1.3rem;
+  border-radius: 16px;
+  border: 1px solid #d0d0d0;
+  background: #fafafa;
+  padding: 0 18px;
+  font-size: 16px;
   font-weight: 600;
   outline: none;
-  transition: border-color 0.2s;
-  font-family: "Instrument Sans", sans-serif;
+  box-sizing: border-box;
 }
 
 .input:focus {
@@ -83,10 +90,10 @@
 }
 
 .btnContinuar {
-  width: 95%;
-  align-self: center;
+  width: 100%;
   height: 60px;
-  margin-top: 14px;
+  align-self: center;
+  margin-top: 5px;
   border: none;
   border-radius: 16px;
   background: linear-gradient(90deg, #0077ff 0%, #02c644 100%);
@@ -104,9 +111,13 @@
 }
 
 .taskcoinTitle {
-  font-size: 48px;
   font-style: italic;
+  text-align: center;
+  font-size: 36px;
   font-weight: 800;
+  margin-top: 0;
+  letter-spacing: 1px;
+  color: #272727;
 }
 
 .tagline {
@@ -121,14 +132,31 @@
   transition: 0.3s;
 }
 
-@media (max-width: 480px){
+.input:focus {
+  border-color: #0051ff;
+}
+
+@media (max-width: 480px) {
   .page {
     padding: 28px 14px;
+  }
+
+  .taskcoinTitle {
+    font-size: 40px;
   }
 }
 
 /* Responsividade */
 @media (min-width: 1050px) {
+  .headerTitle {
+    font-size: 1.3rem;
+  }
+
+  .formContainer {
+    display: block;
+    width: auto;
+  }
+
   .tagline {
     font-size: 20px;
     text-align: center;
@@ -137,6 +165,8 @@
   .container {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     gap: 150px;
   }
 
@@ -149,7 +179,8 @@
     max-width: 500px;
   }
 
-  .input, .btnContinuar {
+  .input,
+  .btnContinuar {
     width: 100%;
   }
 
@@ -192,9 +223,11 @@
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.03);
   }
+
   100% {
     transform: scale(1);
   }

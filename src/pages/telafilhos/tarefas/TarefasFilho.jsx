@@ -88,7 +88,7 @@ export default function TarefaFilho() {
 
       <header className={styles.header}>
         <h1 className={styles.logo}>TASKCOIN</h1>
-        <span className={styles.greeting}>Olá, {usuario.nome}!</span>
+        <span className={styles.greeting}>Olá, <strong>{usuario.nome}</strong>!</span>
       </header>
 
       <div className={styles.containerWrapper}>
@@ -96,7 +96,7 @@ export default function TarefaFilho() {
           <section className={styles.pointsCard}>
 
             <span className={styles.pointsLabel}>
-              Pontos:
+              Pontos Acumulados:
             </span>
 
             <div className={styles.pointsInfo}>

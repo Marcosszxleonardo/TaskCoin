@@ -84,7 +84,7 @@ export default function Index({ onSubmit }) {
             <input
               type="email"
               name="email_filho"
-              placeholder="E-mail"
+              placeholder="Email de acesso"
               value={form.email_filho}
               onChange={handleChange}
               className={styles.input}
@@ -94,7 +94,7 @@ export default function Index({ onSubmit }) {
             <input
               type="password"
               name="senha_filho"
-              placeholder="Senha"
+              placeholder="Senha de acesso"
               value={form.senha_filho}
               onChange={handleChange}
               className={styles.input}
