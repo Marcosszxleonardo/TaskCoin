@@ -12,6 +12,7 @@ import { FaClock } from "react-icons/fa";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { LuFileSearch2 } from "react-icons/lu";
 import { IoHappy } from "react-icons/io5";
+import { PiCoinVerticalBold  } from "react-icons/pi";
 
 export default function TasksScreen() {
   const navigate = useNavigate();
@@ -118,7 +119,8 @@ export default function TasksScreen() {
                 </div>
 
                 <div className={styles.saldoCard}>
-                  <Counter target={filho.saldo} duration={1000} /> 🪙
+                  <Counter target={filho.saldo} duration={1000} /> 
+                  <PiCoinVerticalBold  />
                 </div>
               </div>
             ))}

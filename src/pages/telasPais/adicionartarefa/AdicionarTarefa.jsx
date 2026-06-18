@@ -4,6 +4,7 @@ import api from "../../../services/api";
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import MenuInferior from '../../components/MenuInferior/MenuInferior';
+import Header from '../../components/Header/Header';
 import LoadingScreen from '../../components/LoadingScreen';
 import Counter from '../../components/Counter';
 
@@ -69,106 +70,108 @@ export default function AdicionarTarefa() {
   }
 
   return (
-    <div className={styles.pageBg}>
+    <div className={styles.screen}>
       {/* TOPO */}
-      <header className={styles.header}>
-        <div className={styles.headerRow}>
-          <h1 className={styles.logo}>TASKCOIN</h1>
-          <span className={styles.greeting}>Olá, <strong>{usuario.nome}!</strong></span>
+      <Header mostrarVoltar />
+
+
+      <div className={styles.section}>
+
+
+        {/* TITULO */}
+        <div className={styles.tituloArea}>
+          <div className={styles.tituloTOP}>
+            <h1>
+              Crie uma tarefa
+            </h1>
+            <div className={styles.addBtn}>
+              +
+            </div>
+          </div>
+          <p className={styles.subtitulo}>
+            Crie tarefas para seus filhos realizarem
+          </p>
         </div>
-      </header>
 
-      {/* TITULO */}
-      <div className={styles.tituloArea}>
-        <h1>
-          Crie uma tarefa
-        </h1>
-        <div className={styles.addBtn}>
-          +
-        </div>
-      </div>
 
-      <p className={styles.subtitulo}>
-        Crie tarefas para seus filhos realizarem
-      </p>
+        {/* FORM */}
+        <div className={styles.formArea}>
 
-      {/* FORM */}
-      <div className={styles.formArea}>
+          <input
+            type="text"
+            name="nome_tarefa"
+            placeholder="Nome da tarefa"
+            className={styles.inputField}
+            value={tarefaForm.nome_tarefa}
+            onChange={handleChange}
+          />
 
-        <input
-          type="text"
-          name="nome_tarefa"
-          placeholder="Nome da tarefa"
-          className={styles.inputField}
-          value={tarefaForm.nome_tarefa}
-          onChange={handleChange}
-        />
+          <input
+            type="text"
+            name="descricao_tarefa"
+            placeholder="Descrição da tarefa"
+            className={styles.inputField}
+            value={tarefaForm.descricao_tarefa}
+            onChange={handleChange}
+          />
 
-        <input
-          type="text"
-          name="descricao_tarefa"
-          placeholder="Descrição da tarefa"
-          className={styles.inputField}
-          value={tarefaForm.descricao_tarefa}
-          onChange={handleChange}
-        />
+          <input
+            type="date"
+            name="expiracao_tarefa"
+            placeholder="Data de Término"
+            className={styles.inputField}
+            value={tarefaForm.expiracao_tarefa}
+            onChange={handleChange}
+          />
 
-        <input
-          type="date"
-          name="expiracao_tarefa"
-          placeholder="Data de Término"
-          className={styles.inputField}
-          value={tarefaForm.expiracao_tarefa}
-          onChange={handleChange}
-        />
+          {/* SELECT */}
+          <div className={styles.selectArea}>
+            <div
+              className={styles.selectTop}
+              onClick={() => setAberto(!aberto)}
+            >
+              <span>{filhoSelecionado ? filhoSelecionado.nome : "Selecione o filho"}</span>
+              <span className={styles.seta} style={{ transform: aberto ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+                v
+              </span>
+            </div>
 
-        {/* SELECT */}
-        <div className={styles.selectArea}>
-          <div
-            className={styles.selectTop}
-            onClick={() => setAberto(!aberto)}
-          >
-            <span>{filhoSelecionado ? filhoSelecionado.nome : "Selecione o filho"}</span>
-            <span className={styles.seta} style={{ transform: aberto ? 'rotate(180deg)' : 'rotate(0deg)' }}>
-              v
-            </span>
+            {aberto && (
+              <div className={styles.filhosLista}>
+                {usuario?.filhos?.map((filho) => (
+                  <p
+                    key={filho.id}
+                    onClick={() => {
+                      setTarefaForm({ ...tarefaForm, id_filho: filho.id });
+                      setFilhoSelecionado(filho); // Salva o escolhido
+                      setAberto(false);
+                    }}
+                  >
+                    {filho.nome}
+                  </p>
+                ))}
+              </div>
+            )}
           </div>
 
-          {aberto && (
-            <div className={styles.filhosLista}>
-              {usuario?.filhos?.map((filho) => (
-                <p
-                  key={filho.id}
-                  onClick={() => {
-                    setTarefaForm({ ...tarefaForm, id_filho: filho.id });
-                    setFilhoSelecionado(filho); // Salva o escolhido
-                    setAberto(false);
-                  }}
-                >
-                  {filho.nome}
-                </p>
-              ))}
-            </div>
-          )}
+          <input
+            type="number"
+            name="valor_tarefa"
+            placeholder="Valor Recebido"
+            className={styles.inputField}
+            value={tarefaForm.valor_tarefa}
+            onChange={handleChange}
+          />
+
         </div>
 
-        <input
-          type="number"
-          name="valor_tarefa"
-          placeholder="Valor Recebido"
-          className={styles.inputField}
-          value={tarefaForm.valor_tarefa}
-          onChange={handleChange}
-        />
-
+        {/* BOTAO */}
+        <button className={styles.criarBtn} onClick={() => criarTarefa(tarefaForm)}>
+          Criar Tarefa
+        </button>
       </div>
 
-      {/* BOTAO */}
-      <button className={styles.criarBtn} onClick={() => criarTarefa(tarefaForm)}>
-        Criar Tarefa
-      </button>
 
-      <br /><br /><br /><br /><br />
 
       <MenuInferior abaAtiva="tarefas" usuario={"pai"} />
     </div>

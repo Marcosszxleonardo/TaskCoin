@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router';
 import MenuInferior from '../../components/MenuInferior/MenuInferior';
 import LoadingScreen from '../../components/LoadingScreen';
 import Counter from '../../components/Counter';
+import Header from '../../components/Header/Header';
 
 export default function AdicionarConquista() {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ export default function AdicionarConquista() {
 
         setRecompensaForm(prev => ({
           ...prev,
-          id_responsavel: response.data.id 
+          id_responsavel: response.data.id
         }));
 
         setLoading(false);
@@ -62,95 +63,95 @@ export default function AdicionarConquista() {
     }
   }
 
-  if(loading) {
-    return <LoadingScreen/>
+  if (loading) {
+    return <LoadingScreen />
   }
 
   return (
-    <div className={styles.pageBg}>
+    <div className={styles.screen}>
       {/* TOPO */}
-      <header className={styles.header}>
-              <div className={styles.headerRow}>
-                <h1 className={styles.logo}>TASKCOIN</h1>
-                <span className={styles.greeting}>Olá, <strong>{usuario.nome}!</strong></span>
-              </div>
-            </header>
+      <Header mostrarVoltar />
 
-      {/* TITULO */}
-      <div className={styles.tituloArea}>
-        <h1>
-          Crie uma conquista
-        </h1>
-        <div className={styles.addBtn}>
-          🌟
+      <div className={styles.section}>
+
+        {/* TITULO */}
+        <div className={styles.tituloArea}>
+          <div className={styles.tituloTOP}>
+            <h1>
+              Crie uma conquista
+            </h1>
+            <div className={styles.addBtn}>
+              🌟
+            </div>
+          </div>
+          <p className={styles.subtitulo}>
+            Crie conquistas para reconhecer a dedicação e fortalecer os laços familiares.
+          </p>
         </div>
-      </div>
 
-      <p className={styles.subtitulo}>
-        Crie conquistas para seus filhos adquirirem
-      </p>
 
-      {/* FORM */}
-      <div className={styles.formArea}>
+        {/* FORM */}
+        <div className={styles.formArea}>
 
-        <input
-          type="text"
-          name="nome_recompensa"
-          placeholder="Nome da conquista"
-          className={styles.inputField}
-          value={recompensaForm.nome_recompensa}
-          onChange={handleChange}
-        />
+          <input
+            type="text"
+            name="nome_recompensa"
+            placeholder="Nome da conquista"
+            className={styles.inputField}
+            value={recompensaForm.nome_recompensa}
+            onChange={handleChange}
+          />
 
-        {/* SELECT */}
-        <div className={styles.selectArea}>
-          <div
-            className={styles.selectTop}
-            onClick={() => setAberto(!aberto)}
-          >
-            <span>{filhoSelecionado ? filhoSelecionado.nome : "Selecione o filho"}</span>
-            <span className={styles.seta} style={{ transform: aberto ? 'rotate(180deg)' : 'rotate(0deg)' }}>
-              v
-            </span>
+          {/* SELECT */}
+          <div className={styles.selectArea}>
+            <div
+              className={styles.selectTop}
+              onClick={() => setAberto(!aberto)}
+            >
+              <span>{filhoSelecionado ? filhoSelecionado.nome : "Selecione o filho"}</span>
+              <span className={styles.seta} style={{ transform: aberto ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+                v
+              </span>
+            </div>
+
+            {aberto && (
+              <div className={styles.filhosLista}>
+                {usuario?.filhos?.map((filho) => (
+                  <p
+                    key={filho.id}
+                    onClick={() => {
+                      setRecompensaForm({ ...recompensaForm, id_filho: filho.id });
+                      setFilhoSelecionado(filho);
+                      setAberto(false);
+                    }}
+                  >
+                    {filho.nome}
+                  </p>
+                ))}
+              </div>
+            )}
           </div>
 
-          {aberto && (
-            <div className={styles.filhosLista}>
-              {usuario?.filhos?.map((filho) => (
-                <p
-                  key={filho.id}
-                  onClick={() => {
-                    setRecompensaForm({ ...recompensaForm, id_filho: filho.id });
-                    setFilhoSelecionado(filho); 
-                    setAberto(false);
-                  }}
-                >
-                  {filho.nome}
-                </p>
-              ))}
-            </div>
-          )}
+          <input
+            type="number"
+            name="valor_recompensa"
+            placeholder="Custo da conquista"
+            className={styles.inputField}
+            value={recompensaForm.valor_recompensa}
+            onChange={handleChange}
+          />
+
         </div>
 
-        <input
-          type="number"
-          name="valor_recompensa"
-          placeholder="Custo da conquista"
-          className={styles.inputField}
-          value={recompensaForm.valor_recompensa}
-          onChange={handleChange}
-        />
-
+        {/* BOTAO */}
+        <button className={styles.criarBtn} onClick={() => criarRecompensa(recompensaForm)}>
+          Criar Conquista
+        </button>
       </div>
 
-      {/* BOTAO */}
-      <button className={styles.criarBtn} onClick={() => criarRecompensa(recompensaForm)}>
-        Criar Conquista
-      </button>
 
-      <br /><br /><br /><br /><br />
 
-      <MenuInferior abaAtiva="conquistas" usuario={"pai"}/>
+      <MenuInferior abaAtiva="conquistas" usuario={"pai"} />
     </div>
   );
 }

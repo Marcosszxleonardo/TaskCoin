@@ -6,6 +6,7 @@ import { FiCheckSquare } from "react-icons/fi";
 import MenuInferior from '../../components/MenuInferior/MenuInferior';
 import LoadingScreen from '../../components/LoadingScreen';
 import Counter from '../../components/Counter';
+import Header from '../../components/Header/Header';
 
 const TrashIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -74,61 +75,62 @@ export default function TarefaExpiradas() {
   }
 
   return (
-    <div className={styles.pageBg}>
+    <div className={styles.screen}>
 
-      {/* HEADER */}
-      <header className={styles.header}>
-        <div className={styles.headerRow}>
-          <h1 className={styles.logo}>TASKCOIN</h1>
-          <span className={styles.greeting}>Olá, <strong>{usuario.nome}!</strong></span>
+      <Header mostrarVoltar />
+
+      <div className={styles.section}>
+
+        <div className={styles.tituloArea}>
+          <div className={styles.tituloTOP}>
+
+            <h1>
+              Tarefas <span>Expiradas</span>
+            </h1>
+          </div>
+          <p className={styles.subtitulo}>
+            Confirme se irá penalizar ou não o seu filho pelas tarefas expiradas
+          </p>
         </div>
-      </header>
 
-      <div className={styles.topoAnalise}>
-        <h1>
-          Tarefas <span>Expiradas</span>
-        </h1>
-      </div>
 
-      <p className={styles.subtitulo}>
-        Confirme se irá penalizar ou não o seu filho pelas tarefas expiradas
-      </p>
+        {/* CARDS */}
+        <div className={styles.cardsArea}>
+          {usuario?.filhos?.map((filho) => (
+            filho.tarefas.filter((task) => task.status_tarefa === "EXPIRADA").map((task) => (
+              <div className={styles.cardTarefa} key={task.id_tarefa}>
 
-      {/* CARDS */}
-      <div className={styles.cardsArea}>
-        {usuario?.filhos?.map((filho) => (
-          filho.tarefas.filter((task) => task.status_tarefa === "EXPIRADA").map((task) => (
-            <div className={styles.cardTarefa} key={task.id_tarefa}>
+                <div className={styles.cardTop}>
 
-              <div className={styles.cardTop}>
+                  <div className={styles.infoTarefa}>
 
-                <div className={styles.infoTarefa}>
+                    <span className={styles.emoji}>
+                      <FiCheckSquare />
+                    </span>
 
-                  <span className={styles.emoji}>
-                    <FiCheckSquare />
-                  </span>
+                    <div>
+                      <h3>{task.nome_tarefa}</h3>
+                      <p>{filho.nome}</p>
+                    </div>
 
-                  <div>
-                    <h3>{task.nome_tarefa}</h3>
-                    <p>{filho.nome}</p>
                   </div>
 
                 </div>
 
+                <button className={styles.confirmarBtn} onClick={() => penalizarTarefa(task.id_tarefa, task.valor_tarefa, filho.id, filho.saldo_pontos)}>
+                  Penalizar
+                </button>
+
+                <span className={styles.confirmadoTexto}>
+                  {filho.nome} não concluiu essa tarefa
+                </span>
+
               </div>
+            ))))}
 
-              <button className={styles.confirmarBtn} onClick={() => penalizarTarefa(task.id_tarefa, task.valor_tarefa, filho.id, filho.saldo_pontos)}>
-                Penalizar
-              </button>
-
-              <span className={styles.confirmadoTexto}>
-                {filho.nome} não concluiu essa tarefa
-              </span>
-
-            </div>
-          ))))}
-        <br /><br /><br /><br />
+        </div>
       </div>
+
 
       <MenuInferior abaAtiva="tarefas" usuario={"pai"} />
     </div>

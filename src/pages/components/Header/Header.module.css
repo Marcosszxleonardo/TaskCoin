@@ -1,0 +1,42 @@
+.header {
+  width: 100vw;
+  position: fixed;
+  z-index: 1000;
+  background: linear-gradient(to bottom, white, rgb(228, 244, 255));
+  padding: 14px;
+  border-bottom: 2px solid #0077ff;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 900;
+  color: #0077ff;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.backButton {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  font-size: 28px;
+  font-weight: 900;
+  color: #0077ff;
+
+  padding: 0;
+}
+
+.backButton:hover {
+  transform: scale(1.1);
+}
+
+.spacer {
+  width: 24px;
+}

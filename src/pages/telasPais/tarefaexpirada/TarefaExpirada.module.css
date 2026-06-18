@@ -1,121 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* FUNDO */
-.pageBg {
-  align-self: center;
-  justify-self: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.screen {
   width: 100%;
-  max-width: 400px;
+  max-width: none;
   min-height: 100vh;
-  background: transparent;
-  padding-bottom: 30px;
+  padding: 0;
+  padding-bottom: 100px;
 }
 
-/* HEADER */
-.header {
-  width: 100vw;
-  position: fixed;
-  z-index: 1000;
-  background: linear-gradient(to bottom, white, rgb(228, 244, 255));
-  padding: 14px;
-  border-bottom: 2px solid #0077ff;
+.section {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
 
-.headerRow {
+.tituloArea {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 26px;
-  font-weight: 900;
-  color: #0077ff;
-  margin: 0;
-  letter-spacing: -1px;
-}
-
-.headerRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.greeting {
-  font-size: 15px;
-  font-weight: 700;
-  color: #0077ff;
-}
-
-.header {
-  width: 100vw;
-  position: fixed;
-  z-index: 1000;
-  background: linear-gradient(to bottom, white, rgb(228, 244, 255));
-  padding: 14px;
-  border-bottom: 2px solid #0077ff;
-}
-
-.headerRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 26px;
-  font-weight: 900;
-  color: #0077ff;
-  margin: 0;
-  letter-spacing: -1px;
-}
-
-.headerRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.greeting {
-  font-size: 15px;
-  font-weight: 700;
-  color: #0077ff;
-}
-
-.topoAnalise {
+  justify-content: center;
+  align-self: center;
+  flex-direction: column;
   animation: fadeIn 1s ease;
+
+}
+
+.tituloTOP {
+  display: flex;
+  justify-content: center;
+  align-self: center;
   padding-top: 90px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 15px;
+  gap: 24px;
+  margin-bottom: 12px;
+  text-align: center;
 }
 
-.topoAnalise h1 {
-  font-size: 32px;
+.tituloArea h1 {
+  font-size: 36px;
   font-weight: 700;
   color: #111;
+  letter-spacing: -1px;
   text-align: center;
-  line-height: 1.1;
 }
 
-.topoAnalise h1 span {
+
+/* SUBTITULO */
+
+.subtitulo {
+  text-align: center;
+  animation: fadeIn 1s ease;
+  color: #111;
+  font-size: 15px;
+  line-height: 1.4;
+  margin-bottom: 30px;
+  font-weight: 500;
+  
+ 
+}
+
+
+.tituloTOP h1 span {
   color: #ff2b2b;
 }
 
-.subtitulo {
-  animation: fadeIn 1s ease;
-  width: 80%;
-  text-align: center;
-  color: #111;
-  font-size: 14px;
-  line-height: 1.4;
-  margin-bottom: 28px;
-  font-weight: 500;
-}
 
 /* CARDS */
 
@@ -129,7 +78,7 @@
 }
 
 .cardTarefa {
-  width: 90%;
+  width: 100%;
   border: 2px solid #ff2b2b;
   background: white;
   border-radius: 24px;
@@ -274,5 +223,96 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (min-width: 900px) {
+
+  .section {
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    grid-template-areas:
+      "titulo cards"
+      "subtitulo cards";
+
+    align-content: center;
+
+    max-width: 1200px;
+
+    column-gap: 80px;
+    row-gap: 20px;
+
+    padding-top: 0;
+  }
+
+  /* TÍTULO */
+  .tituloArea {
+    grid-area: titulo;
+
+    padding-top: 0;
+    margin-bottom: 0;
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tituloTOP {
+    padding-top: 50%;
+    justify-content: center;
+  }
+
+  .tituloArea h1 {
+    font-size: 52px;
+    line-height: 1.1;
+  }
+
+  /* SUBTÍTULO */
+  .subtitulo {
+    grid-area: subtitulo;
+
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* CARDS */
+  .cardsArea {
+    grid-area: cards;
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    align-items: stretch;
+  }
+
+  .cardTarefa {
+    width: 100%;
+    padding: 22px;
+  }
+
+  .infoTarefa h3 {
+    font-size: 18px;
+  }
+
+  .infoTarefa p {
+    font-size: 16px;
+  }
+
+  .confirmarBtn {
+    height: 54px;
+    font-size: 17px;
+  }
+
+  .emoji {
+    width: 54px;
+    height: 54px;
+    font-size: 28px;
   }
 }

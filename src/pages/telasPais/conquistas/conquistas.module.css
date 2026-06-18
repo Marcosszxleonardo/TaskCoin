@@ -46,8 +46,8 @@
 
 /* --- SEÇÃO DE CONTEÚDO --- */
 .section {
-  justify-self: center;
-  max-width: 90%;
+  width: 90%;
+  margin: 0 auto;
   padding-top: 80px;
 }
 
@@ -57,6 +57,16 @@
   font-weight: 800;
   color: #333;
   margin: 15px 0 20px;
+}
+
+.conquistasTitle {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  text-align: center;
 }
 
 /* --- LISTA DE CARDS --- */
@@ -239,6 +249,10 @@
     width: 100%;
   }
 
+   .menuInferior {
+    display: none;
+  }
+
   .section {
     min-height: 100vh;
     height: auto;
@@ -255,12 +269,7 @@
   }
 
   .achievementsContainer {
-    padding: 0;    
-  }
-
-  .conquistasTitle {
-    margin-top: -40px;
-    align-self: center;
+    padding: 0;
   }
 
   .card h2 {
@@ -288,5 +297,7 @@
     align-items: center;
     justify-content: center;
     width: 25%;
+    margin-top: -40px;
+    align-self: center;
   }
 }
