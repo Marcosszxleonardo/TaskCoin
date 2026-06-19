@@ -56,6 +56,111 @@
   align-items: center;
 }
 
+.offensiveCard {
+  overflow: hidden;
+  background: linear-gradient(to right, #80b3ff 0%, white 40%);
+  border-radius: 18px;
+  padding: 20px 18px;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #3b82f6;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 82px;
+
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.offensiveCard:hover {
+  transition: 0.3s;
+  box-shadow: 0 0 20px #009d376c;
+}
+
+.recordBadge:hover {
+  transform: scale(1.03);
+  transition: 0.2s;
+}
+
+.recordBadge {
+  transition: 0.2s;
+}
+
+
+.leftContent {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  animation: cardEntrance 1s ease-in-out;
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: 800;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.gradientText {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 40%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.rightContent {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.recordBadge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 4px 10px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #009dff;
+  transition: transform 0.2s ease;
+}
+
+.recordBadge span {
+  display: flex;
+  gap: 3px;
+}
+
+.recordBadge p {
+  font-size: 1rem;
+  animation: recordColor 1s infinite alternate;
+}
+
+.fireEmoji {
+  font-size: 1.8rem;
+  color: #d7a100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 2px 2px white;
+  animation: firePulse 1.5s ease-in-out infinite alternate;
+}
+
+.number {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #d7a100;
+  text-shadow: 0 2px 2px white;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1;
+  animation: firePulse 1.5s ease-in-out infinite alternate;
+}
+
 .pointsCard {
   margin: 14px;
   background: #fff;
@@ -407,6 +512,23 @@
   text-align: center;
 }
 
+.maxLevel {
+  & span {
+    text-shadow: 0 0 20px rgba(255, 255, 0, 0.516);
+    background: linear-gradient(to right, #f5b400, #b08100);
+    font-weight: 800 !important;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+.descMax {
+  color: #b08100 !important;
+  border-color: #b08100 !important;
+}
+
+
 /* NAVBAR */
 
 .navBtn {
@@ -555,7 +677,49 @@
   }
 }
 
+@keyframes recordColor {
+  from {
+    color: #009dff;
+  }
 
+  to {
+    color: #10b981;
+  }
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes firePulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px rgba(234, 179, 8, 0.2));
+  }
+
+  100% {
+    transform: scale(1.12);
+    filter: drop-shadow(0 2px 8px rgba(239, 68, 68, 0.6));
+  }
+}
+
+@keyframes tilt {
+  0% {
+    transform: rotate(-10deg);
+  }
+
+  100% {
+    transform: rotate(10deg);
+  }
+}
 
 /* Responsividade para Desktop */
 @media (min-width: 1100px) {
@@ -567,13 +731,12 @@
   }
 
   .leftSide {
-    margin-top: -4px;
+    margin-top: 240px;
     padding: 0;
     min-width: 400px;
     max-width: 400px;
     transform: scale(1.2);
     position: fixed;
-    top: 20%;
     left: 16%;
   }
 

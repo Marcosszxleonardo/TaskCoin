@@ -108,6 +108,17 @@
   margin: 0;
 }
 
+.ofensivaStats {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1px solid #111;
+  justify-content: center;
+  width: 60%;
+}
+
 .saldoCard {
   color: #fbc02d;
   padding: 8px 12px;

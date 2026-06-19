@@ -13,6 +13,8 @@ import { FaGrinStars } from "react-icons/fa";
 import { PiCoinVerticalBold } from "react-icons/pi";
 import { TbCoinTakaFilled } from "react-icons/tb";
 import { MdOutlineTaskAlt } from "react-icons/md";
+import { FaFire } from "react-icons/fa";
+import { GrTrophy } from "react-icons/gr";
 import MenuInferior from "../../components/MenuInferior/MenuInferior";
 
 export default function TarefaFilho() {
@@ -86,10 +88,6 @@ export default function TarefaFilho() {
     return <LoadingScreen />
   }
 
-  const ofensivaAtual = 5;
-  const maiorOfensiva = 14;
-  const estaAtivo = ofensivaAtual > 0;
-
   return (
     <div className={styles.screen}>
 
@@ -122,14 +120,14 @@ export default function TarefaFilho() {
                 <span className={styles.gradientText}>Dias de Ofensiva:</span>
               </span>
               <div className={styles.recordBadge}>
-                <span role="img" aria-label="Troféu">🏆 Maior Ofensiva:</span> 
-                <p>{maiorOfensiva} dias</p>
+                <span role="img" aria-label="Troféu"><GrTrophy /> Maior Ofensiva:</span> 
+                <p>{usuario.maior_ofensiva} dia(s)</p>
               </div>
             </div>
 
             <div className={styles.rightContent}>
-              <span className={styles.fireEmoji} role="img" aria-label="Fogo">🔥</span>
-              <span className={styles.number}>{ofensivaAtual}</span>
+              <span className={styles.fireEmoji} role="img" aria-label="Fogo"><FaFire /> </span>
+              <span className={styles.number}>{usuario.ofensiva_atual}</span>
             </div>
           </section>
 
@@ -139,24 +137,25 @@ export default function TarefaFilho() {
             </div>
 
             <div className={styles.levelTop}>
-              {usuario.nivel && (
+              {usuario.nivel.nivel < 10 ? (
                 <h2>Nv. {usuario.nivel.nivel} - <span className={styles.levelTitle}>{usuario.nivel.titulo_nivel}</span></h2>
-              )}
+              ) : (<h2 className={styles.maxLevel}>Nv. {usuario.nivel.nivel} - <span className={styles.levelTitle}>{usuario.nivel.titulo_nivel}</span></h2>)}
 
-              <span><Counter target={porcentagemProgresso} duration={1000} />%</span>
+              {usuario.nivel.nivel < 10 ? (<span><Counter target={porcentagemProgresso} duration={1000} />%</span>) : (<span><Counter target={100} duration={1000} />%</span>)}
             </div>
 
             <div className={styles.progressBar}>
-              <div className={styles.progressFill} style={{ width: `${porcentagemProgresso}%` }}></div>
+              {usuario.nivel.nivel < 10 ? (<div className={styles.progressFill} style={{ width: `${porcentagemProgresso}%` }}></div>) : (<div className={styles.progressFill} style={{ width: `100%` }}></div>)}
+              
             </div>
 
-            {usuario.nivel && (
+            {usuario.nivel.nivel < 10 ? (
               <p>{usuario.tarefas_concluidas}/{usuario.nivel.tarefas_requeridas + 1} Tarefas concluídas para subir de nível</p>
-            )}
+            ) : (<p>Nível máximo alcançado!</p>)}
 
-            {usuario.nivel && (
+            {usuario.nivel.nivel < 10 ? (
               <h4>"{usuario.nivel.descricao_nivel}"</h4>
-            )}
+            ) : (<h4 className={styles.descMax}>"{usuario.nivel.descricao_nivel}"</h4>)}
           </section>
         </div>
 

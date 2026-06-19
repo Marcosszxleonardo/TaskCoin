@@ -48,6 +48,22 @@
   color: #00a83a;
 }
 
+.maxLevel {
+  & span {
+    text-shadow: 0 0 20px rgba(255, 255, 0, 0.516);
+    background: linear-gradient(to right, #f5b400, #b08100);
+    font-weight: 800 !important;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+.descMax {
+  color: #b08100 !important;
+  border-color: #b08100 !important;
+}
+
 /* CARD PONTOS */
 
 .offensiveCard {
@@ -59,12 +75,12 @@
   max-width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between; 
-  border: 2px solid #3b82f6; 
+  justify-content: space-between;
+  border: 2px solid #3b82f6;
   margin-bottom: 20px;
   width: 100%;
   box-sizing: border-box;
-  height: 82px; 
+  height: 82px;
 
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
@@ -75,8 +91,13 @@
 }
 
 .recordBadge:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   transition: 0.2s;
+}
+
+.recordBadge span {
+  display: flex;
+  gap: 3px;
 }
 
 .recordBadge {
@@ -107,7 +128,7 @@
 .rightContent {
   display: flex;
   align-items: center;
-  gap: 0px;
+  gap: 5px;
 }
 
 .recordBadge {
@@ -132,14 +153,18 @@
 
 .fireEmoji {
   font-size: 1.8rem;
-  display: inline-block;
+  color: #d7a100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 2px 2px white;
   animation: firePulse 1.5s ease-in-out infinite alternate;
 }
 
 .number {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #d7a100; 
+  color: #d7a100;
   text-shadow: 0 2px 2px white;
   font-family: 'Segoe UI', sans-serif;
   line-height: 1;
@@ -694,6 +719,7 @@
     opacity: 0;
     transform: translateX(-15px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -705,6 +731,7 @@
     transform: scale(1);
     filter: drop-shadow(0 0 2px rgba(234, 179, 8, 0.2));
   }
+
   100% {
     transform: scale(1.12);
     filter: drop-shadow(0 2px 8px rgba(239, 68, 68, 0.6));
@@ -715,6 +742,7 @@
   0% {
     transform: rotate(-10deg);
   }
+
   100% {
     transform: rotate(10deg);
   }
@@ -782,7 +810,7 @@
   .rightSide {
     position: relative;
     margin-left: 60%;
-    padding-top: 100px;
+    padding-top: 90px;
     padding-bottom: 10px;
   }
 }

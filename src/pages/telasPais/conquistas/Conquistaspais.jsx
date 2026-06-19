@@ -100,6 +100,7 @@ export default function Conquistaspais() {
             <p className={styles.subtitulo}>Acompanhe as conquistas criadas e transforme cada objetivo alcançado em um momento de união familiar.</p>
           </div>
           <div className={styles.achievementsContainer}>
+            <h3>Lista de Conquistas:</h3>
             <div className={styles.cards}>
               {usuario?.filhos?.map((filho) => (
                 filho.recompensas?.map((recompensa) => (

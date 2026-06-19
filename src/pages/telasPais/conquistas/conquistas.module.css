@@ -1,11 +1,10 @@
 .screen {
-  height: 100vh;
   min-height: 100vh;
   min-width: 100vw;
   margin: 0 auto;
   background: transparent;
   font-family: 'Segoe UI', sans-serif;
-  margin-bottom: 50px;
+  padding-bottom: 100px;
 }
 
 /* --- ESTRUTURA GERAL --- */
@@ -45,15 +44,26 @@
 }
 
 /* --- SEÇÃO DE CONTEÚDO --- */
+.sectionWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .section {
   width: 90%;
-  margin: 0 auto;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding-top: 80px;
 }
 
 .title {
   text-shadow: 2px 2px 50px rgba(255, 225, 0, 0.414), 2px 2px 1px rgba(255, 225, 0, 0.414);
-  font-size: 23px;
   font-weight: 800;
   color: #333;
   margin: 15px 0 10px;
@@ -71,18 +81,30 @@
 
 /* --- LISTA DE CARDS --- */
 .achievementsContainer {
-  justify-content: flex-start;
-  align-items: center;
   display: flex;
   flex-direction: column;
-  padding-bottom: 100px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  align-self: flex-start;
+  height: min-content;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+h3 {
+  font-size: 23px;
+  font-weight: 800;
+  margin-top: 0px;
+  text-align: left;
+  align-self: flex-start;
+  padding-bottom: 10px;
 }
 
 .cards {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   gap: 12px;
 }
 
@@ -193,7 +215,7 @@
   padding: 15px;
   font-size: 20px;
   font-weight: 800;
-  margin-top: 12px;
+  margin-top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -240,48 +262,43 @@
 
 @media (min-width: 900px) {
   .sectionWrapper {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     margin: 0 auto;
-    justify-self: center;
-    align-items: center;
-    justify-content: center;
     display: flex;
+    justify-content: center;
+    align-items: flex-start; /* ◄── Garantia de ancoragem no topo */
     width: 100%;
   }
 
-   .menuInferior {
+  .menuInferior {
     display: none;
   }
 
   .section {
+    margin: 0;
     min-height: 100vh;
     height: auto;
-    gap: 120px;
+    gap: 80px;
     padding: 0;
     display: flex;
+    flex-direction: row;
     align-items: flex-start;
     justify-content: center;
     width: 100%;
 
-    padding-top: 100px;
+    padding-top: 90px;
     padding-bottom: 50px;
     box-sizing: border-box;
   }
 
   .achievementsContainer {
-    width: 30%;
+    margin: 0;
+    margin-top: 0; /* ◄── Zere isso! O padding-top do .section já cuida do espaço do header */
+    width: 30%;    /* ◄── Um pouco maior para os cards respirarem melhor em telas desktop */
     padding: 0;
   }
 
   .card h2 {
     width: 70%;
-  }
-
-  .addButton {
-    margin-top: 15px;
   }
 
   .title {
@@ -301,7 +318,7 @@
     align-items: center;
     justify-content: center;
     width: 25%;
-    margin-top: -40px;
+    margin-top: 0;
     align-self: center;
   }
 }

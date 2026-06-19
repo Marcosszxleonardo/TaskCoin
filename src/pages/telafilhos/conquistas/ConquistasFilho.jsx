@@ -10,6 +10,8 @@ import { TbCoinTakaFilled } from "react-icons/tb";
 import { GiStarFormation } from "react-icons/gi";
 import { HiEmojiSad } from "react-icons/hi";
 import { HiEmojiHappy } from "react-icons/hi";
+import { FaFire } from "react-icons/fa";
+import { GrTrophy } from "react-icons/gr";
 import Counter from "../../components/Counter";
 
 export default function ConquistasFilho() {
@@ -40,19 +42,20 @@ export default function ConquistasFilho() {
     "ADQUIRIDA": 2
   }
 
-  const purchaseReward = async (id) => {
+  const purchaseReward = async (id, custoPontos) => {
     try {
       const recompensa = await api.put("/recompensas", {
-        "id_recompensa": id,
-        "status_recompensa": "ADQUIRIDA"
+        id_recompensa: id,
+        status_recompensa: "ADQUIRIDA"
       })
 
       setUsuario(prevUsuario => ({
         ...prevUsuario,
-
+        
+        saldo: prevUsuario.saldo_pontos - custoPontos,
         recompensas: prevUsuario.recompensas.map(recompensa =>
           recompensa.id_recompensa === id
-            ? { ...recompensa, status_tarefa: "ADQUIRIDA" }
+            ? { ...recompensa, status_recompensa: "ADQUIRIDA" }
             : recompensa
         )
       }));
@@ -89,12 +92,29 @@ export default function ConquistasFilho() {
             </span>
 
             <div className={styles.pointsRight}>
-              <div className={styles.coin}><TbCoinTakaFilled/></div>
+              <div className={styles.coin}><TbCoinTakaFilled /></div>
               <span className={styles.pointsValue}>
                 <Counter target={usuario.saldo} duration={1000}></Counter>
               </span>
             </div>
 
+          </section>
+
+          <section className={styles.offensiveCard}>
+            <div className={styles.leftContent}>
+              <span className={styles.label}>
+                <span className={styles.gradientText}>Dias de Ofensiva:</span>
+              </span>
+              <div className={styles.recordBadge}>
+                <span role="img" aria-label="Troféu"><GrTrophy /> Maior Ofensiva:</span>
+                <p>{usuario.maior_ofensiva} dia(s)</p>
+              </div>
+            </div>
+
+            <div className={styles.rightContent}>
+              <span className={styles.fireEmoji} role="img" aria-label="Fogo"><FaFire /></span>
+              <span className={styles.number}>{usuario.ofensiva_atual}</span>
+            </div>
           </section>
 
           <section className={styles.progressCard}>
@@ -103,25 +123,29 @@ export default function ConquistasFilho() {
             </div>
 
             <div className={styles.progressTop}>
-              {usuario.nivel && (
+              {usuario.nivel.nivel < 10 ? (
                 <h2>Nv. {usuario.nivel.nivel} - <span className={styles.levelTitle}>{usuario.nivel.titulo_nivel}</span></h2>
-              )}
-              <span>
-                <Counter target={porcentagemProgresso} duration={1000}></Counter>%
-              </span>
+              ) : (<h2 className={styles.maxLevel}>Nv. {usuario.nivel.nivel} - <span className={styles.levelTitle}>{usuario.nivel.titulo_nivel}</span></h2>)}
+
+              {usuario.nivel.nivel < 10 ? (<span><Counter target={porcentagemProgresso} duration={1000} />%</span>) : (<span><Counter target={100} duration={1000} />%</span>)}
             </div>
 
             <div className={styles.progressBar}>
-              <div className={styles.progressFill} style={{ width: `${porcentagemProgresso}%` }}></div>
+              {usuario.nivel.nivel < 10 ? (<div className={styles.progressFill} style={{ width: `${porcentagemProgresso}%` }}></div>) : (<div className={styles.progressFill} style={{ width: `100%` }}></div>)}
+
             </div>
 
-            <p>{tarefasConcluidas}/{tarefasRequeridas + 1} Tarefas concluídas para subir de nível</p>
+            {usuario.nivel.nivel < 10 ? (
+              <p>{usuario.tarefas_concluidas}/{usuario.nivel.tarefas_requeridas + 1} Tarefas concluídas para subir de nível</p>
+            ) : (<p>Nível máximo alcançado!</p>)}
 
-            {usuario.nivel && (
+            {usuario.nivel.nivel < 10 ? (
               <h4>"{usuario.nivel.descricao_nivel}"</h4>
-            )}
+            ) : (<h4 className={styles.descMax}>"{usuario.nivel.descricao_nivel}"</h4>)}
           </section>
         </div>
+
+
 
         <div className={styles.rightSide}>
           <section className={styles.section}>
@@ -137,14 +161,14 @@ export default function ConquistasFilho() {
                 <div key={recompensa.id_recompensa} className={styles.rewardCard}>
                   <div className={styles.rewardLeft}>
                     <div className={styles.medal}>
-                      <GiStarFormation/>
+                      <GiStarFormation />
                     </div>
                     <div>
                       <h3>
                         {recompensa.nome_recompensa}
                       </h3>
                       <div className={styles.rewardPoints}>
-                        <Counter target={recompensa.valor_recompensa} duration={500}></Counter> <TbCoinTakaFilled/>
+                        <Counter target={recompensa.valor_recompensa} duration={500}></Counter> <TbCoinTakaFilled />
                       </div>
                     </div>
                   </div>
@@ -154,7 +178,7 @@ export default function ConquistasFilho() {
                       <span className={styles.happy}>
                         <HiEmojiHappy />
                       </span>
-                      <button className={styles.rewardBtn} onClick={() => purchaseReward(recompensa.id_recompensa)}>
+                      <button className={styles.rewardBtn} onClick={() => purchaseReward(recompensa.id_recompensa, recompensa.valor_recompensa)}>
                         Resgatar
                       </button>
                     </div>) : (

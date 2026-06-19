@@ -14,6 +14,7 @@ import { MdOutlineTaskAlt } from "react-icons/md";
 import { LuFileSearch2 } from "react-icons/lu";
 import { IoHappy } from "react-icons/io5";
 import { TbCoinTakaFilled } from "react-icons/tb";
+import { FaFire } from "react-icons/fa";
 
 export default function TasksScreen() {
   const navigate = useNavigate();
@@ -112,11 +113,14 @@ export default function TasksScreen() {
                 <div className={styles.infoPrincipal}>
                   <p className={styles.nomeFilho}><IoHappy /> {filho.nome}</p>
                   <p className={styles.statsConclusao}><Counter target={filho.tarefas_concluidas} duration={1000} /> tarefas concluídas</p>
+                  
                   <p className={styles.nivelFilho}>Nv. {filho.nivel?.nivel} - {filho.nivel?.titulo_nivel}</p>
 
                   <div className={styles.progressBar}>
-                    <div className={styles.conclusionBar} style={{width: `${Math.round((filho.tarefas_concluidas / (filho.nivel?.tarefas_requeridas + 1)) * 100)}%`}}></div>
+                    {filho.nivel.nivel < 10 ? (<div className={styles.conclusionBar} style={{width: `${Math.round((filho.tarefas_concluidas / (filho.nivel?.tarefas_requeridas + 1)) * 100)}%`}}></div>) : (<div className={styles.conclusionBar} style={{width: `100%`, border: "none"}}></div>)}
+                    
                   </div>
+                  <p className={styles.ofensivaStats}><FaFire /> {filho.ofensiva_atual} dia(s)</p>
                 </div>
 
                 <div className={styles.saldoCard}>
