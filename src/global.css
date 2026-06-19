@@ -12,6 +12,12 @@ section {
   animation: fadeIn 1s ease;
 }
 
+img {
+  pointer-events: none;
+  -webkit-user-select: none; 
+  user-select: none;
+}
+
 body::before {
   content: "";
   position: fixed;
