@@ -731,17 +731,17 @@
   }
 
   .leftSide {
-    margin-top: 240px;
     padding: 0;
     min-width: 400px;
     max-width: 400px;
     transform: scale(1.2);
     position: fixed;
+    top: 8%;
     left: 16%;
   }
 
   .rightSide {
-    margin-top: 100px;
+    margin-top: 85px;
     margin-left: 60%;
     margin-bottom: 20px;
   }
