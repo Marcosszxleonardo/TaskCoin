@@ -7,6 +7,8 @@ import MenuInferior from '../../components/MenuInferior/MenuInferior';
 import LoadingScreen from '../../components/LoadingScreen';
 import Counter from '../../components/Counter';
 import Header from '../../components/Header/Header';
+import { FaStar } from "react-icons/fa6";
+import { GiStarFormation } from "react-icons/gi";
 
 export default function AdicionarConquista() {
   const navigate = useNavigate();
@@ -81,7 +83,7 @@ export default function AdicionarConquista() {
               Crie uma conquista
             </h1>
             <div className={styles.addBtn}>
-              🌟
+              <GiStarFormation />
             </div>
           </div>
           <p className={styles.subtitulo}>
@@ -93,16 +95,18 @@ export default function AdicionarConquista() {
         {/* FORM */}
         <div className={styles.formArea}>
 
+          <label><FaStar /> Nome da Conquista:</label>
           <input
             type="text"
             name="nome_recompensa"
-            placeholder="Nome da conquista"
+            placeholder="Digite o nome da conquista"
             className={styles.inputField}
             value={recompensaForm.nome_recompensa}
             onChange={handleChange}
           />
 
           {/* SELECT */}
+          <label><FaStar /> Selecione o filho:</label>
           <div className={styles.selectArea}>
             <div
               className={styles.selectTop}
@@ -132,6 +136,7 @@ export default function AdicionarConquista() {
             )}
           </div>
 
+          <label><FaStar /> Preço da Conquista</label>
           <input
             type="number"
             name="valor_recompensa"

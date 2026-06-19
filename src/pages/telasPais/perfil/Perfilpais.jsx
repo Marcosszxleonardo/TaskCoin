@@ -39,59 +39,41 @@ export default function PerfilPais() {
   return (
 
     <div className={styles.screen}>
+      {/* HEADER */}
+      <header className={styles.header}>
+        <h1 className={styles.logo}>TASKCOIN</h1>
+      </header>
 
-      <Header/>
+      {/* PERFIL */}
+      <section className={styles.profileSection}>
+        <div className={styles.profileAvatar}><p><img src={avatarPai} /></p></div>
 
-      {/* CONTEÚDO */}
-      <div className={styles.section}>
+        <h2 className={styles.profileName}>{usuario.nome}</h2>
 
-        <section className={styles.profileSection}>
-          <div className={styles.profileAvatar}>
-            <p><img src={avatarPai} /></p>
-          </div>
+        <p className={styles.profileType}>Conta de Responsável</p>
+      </section>
 
-          <h2 className={styles.profileName}>{usuario.nome}</h2>
+      {/* FILHOS */}
+      <section className={styles.childrenSection}>
+        <div className={styles.childrenHeader}>
+          Filhos Cadastrados
+        </div>
 
-          <p className={styles.profileType}>
-            Conta de Responsável
-          </p>
+        <div className={styles.childrenList}>
+          {usuario?.filhos?.map((filho) => (
+            <p>{filho.nome} <br /> <span>Nv. {filho.nivel?.nivel} - {filho.nivel?.titulo_nivel}</span></p>
+          ))}
+        </div>
+      </section>
 
-          <div className={styles.logoutSection}>
-            <button
-              className={styles.logoutButton}
-              onClick={() => logout()}
-            >
-              ↪ Sair da Conta
-            </button>
-          </div>
-        </section>
+      {/* LOGOUT */}
+      < div className={styles.logoutSection} >
+        <button className={styles.logoutButton} onClick={() => logout()}>
+          ↪ Sair da Conta
+        </button>
+      </div >
 
-        <section className={styles.childrenSection}>
-          <div className={styles.childrenHeader}>
-            Filhos Cadastrados
-          </div>
-
-          <div className={styles.childrenList}>
-            {usuario?.filhos?.map((filho) => (
-              <p key={filho.id}>
-                {filho.nome}
-                <br />
-                <span>
-                  Nv. {filho.nivel?.nivel} - {filho.nivel?.titulo_nivel}
-                </span>
-              </p>
-            ))}
-          </div>
-        </section>
-
-      </div>
-
-      {/* MENU */}
-      <MenuInferior
-        abaAtiva="perfil"
-        usuario="pai"
-      />
-
-    </div>
+      <MenuInferior abaAtiva="perfil" usuario={"pai"}/>
+    </div >
   );
 }

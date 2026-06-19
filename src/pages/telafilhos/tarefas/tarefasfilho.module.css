@@ -50,9 +50,105 @@
 
 /* CARD PONTOS */
 
-.pointsCard {
+.offensiveCard {
+  overflow: hidden;
+  background: linear-gradient(to right, #80b3ff 0%, white 40%);
+  border-radius: 18px;
+  padding: 20px 18px;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  border: 2px solid #3b82f6; 
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 82px; 
+
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.offensiveCard:hover {
   transition: 0.3s;
-  margin-top: 90px;
+  box-shadow: 0 0 20px #009d376c;
+}
+
+.recordBadge:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+.recordBadge {
+  transition: 0.2s;
+}
+
+
+.leftContent {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  animation: cardEntrance 1s ease-in-out;
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: 800;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.gradientText {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 40%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.rightContent {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+
+.recordBadge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 4px 10px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #009dff;
+  transition: transform 0.2s ease;
+}
+
+.recordBadge p {
+  font-size: 1rem;
+  animation: recordColor 1s infinite alternate;
+}
+
+.fireEmoji {
+  font-size: 1.8rem;
+  display: inline-block;
+  animation: firePulse 1.5s ease-in-out infinite alternate;
+}
+
+.number {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #d7a100; 
+  text-shadow: 0 2px 2px white;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1;
+  animation: firePulse 1.5s ease-in-out infinite alternate;
+}
+
+.pointsCard {
+  margin-top: 70px;
+  transition: 0.3s;
   margin-bottom: 14px;
   background: #fff;
   border: 2px solid #4a90ff;
@@ -242,6 +338,12 @@
   font-weight: 900;
   color: #111;
   margin-bottom: 18px;
+}
+
+.taskPoints {
+  display: flex;
+  align-items: center;
+  gap: 3px;
 }
 
 /* TASK CARD */
@@ -536,6 +638,16 @@
   }
 }
 
+@keyframes recordColor {
+  from {
+    color: #009dff;
+  }
+
+  to {
+    color: #10b981;
+  }
+}
+
 @keyframes colorChange {
   0% {
     color: #009d37;
@@ -574,6 +686,37 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes firePulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px rgba(234, 179, 8, 0.2));
+  }
+  100% {
+    transform: scale(1.12);
+    filter: drop-shadow(0 2px 8px rgba(239, 68, 68, 0.6));
+  }
+}
+
+@keyframes tilt {
+  0% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(10deg);
   }
 }
 

@@ -141,16 +141,16 @@
 }
 
 .linkedBody span {
-  color:#979797;
+  color: #979797;
   font-size: 14px;
 }
 
 /* LOGOUT (AJUSTADO) */
 
 .logoutSection {
-  animation: none !important; 
+  animation: none !important;
   position: fixed;
-  bottom: 92px; 
+  bottom: 92px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -185,7 +185,7 @@
 @keyframes avatarAnimation {
   0% {
     transform: scale(1)
-  } 
+  }
 
   50% {
     transform: scale(1.1)
@@ -214,5 +214,26 @@
   .logoutButton {
     font-size: 16px;
     padding: 15px;
+  }
+}
+
+@media (min-width: 800px) {
+  .profileAvatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profileAvatar p img {
+    height: 50px;
+  }
+
+  .profileName {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .profileType {
+    font-size: 15px;
+    text-align: center;
   }
 }

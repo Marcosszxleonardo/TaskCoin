@@ -31,10 +31,12 @@
   color: #0077ff;
 
   padding: 0;
+  transition: 0.3s;
 }
 
 .backButton:hover {
   transform: scale(1.1);
+  transition: 0.3s;
 }
 
 .spacer {

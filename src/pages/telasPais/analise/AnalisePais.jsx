@@ -3,6 +3,7 @@ import api from "../../../services/api";
 import { useNavigate } from 'react-router';
 import { useEffect, useState } from "react";
 import { FiCheckSquare } from "react-icons/fi";
+import { MdOutlineTaskAlt } from "react-icons/md";
 import MenuInferior from '../../components/MenuInferior/MenuInferior';
 import LoadingScreen from '../../components/LoadingScreen';
 import Counter from '../../components/Counter';
@@ -126,7 +127,7 @@ export default function AnalisePais() {
                   <div className={styles.infoTarefa}>
 
                     <span className={styles.emoji}>
-                      <FiCheckSquare />
+                      <MdOutlineTaskAlt />
                     </span>
 
                     <div>

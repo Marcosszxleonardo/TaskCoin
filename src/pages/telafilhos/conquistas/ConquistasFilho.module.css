@@ -338,6 +338,10 @@
   font-size: 40px;
 }
 
+.medal {
+  color: #f5b400;
+}
+
 .rewardLeft h3 {
   font-size: 16px;
   font-weight: 800;
@@ -349,6 +353,9 @@
 }
 
 .rewardPoints {
+  display: flex;
+  align-items: center;
+  gap: 3px;
   font-size: 16px;
   font-weight: 900;
   color: #f5b400;
@@ -363,7 +370,15 @@
 
 .happy,
 .sad {
-  font-size: 25px;
+  font-size: 30px;
+}
+
+.sad {
+  color: #df3030;
+}
+
+.happy {
+  color: #009dff;
 }
 
 .rewardBtn {

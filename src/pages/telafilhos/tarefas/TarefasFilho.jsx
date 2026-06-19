@@ -10,6 +10,9 @@ import { FiCheckSquare } from "react-icons/fi";
 import { FaClock } from "react-icons/fa";
 import { IoStarSharp } from "react-icons/io5";
 import { FaGrinStars } from "react-icons/fa";
+import { PiCoinVerticalBold } from "react-icons/pi";
+import { TbCoinTakaFilled } from "react-icons/tb";
+import { MdOutlineTaskAlt } from "react-icons/md";
 import MenuInferior from "../../components/MenuInferior/MenuInferior";
 
 export default function TarefaFilho() {
@@ -83,6 +86,10 @@ export default function TarefaFilho() {
     return <LoadingScreen />
   }
 
+  const ofensivaAtual = 5;
+  const maiorOfensiva = 14;
+  const estaAtivo = ofensivaAtual > 0;
+
   return (
     <div className={styles.screen}>
 
@@ -93,6 +100,7 @@ export default function TarefaFilho() {
 
       <div className={styles.containerWrapper}>
         <div className={styles.leftSide}>
+
           <section className={styles.pointsCard}>
 
             <span className={styles.pointsLabel}>
@@ -100,12 +108,29 @@ export default function TarefaFilho() {
             </span>
 
             <div className={styles.pointsInfo}>
-              <span className={styles.coin}>🪙</span>
+              <span className={styles.coin}><TbCoinTakaFilled /></span>
               <span className={styles.pointsNumber}>
                 <Counter target={usuario.saldo} duration={1000} />
               </span>
             </div>
 
+          </section>
+
+          <section className={styles.offensiveCard}>
+            <div className={styles.leftContent}>
+              <span className={styles.label}>
+                <span className={styles.gradientText}>Dias de Ofensiva:</span>
+              </span>
+              <div className={styles.recordBadge}>
+                <span role="img" aria-label="Troféu">🏆 Maior Ofensiva:</span> 
+                <p>{maiorOfensiva} dias</p>
+              </div>
+            </div>
+
+            <div className={styles.rightContent}>
+              <span className={styles.fireEmoji} role="img" aria-label="Fogo">🔥</span>
+              <span className={styles.number}>{ofensivaAtual}</span>
+            </div>
           </section>
 
           <section className={styles.levelCard}>
@@ -149,7 +174,7 @@ export default function TarefaFilho() {
 
                 <div className={styles.taskHeader}>
                   <div className={styles.taskContent}>
-                    <span className={styles.taskEmoji}><FiCheckSquare /></span>
+                    <span className={styles.taskEmoji}><MdOutlineTaskAlt /></span>
                     <div>
                       <h3 className={styles.taskName}>{tarefa.nome_tarefa}</h3>
                       <span className={styles.taskMeta}><FaClock /> <strong>{formatarData(tarefa.expiracao_tarefa)}...</strong></span>
@@ -157,7 +182,7 @@ export default function TarefaFilho() {
                   </div>
 
                   <div className={styles.taskRight}>
-                    <span className={styles.taskPoints}><Counter target={tarefa.valor_tarefa} duration={1000} /> 🪙</span>
+                    <span className={styles.taskPoints}><Counter target={tarefa.valor_tarefa} duration={1000} /> <TbCoinTakaFilled /></span>
                     <span className={styles.arrow}>
                       <button onClick={() => toggleTarefa(tarefa.id_tarefa)}>
                         {tarefaExpandida === tarefa.id_tarefa ? '▴' : '▾'}

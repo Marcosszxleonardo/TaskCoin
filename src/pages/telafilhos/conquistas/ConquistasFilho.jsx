@@ -6,6 +6,10 @@ import "../../../global.css"
 import { useState, useEffect } from "react";
 import { FaGrinStars } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { TbCoinTakaFilled } from "react-icons/tb";
+import { GiStarFormation } from "react-icons/gi";
+import { HiEmojiSad } from "react-icons/hi";
+import { HiEmojiHappy } from "react-icons/hi";
 import Counter from "../../components/Counter";
 
 export default function ConquistasFilho() {
@@ -85,7 +89,7 @@ export default function ConquistasFilho() {
             </span>
 
             <div className={styles.pointsRight}>
-              <div className={styles.coin}>🪙</div>
+              <div className={styles.coin}><TbCoinTakaFilled/></div>
               <span className={styles.pointsValue}>
                 <Counter target={usuario.saldo} duration={1000}></Counter>
               </span>
@@ -133,14 +137,14 @@ export default function ConquistasFilho() {
                 <div key={recompensa.id_recompensa} className={styles.rewardCard}>
                   <div className={styles.rewardLeft}>
                     <div className={styles.medal}>
-                      🌟
+                      <GiStarFormation/>
                     </div>
                     <div>
                       <h3>
                         {recompensa.nome_recompensa}
                       </h3>
                       <div className={styles.rewardPoints}>
-                        <Counter target={recompensa.valor_recompensa} duration={500}></Counter> 🪙
+                        <Counter target={recompensa.valor_recompensa} duration={500}></Counter> <TbCoinTakaFilled/>
                       </div>
                     </div>
                   </div>
@@ -148,7 +152,7 @@ export default function ConquistasFilho() {
                   {usuario.saldo >= recompensa.valor_recompensa ? (
                     <div className={styles.rewardRight}>
                       <span className={styles.happy}>
-                        😊
+                        <HiEmojiHappy />
                       </span>
                       <button className={styles.rewardBtn} onClick={() => purchaseReward(recompensa.id_recompensa)}>
                         Resgatar
@@ -156,10 +160,10 @@ export default function ConquistasFilho() {
                     </div>) : (
                     <div className={styles.rewardRight}>
                       <span className={styles.sad}>
-                        ☹️
+                        <HiEmojiSad />
                       </span>
                       <span className={styles.insufficient}>
-                        Pontos insuficiente
+                        Pontos insuficientes
                       </span>
                     </div>)}
 

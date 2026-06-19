@@ -7,6 +7,7 @@ import MenuInferior from '../../components/MenuInferior/MenuInferior';
 import Header from '../../components/Header/Header';
 import LoadingScreen from '../../components/LoadingScreen';
 import Counter from '../../components/Counter';
+import { MdOutlineAddTask } from "react-icons/md";
 
 export default function AdicionarTarefa() {
   const navigate = useNavigate();
@@ -97,6 +98,7 @@ export default function AdicionarTarefa() {
         {/* FORM */}
         <div className={styles.formArea}>
 
+          <label><MdOutlineAddTask /> Nome da Tarefa:</label>
           <input
             type="text"
             name="nome_tarefa"
@@ -106,6 +108,7 @@ export default function AdicionarTarefa() {
             onChange={handleChange}
           />
 
+          <label><MdOutlineAddTask /> Descrição da Tarefa:</label>
           <input
             type="text"
             name="descricao_tarefa"
@@ -115,6 +118,7 @@ export default function AdicionarTarefa() {
             onChange={handleChange}
           />
 
+          <label><MdOutlineAddTask /> Data Limite para Conclusão:</label>
           <input
             type="date"
             name="expiracao_tarefa"
@@ -124,6 +128,7 @@ export default function AdicionarTarefa() {
             onChange={handleChange}
           />
 
+          <label><MdOutlineAddTask /> Selecione o Filho:</label>
           {/* SELECT */}
           <div className={styles.selectArea}>
             <div
@@ -154,6 +159,7 @@ export default function AdicionarTarefa() {
             )}
           </div>
 
+          <label><MdOutlineAddTask /> Pontos Recebidos:</label>
           <input
             type="number"
             name="valor_tarefa"

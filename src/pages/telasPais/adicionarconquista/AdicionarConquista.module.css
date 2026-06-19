@@ -11,7 +11,6 @@
   padding: 0;
 }
 
-
 .section {
   width: 90%;
   margin: 0 auto;
@@ -31,30 +30,35 @@
 }
 
 .tituloTOP {
+  text-shadow: 2px 2px 50px rgba(255, 225, 0, 0.414), 2px 2px 1px rgba(255, 225, 0, 0.414);
   display: flex;
   justify-content: center;
   align-self: center;
-  padding-top: 90px;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 5px;
   margin-bottom: 12px;
   text-align: center;
 }
 
 .tituloArea h1 {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 700;
   color: #111;
 }
 
 .addBtn {
   animation: rotate 5s linear infinite;
-  margin-left: 10px;
   display: flex;
   justify-content: center;
   font-size: 28px;
   cursor: pointer;
+  color: #f1c900;
+  text-shadow: 2px 2px 50px rgba(255, 225, 0, 0.414), 2px 2px 1px rgba(255, 225, 0, 0.414);
+}
+
+.addBtn:hover {
+  cursor: default;
 }
 
 /* SUBTITULO */
@@ -63,7 +67,7 @@
   text-align: center;
   animation: fadeIn 1s ease;
   color: #111;
-  font-size: 15px;
+  font-size: 14.5px;
   line-height: 1.4;
   margin-bottom: 30px;
   font-weight: 500;
@@ -90,10 +94,12 @@
   padding: 0 16px;
   font-size: 17px;
   outline: none;
+  transition: 0.2s;
 }
 
 .inputField:focus {
-  box-shadow: 0 0 20px #ffdb6f79;
+  transition: 0.2s;
+  box-shadow: 0 0 20px #ffc82379;
 }
 
 .inputField::placeholder {
@@ -180,6 +186,21 @@
   font-weight: 700;
   cursor: pointer;
   margin-top: 20px;
+  margin-bottom: 100px;
+  transition: 0.3s;
+}
+
+.criarBtn:hover {
+  transform: scale(1.025);
+  transition: 0.3s;
+}
+
+label {
+  font-size: 15px;
+  margin-bottom: -5px;
+  font-weight: 600;
+  color: #111;
+  align-self: flex-start;
 }
 
 /* NAVBAR */
@@ -233,18 +254,15 @@
   }
 }
 
-
 @media (min-width: 900px) {
-
   .section {
     min-height: 100vh;
     max-width: 1200px;
 
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "titulo form"
-      "subtitulo form"
       ". botao";
 
     align-content: center;
@@ -262,6 +280,7 @@
   }
 
   .tituloArea h1 {
+    width: 400px;
     font-size: 40px;
   }
 
@@ -270,13 +289,10 @@
   }
 
   .subtitulo {
-    grid-area: subtitulo;
-
     text-align: center;
-
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.7;
-
+    width: 400px;
     margin-bottom: 0;
   }
 
@@ -302,6 +318,11 @@
 
     font-size: 20px;
 
-    margin-top: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .tituloTOP {
+    padding-top: 40px;
   }
 }

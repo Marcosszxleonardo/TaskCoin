@@ -7,7 +7,9 @@ import Counter from "../../components/Counter";
 import LoadingScreen from "../../components/LoadingScreen";
 import MenuInferior from '../../components/MenuInferior/MenuInferior.jsx';
 import Header from "../../components/Header/Header.jsx";
-import { PiCoinVerticalBold  } from "react-icons/pi";
+import { PiCoinVerticalBold } from "react-icons/pi";
+import { GiStarFormation } from "react-icons/gi";
+import { TbCoinTakaFilled } from "react-icons/tb";
 
 const TrophyIcon = () => {
   return <div className="trophyIcon">🏅</div>;
@@ -83,14 +85,19 @@ export default function Conquistaspais() {
   return (
     <div className={styles.screen}>
       {/* HEADER */}
-      <Header/>
+      <header className={styles.header}>
+        <div className={styles.headerRow}>
+          <h1 className={styles.logo}>TASKCOIN</h1>
+          <span className={styles.greeting}>Olá, <strong>{usuario.nome}!</strong></span>
+        </div>
+      </header>
 
       {/* CONTEUDO */}
       <div className={styles.sectionWrapper}>
         <section className={styles.section}>
           <div className={styles.conquistasTitle}>
             <h1 className={styles.title}>Conquistas Cadastradas</h1>
-            <p className={styles.subtitulo}> Acompanhe as conquistas criadas e transforme cada objetivo alcançado em um momento de reconhecimento, aprendizado e união familiar.</p>
+            <p className={styles.subtitulo}>Acompanhe as conquistas criadas e transforme cada objetivo alcançado em um momento de união familiar.</p>
           </div>
           <div className={styles.achievementsContainer}>
             <div className={styles.cards}>
@@ -98,13 +105,13 @@ export default function Conquistaspais() {
                 filho.recompensas?.map((recompensa) => (
                   <div className={styles.card} key={recompensa.id_recompensa}>
                     <div className={styles.left}>
-                      <p>🌟</p>
+                      <p><GiStarFormation /></p>
 
                       <div className={styles.info}>
                         <h2>{recompensa.nome_recompensa}</h2>
 
                         <div className={styles.points}>
-                          <PiCoinVerticalBold/>
+                          <TbCoinTakaFilled />
                           <span><Counter target={recompensa.valor_recompensa} duration={500} /></span>
                         </div>
                       </div>

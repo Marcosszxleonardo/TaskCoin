@@ -12,12 +12,29 @@ section {
   animation: fadeIn 1s ease;
 }
 
-body, html {
-  background-color: #f7fcff;
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://t4.ftcdn.net/jpg/04/94/37/09/360_F_494370964_0i04CjwvH6IUM1MQoUDELoCHsJaWrWFb.jpg");
+  opacity: 0.05; 
+  z-index: -1; 
+
+  animation: backgroundAnimate 10s ease-in-out infinite alternate;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
   background-image: 
     radial-gradient(at 0% 0%, rgba(0, 207, 76, 0.5) 0px, transparent 50%), 
-    radial-gradient(at 100% 0%, rgb(43, 142, 255) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, rgba(85, 212, 247, 0.17) 0px, transparent 50%) !important;
+    radial-gradient(at 100% 0%, rgb(43, 142, 255) 0px, transparent 50%);
+  background-repeat: no-repeat;
   animation: auroraBoreal 5s ease infinite alternate, fadeIn 1s ease !important;
   height: 100%;
   margin: 0;
@@ -137,15 +154,27 @@ body, html {
 @keyframes auroraBoreal {
   0% {
     background-position: 0% 0%;
-    background-size: 200% 200%;
+    background-size: 200%;
   }
   50% {
     background-position: 100% 50%;
-    background-size: 220% 180%; 
+    background-size: 200;
   }
   100% {
     background-position: 0% 100%;
-    background-size: 180% 220%;
+    background-size: 200%;
+  }
+}
+
+@keyframes backgroundAnimate {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 100%;
   }
 }
 

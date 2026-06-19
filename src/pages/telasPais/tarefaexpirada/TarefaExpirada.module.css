@@ -56,8 +56,6 @@
   line-height: 1.4;
   margin-bottom: 30px;
   font-weight: 500;
-  
- 
 }
 
 
@@ -84,6 +82,12 @@
   border-radius: 24px;
   padding: 18px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.141);
+  transition: 0.3s transform;
+}
+
+.cardTarefa:hover {
+  transform: translateY(-5px);
+  transition: 0.3s transform;
 }
 
 .cardTop {
@@ -227,30 +231,19 @@
 }
 
 @media (min-width: 900px) {
-
   .section {
+    width: 100%;
     min-height: 100vh;
 
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    grid-template-areas:
-      "titulo cards"
-      "subtitulo cards";
-
-    align-content: center;
-
-    max-width: 1200px;
-
-    column-gap: 80px;
-    row-gap: 20px;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     padding-top: 0;
   }
 
   /* TÍTULO */
   .tituloArea {
-    grid-area: titulo;
-
     padding-top: 0;
     margin-bottom: 0;
 
@@ -259,42 +252,31 @@
   }
 
   .tituloTOP {
-    padding-top: 50%;
+    padding-top: 30%;
     justify-content: center;
   }
 
   .tituloArea h1 {
-    font-size: 52px;
+    font-size: 40px;
     line-height: 1.1;
   }
 
-  /* SUBTÍTULO */
   .subtitulo {
-    grid-area: subtitulo;
-
-    width: 100%;
-    max-width: 500px;
-
-    margin: 0 auto;
-
-    font-size: 18px;
+    width: 320px;
+    font-size: 16px;
     line-height: 1.7;
   }
 
-  /* CARDS */
   .cardsArea {
-    grid-area: cards;
-
+    align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 18px;
-
-    align-items: stretch;
+    gap: 20px;
   }
 
   .cardTarefa {
-    width: 100%;
-    padding: 22px;
+    width: 25%;
+    padding: 20px;
   }
 
   .infoTarefa h3 {
@@ -302,12 +284,16 @@
   }
 
   .infoTarefa p {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .confirmarBtn {
-    height: 54px;
+    height: 40px;
     font-size: 17px;
+  }
+
+  .confirmadoTexto {
+    font-size: 15px;
   }
 
   .emoji {

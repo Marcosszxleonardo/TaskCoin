@@ -10,9 +10,10 @@ import { FiCheckSquare } from "react-icons/fi";
 import { IoTrashOutline } from "react-icons/io5";
 import { FaClock } from "react-icons/fa";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import { MdOutlineTaskAlt } from "react-icons/md";
 import { LuFileSearch2 } from "react-icons/lu";
 import { IoHappy } from "react-icons/io5";
-import { PiCoinVerticalBold  } from "react-icons/pi";
+import { TbCoinTakaFilled } from "react-icons/tb";
 
 export default function TasksScreen() {
   const navigate = useNavigate();
@@ -120,7 +121,7 @@ export default function TasksScreen() {
 
                 <div className={styles.saldoCard}>
                   <Counter target={filho.saldo} duration={1000} /> 
-                  <PiCoinVerticalBold  />
+                  <TbCoinTakaFilled />
                 </div>
               </div>
             ))}
@@ -135,7 +136,7 @@ export default function TasksScreen() {
                   <div key={task.id_tarefa} className={styles.taskCard}>
                     <div className={styles.taskLeft}>
                       <span className={styles.taskIcon}>
-                        <FiCheckSquare />
+                        <MdOutlineTaskAlt />
                       </span>
 
                       <div>
@@ -150,7 +151,7 @@ export default function TasksScreen() {
                     <div className={styles.taskRight}>
                       <div className={styles.points}>
                         <span><Counter target={task.valor_tarefa} duration={1000} /></span>
-                        🪙
+                        <TbCoinTakaFilled />
                       </div>
 
                       <button className={styles.deleteBtn} onClick={() => deletarTask(task.id_tarefa)}>

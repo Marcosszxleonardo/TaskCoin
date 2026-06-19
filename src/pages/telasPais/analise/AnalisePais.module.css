@@ -14,21 +14,19 @@
   padding-top: 40px;
 }
 
-
 .tituloArea {
   display: flex;
   justify-content: center;
   align-self: center;
   flex-direction: column;
   animation: fadeIn 1s ease;
-  
 }
 
 .tituloTOP{
   display: flex;
   justify-content: center;
   align-self: center;
-  padding-top: 90px;
+  padding-top: 80px;
   display: flex;
   align-items: center;
   gap: 24px;
@@ -45,7 +43,7 @@
 }
 
 .tituloTOP h1 span {
-  color: #009dff;
+  color: #ff2b2b;
 }
 
 .subtitulo {
@@ -77,6 +75,12 @@
   border-radius: 24px;
   padding: 18px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.141);
+  transition: 0.3s transform;
+}
+
+.cardTarefa:hover {
+  transform: translateY(-5px);
+  transition: 0.3s transform;
 }
 
 .cardTop {
@@ -187,7 +191,6 @@
 /* RESPONSIVO */
 
 @media (max-width: 500px) {
-
   .pageBg {
     padding: 0;
   }
@@ -218,79 +221,71 @@
     transform: translateY(0);
   }
 }
-@media (min-width: 900px) {
 
+@media (min-width: 900px) {
   .section {
+    width: 100%;
     min-height: 100vh;
 
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    grid-template-areas:
-      "titulo cards"
-      "subtitulo cards";
-
-    align-content: center;
-
-    max-width: 1200px;
-
-    column-gap: 100px;
-    row-gap: 20px;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     padding-top: 0;
-    margin: 0 auto;
   }
 
   /* 🔵 TÍTULO (IGUAL MODELO) */
   .tituloArea {
-    grid-area: titulo;
-
     padding-top: 0;
     margin-bottom: 0;
 
     justify-content: center;
+    align-items: center;
   }
 
   .tituloTOP {
-    padding-top: 0;
+    padding-top: 30%;
     justify-content: center;
   }
 
   .tituloArea h1 {
-    font-size: 52px;
+    font-size: 40px;
     line-height: 1.1;
-    text-align: center;
   }
 
-  /* SUBTÍTULO */
   .subtitulo {
-    grid-area: subtitulo;
-
-    font-size: 18px;
-    line-height: 1.8;
-
-    margin-bottom: 0;
-    text-align: center;
+    width: 350px;
+    font-size: 16px;
+    line-height: 1.7;
   }
 
-  /* 🟢 CARDS (LADO DIREITO) */
   .cardsArea {
-    grid-area: cards;
-
+    align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
   }
 
-  /* CARD */
   .cardTarefa {
-    width: 100%;
+    width: 25%;
+    padding: 20px;
   }
 
-  /* efeitos leves iguais padrão moderno */
-  .cardTarefa:hover {
-    transform: translateY(-3px);
-    transition: 0.2s ease;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  .infoTarefa div h3 {
+    font-size: 18px;
+  }
+
+  .infoTarefa div p {
+    font-size: 14px;
+  }
+
+  .confirmarBtn {
+    height: 40px;
+    font-size: 17px;
+  }
+
+  .confirmadoTexto {
+    font-size: 15px;
   }
 
   /* ICONES */
